@@ -1,0 +1,165 @@
+# ─────────────────────────────────────────────────────────────
+#  ChemLab — .gitignore
+#
+#  NO ignorar nunca:
+#    public/data/*.json    datasets de elementos y compuestos
+#    public/fonts/*.woff2  fuentes autoalojadas (SPEC 14 §4)
+#    public/icons/*.png    íconos de la PWA (SPEC 18 §2)
+#    src/sw.js             el Service Worker es código fuente
+#    public/manifest.webmanifest
+#  Son entregables del proyecto, no artefactos de build.
+# ─────────────────────────────────────────────────────────────
+
+
+# ── Dependencias ─────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/versions
+
+
+# ── Build de Vite ────────────────────────────────────────────
+dist/
+dist-ssr/
+build/
+*.local
+
+# Caché del bundler
+.vite/
+node_modules/.vite/
+.rollup.cache/
+.parcel-cache/
+
+# Salida de desarrollo de vite-plugin-pwa
+# El sw.js compilado se genera en dist/; src/sw.js SÍ se versiona
+dev-dist/
+
+
+# ── Variables de entorno ─────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+
+# ── Logs ─────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+
+# ── Tests y cobertura ────────────────────────────────────────
+coverage/
+*.lcov
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+.vitest/
+
+
+# ── Editores e IDEs ──────────────────────────────────────────
+# VS Code: se versionan extensiones y tareas compartidas del equipo
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim / Emacs / Sublime
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+*.sublime-workspace
+*.sublime-project
+
+
+# ── Sistema operativo ────────────────────────────────────────
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+
+# ── Herramientas de agentes ──────────────────────────────────
+# Cachés locales, no aportan al repositorio.
+# La crítica de diseño ya fue movida a docs/critica-diseno.md,
+# que SÍ se versiona.
+.atl/
+.impeccable/
+.codegraph/
+.aider*
+.cursor/
+
+# Claude Code: se versiona la config compartida del equipo,
+# no las preferencias locales de cada integrante
+.claude/settings.local.json
+.claude/*.local.json
+
+
+# ── Archivos temporales y de trabajo ─────────────────────────
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+.cache/
+tmp/
+temp/
+scratch/
+
+
+# ── Archivos pesados que no van al repo ──────────────────────
+# Entregas comprimidas, capturas de trabajo, exports intermedios
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+
+
+# ── Excepciones finales ──────────────────────────────────────
+# Reafirmadas por si algún patrón de arriba las alcanzara
+!public/data/
+!public/data/**
+!public/fonts/
+!public/fonts/**
+!public/icons/
+!public/icons/**
+!design-import/**
+!specs/**
