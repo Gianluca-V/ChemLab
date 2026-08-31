@@ -199,7 +199,7 @@ Solicitar compuesto
 
 Descripción §9: *"No se deben almacenar respuestas ilimitadas."*
 
-- **Máximo 60 entradas.** El dataset tiene 30 compuestos; 60 deja margen sin crecer sin techo.
+- **Máximo 120 entradas.** El tope tiene que superar al dataset: por debajo de sus 81 compuestos, recorrer el laboratorio desaloja entradas que se van a volver a pedir. 120 deja margen para los compuestos que solo conoce PubChem.
 - Al llegar al límite se elimina la entrada de `lastAccess` más antiguo. LRU simple.
 - Cada entrada ronda los 200 bytes. 60 entradas son ~12 KB: muy por debajo de los ~5 MB de `localStorage`. **No se necesita IndexedDB**, que la descripción §3.1 admite solo *"si resulta necesario para cachear datos externos de mayor tamaño"*. Las imágenes, que sí son grandes, las maneja el Service Worker.
 

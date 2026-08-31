@@ -98,7 +98,7 @@ Entre la descripción funcional de origen y el documento de diseño. Las ocho qu
 | 1 | Claves `chemlab:favorites` vs `chemlab_favorites` | Guión bajo, del diseño | 00 §5 |
 | 2 | Historial: ¿solo detalles, o también experimentos? | Solo detalles visitados, de ambos tipos | 11 §1 |
 | 3 | 6 rutas en la descripción vs 9 pantallas en el diseño | 12 rutas más catch-all | 01 §2 |
-| 4 | Dataset de 20 vs progreso "8 / 30" | 30 compuestos | 02 §2 |
+| 4 | Dataset de 20 vs progreso "8 / 30" | El denominador sale del dataset, nunca de un literal | 02 §2 |
 | 5 | Masa atómica exigida en la celda, ausente en mobile | En celda desde 1024 px; siempre en `aria-label` y detalle | 03 §3 |
 | 6 | 6 filtros propuestos vs 4 dibujados | Los 4 del diseño. RF2 pide 3 | 04 §3 |
 | 7 | Favorito exigido en el detalle, ausente en el frame 06 | Estrella en el `TopBar` de ambos detalles | 06 §4 |
@@ -143,6 +143,6 @@ Cosas que ningún frame resolvía y que las SPECs definen.
 
 1. ~~**Verificar el nombre de la propiedad SMILES en PubChem PUG REST.**~~ **Resuelto:** se probó contra la API. Las tres candidatas responden 200; la vigente es `SMILES`. `api.js` la busca entre las tres por compatibilidad. (SPEC 09 §3)
 2. ~~**Construir `elements.json`**~~ **Hecho:** 118 elementos, 17 campos. Grupo, período y bloque derivados de Z. (SPEC 02 §1)
-3. ~~**Construir `compounds.json`**~~ **Hecho:** 31 entradas —los 20 obligatorios de la §6.2, 10 más y el ozono—, cada una con su `key` de Hill derivada por `hillKey()`, nunca escrita a mano. **Sin `query`:** el campo se eliminó, ver el desvío registrado en SPEC 09 §2. (SPEC 02 §2)
+3. ~~**Construir `compounds.json`**~~ **Hecho:** 81 entradas —los 20 obligatorios de la §6.2 y 61 más—, cada una con su `key` de Hill derivada por `hillKey()`, nunca escrita a mano, y las 81 verificadas contra PubChem. **Sin `query`:** el campo se eliminó, ver el desvío registrado en SPEC 09 §2. (SPEC 02 §2)
 4. **Diseñar los íconos** 192, 512 y `maskable-512` a partir de la marca "C ChemLab". (SPEC 18 §2)
 5. **Descargar y subsetear las fuentes** Space Grotesk y IBM Plex Mono a `woff2`. (SPEC 14 §4)

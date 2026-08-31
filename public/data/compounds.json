@@ -314,5 +314,519 @@
       "O": 3
     },
     "description": "Forma triatómica del oxígeno, de olor penetrante. En la estratosfera absorbe la radiación ultravioleta; a nivel del suelo es un contaminante irritante."
+  },
+  {
+    "key": "C2H6",
+    "formula": "C2H6",
+    "name": "Etano",
+    "elements": {
+      "C": 2,
+      "H": 6
+    },
+    "description": "Segundo alcano de la serie, presente en el gas natural. Gas incoloro e inodoro cuya combustión completa produce dióxido de carbono y agua."
+  },
+  {
+    "key": "C3H8",
+    "formula": "C3H8",
+    "name": "Propano",
+    "elements": {
+      "C": 3,
+      "H": 8
+    },
+    "description": "Alcano de tres carbonos que se licúa a presión moderada, lo que permite envasarlo. Es el combustible de las garrafas domésticas."
+  },
+  {
+    "key": "C4H10",
+    "formula": "C4H10",
+    "name": "Butano",
+    "elements": {
+      "C": 4,
+      "H": 10
+    },
+    "description": "Alcano de cuatro carbonos, más fácil de licuar que el propano. Se usa en encendedores y en garrafas de uso doméstico."
+  },
+  {
+    "key": "C5H12",
+    "formula": "C5H12",
+    "name": "Pentano",
+    "elements": {
+      "C": 5,
+      "H": 12
+    },
+    "description": "Primer alcano líquido a temperatura ambiente. Muy volátil, se emplea como disolvente y como agente de expansión de espumas."
+  },
+  {
+    "key": "C2H4",
+    "formula": "C2H4",
+    "name": "Eteno",
+    "elements": {
+      "C": 2,
+      "H": 4
+    },
+    "description": "Alqueno más simple, con un doble enlace carbono-carbono. Es además una hormona vegetal: regula la maduración de los frutos."
+  },
+  {
+    "key": "C2H2",
+    "formula": "C2H2",
+    "name": "Etino",
+    "elements": {
+      "C": 2,
+      "H": 2
+    },
+    "description": "Alquino más simple, con un triple enlace carbono-carbono. Su llama alimentada con oxígeno supera los 3000 °C, temperatura suficiente para soldar acero."
+  },
+  {
+    "key": "C6H6",
+    "formula": "C6H6",
+    "name": "Benceno",
+    "elements": {
+      "C": 6,
+      "H": 6
+    },
+    "description": "Hidrocarburo aromático de anillo hexagonal, con los electrones deslocalizados sobre los seis carbonos. Es un cancerígeno reconocido y su manipulación exige campana de extracción."
+  },
+  {
+    "key": "CH4O",
+    "formula": "CH3OH",
+    "name": "Metanol",
+    "elements": {
+      "C": 1,
+      "H": 4,
+      "O": 1
+    },
+    "description": "El alcohol más simple. Es tóxico por ingestión: el organismo lo transforma en formaldehído y ácido fórmico, que dañan el nervio óptico."
+  },
+  {
+    "key": "C3H8O3",
+    "formula": "C3H8O3",
+    "name": "Glicerol",
+    "elements": {
+      "C": 3,
+      "H": 8,
+      "O": 3
+    },
+    "description": "Alcohol con tres grupos hidroxilo, viscoso y de sabor dulce. Subproducto de la fabricación de jabón y humectante habitual en cosmética."
+  },
+  {
+    "key": "C3H6O",
+    "formula": "C3H6O",
+    "name": "Acetona",
+    "elements": {
+      "C": 3,
+      "H": 6,
+      "O": 1
+    },
+    "description": "La cetona más simple. Disolvente muy volátil, capaz de disolver plásticos y resinas; el organismo también la produce durante el ayuno prolongado."
+  },
+  {
+    "key": "CHCl3",
+    "formula": "CHCl3",
+    "name": "Cloroformo",
+    "elements": {
+      "C": 1,
+      "H": 1,
+      "Cl": 3
+    },
+    "description": "Triclorometano, líquido denso y volátil. Fue el primer anestésico inhalatorio de uso masivo, abandonado por su toxicidad hepática y cardíaca."
+  },
+  {
+    "key": "C2H6O2",
+    "formula": "C2H6O2",
+    "name": "Etilenglicol",
+    "elements": {
+      "C": 2,
+      "H": 6,
+      "O": 2
+    },
+    "description": "Alcohol de dos grupos hidroxilo. Baja mucho el punto de congelación del agua, por eso es el anticongelante de los radiadores; es tóxico por ingestión y de sabor dulce, combinación peligrosa."
+  },
+  {
+    "key": "BrH",
+    "formula": "HBr",
+    "name": "Bromuro de hidrógeno",
+    "elements": {
+      "H": 1,
+      "Br": 1
+    },
+    "description": "Gas incoloro que disuelto en agua forma el ácido bromhídrico, todavía más fuerte que el clorhídrico."
+  },
+  {
+    "key": "FH",
+    "formula": "HF",
+    "name": "Fluoruro de hidrógeno",
+    "elements": {
+      "H": 1,
+      "F": 1
+    },
+    "description": "Gas que en solución acuosa forma el ácido fluorhídrico, capaz de atacar el vidrio. Su riesgo principal no es la quemadura visible sino el ion fluoruro, que penetra la piel y descalcifica los huesos."
+  },
+  {
+    "key": "H3O4P",
+    "formula": "H3PO4",
+    "name": "Ácido fosfórico",
+    "elements": {
+      "H": 3,
+      "P": 1,
+      "O": 4
+    },
+    "description": "Ácido triprótico de fuerza media. Da su acidez a las bebidas cola y se usa para pasivar el óxido del hierro antes de pintarlo."
+  },
+  {
+    "key": "CH2O3",
+    "formula": "H2CO3",
+    "name": "Ácido carbónico",
+    "elements": {
+      "H": 2,
+      "C": 1,
+      "O": 3
+    },
+    "description": "Se forma cuando el dióxido de carbono se disuelve en agua. Es inestable y se descompone con facilidad: por eso las gaseosas pierden el gas al abrirse."
+  },
+  {
+    "key": "CHN",
+    "formula": "HCN",
+    "name": "Cianuro de hidrógeno",
+    "elements": {
+      "H": 1,
+      "C": 1,
+      "N": 1
+    },
+    "description": "Gas de olor a almendras amargas que no todas las personas perciben. Bloquea la cadena respiratoria de las células, que quedan sin poder usar el oxígeno disponible."
+  },
+  {
+    "key": "C6H8O7",
+    "formula": "C6H8O7",
+    "name": "Ácido cítrico",
+    "elements": {
+      "C": 6,
+      "H": 8,
+      "O": 7
+    },
+    "description": "Ácido orgánico triprótico presente en los cítricos. Es un intermediario del ciclo de Krebs, la vía central del metabolismo aeróbico."
+  },
+  {
+    "key": "HKO",
+    "formula": "KOH",
+    "name": "Hidróxido de potasio",
+    "elements": {
+      "K": 1,
+      "O": 1,
+      "H": 1
+    },
+    "description": "Base fuerte, más soluble que el hidróxido de sodio. Se usa para fabricar jabones blandos y como electrolito en baterías alcalinas."
+  },
+  {
+    "key": "CaH2O2",
+    "formula": "Ca(OH)2",
+    "name": "Hidróxido de calcio",
+    "elements": {
+      "Ca": 1,
+      "O": 2,
+      "H": 2
+    },
+    "description": "La cal apagada. Base de solubilidad limitada; su solución, el agua de cal, se enturbia con dióxido de carbono, y esa es la prueba clásica para detectarlo."
+  },
+  {
+    "key": "H2MgO2",
+    "formula": "Mg(OH)2",
+    "name": "Hidróxido de magnesio",
+    "elements": {
+      "Mg": 1,
+      "O": 2,
+      "H": 2
+    },
+    "description": "Base poco soluble. Su suspensión en agua es la leche de magnesia, que neutraliza el ácido del estómago sin llegar a ser corrosiva."
+  },
+  {
+    "key": "AlH3O3",
+    "formula": "Al(OH)3",
+    "name": "Hidróxido de aluminio",
+    "elements": {
+      "Al": 1,
+      "O": 3,
+      "H": 3
+    },
+    "description": "Base anfótera: reacciona tanto con ácidos como con bases fuertes. Se usa como antiácido y como retardante de llama."
+  },
+  {
+    "key": "CaCl2",
+    "formula": "CaCl2",
+    "name": "Cloruro de calcio",
+    "elements": {
+      "Ca": 1,
+      "Cl": 2
+    },
+    "description": "Sal muy higroscópica: absorbe humedad del aire hasta llegar a disolverse en ella. Se usa para derretir hielo en las rutas y como desecante de laboratorio."
+  },
+  {
+    "key": "Cl2Mg",
+    "formula": "MgCl2",
+    "name": "Cloruro de magnesio",
+    "elements": {
+      "Mg": 1,
+      "Cl": 2
+    },
+    "description": "Sal abundante en el agua de mar. De ella se obtiene el magnesio metálico por electrólisis del cloruro fundido."
+  },
+  {
+    "key": "FNa",
+    "formula": "NaF",
+    "name": "Fluoruro de sodio",
+    "elements": {
+      "Na": 1,
+      "F": 1
+    },
+    "description": "Sal que aporta el ion fluoruro. En concentraciones bajas refuerza el esmalte dental; en concentraciones altas y sostenidas produce fluorosis."
+  },
+  {
+    "key": "AgNO3",
+    "formula": "AgNO3",
+    "name": "Nitrato de plata",
+    "elements": {
+      "Ag": 1,
+      "N": 1,
+      "O": 3
+    },
+    "description": "Sal soluble de plata, sensible a la luz. Con iones cloruro forma un precipitado blanco: es el ensayo clásico para detectar cloruros en una muestra."
+  },
+  {
+    "key": "KNO3",
+    "formula": "KNO3",
+    "name": "Nitrato de potasio",
+    "elements": {
+      "K": 1,
+      "N": 1,
+      "O": 3
+    },
+    "description": "El salitre. Lleva oxígeno en su propia estructura, lo que lo vuelve un oxidante enérgico; también es fertilizante por su nitrógeno y su potasio."
+  },
+  {
+    "key": "CNa2O3",
+    "formula": "Na2CO3",
+    "name": "Carbonato de sodio",
+    "elements": {
+      "Na": 2,
+      "C": 1,
+      "O": 3
+    },
+    "description": "La sosa Solvay. Sal de reacción básica en agua; se usa para fabricar vidrio y para ablandar el agua dura."
+  },
+  {
+    "key": "CaO4S",
+    "formula": "CaSO4",
+    "name": "Sulfato de calcio",
+    "elements": {
+      "Ca": 1,
+      "S": 1,
+      "O": 4
+    },
+    "description": "Hidratado es el yeso. Al calentarlo pierde agua y al rehidratarlo vuelve a fraguar, lo que explica su uso en construcción y en férulas."
+  },
+  {
+    "key": "MgO4S",
+    "formula": "MgSO4",
+    "name": "Sulfato de magnesio",
+    "elements": {
+      "Mg": 1,
+      "S": 1,
+      "O": 4
+    },
+    "description": "La sal de Epsom. Muy soluble en agua; se usa en baños de sales y, en medicina, por vía intravenosa contra la eclampsia."
+  },
+  {
+    "key": "BrNa",
+    "formula": "NaBr",
+    "name": "Bromuro de sodio",
+    "elements": {
+      "Na": 1,
+      "Br": 1
+    },
+    "description": "Sal análoga a la de mesa pero con bromo. Se usó como sedante hasta que se comprobó que el bromuro se acumula en el organismo."
+  },
+  {
+    "key": "ClH4N",
+    "formula": "NH4Cl",
+    "name": "Cloruro de amonio",
+    "elements": {
+      "N": 1,
+      "H": 4,
+      "Cl": 1
+    },
+    "description": "Sal de un ácido fuerte y una base débil, por lo que su solución es ácida. Se usa en pilas secas y como expectorante."
+  },
+  {
+    "key": "O2Si",
+    "formula": "SiO2",
+    "name": "Dióxido de silicio",
+    "elements": {
+      "Si": 1,
+      "O": 2
+    },
+    "description": "Componente principal de la arena y del cuarzo. Su red covalente tridimensional explica su dureza y su alto punto de fusión."
+  },
+  {
+    "key": "N2O",
+    "formula": "N2O",
+    "name": "Óxido nitroso",
+    "elements": {
+      "N": 2,
+      "O": 1
+    },
+    "description": "El gas de la risa. Anestésico y analgésico suave; también es un gas de efecto invernadero mucho más potente que el dióxido de carbono."
+  },
+  {
+    "key": "NO",
+    "formula": "NO",
+    "name": "Monóxido de nitrógeno",
+    "elements": {
+      "N": 1,
+      "O": 1
+    },
+    "description": "Radical libre gaseoso. En el organismo actúa como mensajero que relaja los vasos sanguíneos; en la atmósfera contribuye a formar smog."
+  },
+  {
+    "key": "O2Ti",
+    "formula": "TiO2",
+    "name": "Dióxido de titanio",
+    "elements": {
+      "Ti": 1,
+      "O": 2
+    },
+    "description": "Pigmento blanco de altísimo poder cubriente. Absorbe radiación ultravioleta, por eso aparece tanto en pinturas como en protectores solares."
+  },
+  {
+    "key": "OPb",
+    "formula": "PbO",
+    "name": "Óxido de plomo(II)",
+    "elements": {
+      "Pb": 1,
+      "O": 1
+    },
+    "description": "El litargirio. Se usó en vidrios y esmaltes hasta que se restringió por la toxicidad acumulativa del plomo sobre el sistema nervioso."
+  },
+  {
+    "key": "FeS",
+    "formula": "FeS",
+    "name": "Sulfuro de hierro(II)",
+    "elements": {
+      "Fe": 1,
+      "S": 1
+    },
+    "description": "Sólido negro. Tratado con ácidos libera sulfuro de hidrógeno, que es la forma habitual de generarlo en el laboratorio."
+  },
+  {
+    "key": "SZn",
+    "formula": "ZnS",
+    "name": "Sulfuro de zinc",
+    "elements": {
+      "Zn": 1,
+      "S": 1
+    },
+    "description": "Sólido que emite luz al recibir radiación. Fue el material de las pantallas fluorescentes y de las agujas luminosas de reloj."
+  },
+  {
+    "key": "CuO",
+    "formula": "CuO",
+    "name": "Óxido de cobre(II)",
+    "elements": {
+      "Cu": 1,
+      "O": 1
+    },
+    "description": "Sólido negro que se forma al calentar cobre al aire. Cede su oxígeno con facilidad, lo que lo hace útil en el análisis elemental de compuestos orgánicos."
+  },
+  {
+    "key": "Li2O",
+    "formula": "Li2O",
+    "name": "Óxido de litio",
+    "elements": {
+      "Li": 2,
+      "O": 1
+    },
+    "description": "Óxido básico que con agua forma hidróxido de litio. Se usa en cerámicas y vidrios especiales por su bajo coeficiente de dilatación."
+  },
+  {
+    "key": "K2O",
+    "formula": "K2O",
+    "name": "Óxido de potasio",
+    "elements": {
+      "K": 2,
+      "O": 1
+    },
+    "description": "Óxido fuertemente básico. En los fertilizantes, el contenido de potasio se expresa por convención como su equivalente en este óxido."
+  },
+  {
+    "key": "H2S",
+    "formula": "H2S",
+    "name": "Sulfuro de hidrógeno",
+    "elements": {
+      "H": 2,
+      "S": 1
+    },
+    "description": "Gas de olor a huevo podrido, perceptible en cantidades ínfimas. Es traicionero: a concentraciones altas anestesia el olfato y deja de percibirse."
+  },
+  {
+    "key": "H3P",
+    "formula": "PH3",
+    "name": "Fosfina",
+    "elements": {
+      "P": 1,
+      "H": 3
+    },
+    "description": "Hidruro de fósforo, gaseoso y de olor a ajo. Con trazas de difosfina se inflama espontáneamente al contacto con el aire."
+  },
+  {
+    "key": "H4N2",
+    "formula": "N2H4",
+    "name": "Hidrazina",
+    "elements": {
+      "N": 2,
+      "H": 4
+    },
+    "description": "Dos nitrógenos unidos entre sí, cada uno con dos hidrógenos. Libera mucha energía al descomponerse, por eso se usa como propelente de cohetes."
+  },
+  {
+    "key": "Cl2",
+    "formula": "Cl2",
+    "name": "Cloro molecular",
+    "elements": {
+      "Cl": 2
+    },
+    "description": "Gas amarillo verdoso de olor penetrante. Oxidante fuerte: desinfecta el agua porque destruye la materia orgánica de los microorganismos."
+  },
+  {
+    "key": "F2",
+    "formula": "F2",
+    "name": "Flúor molecular",
+    "elements": {
+      "F": 2
+    },
+    "description": "El oxidante más enérgico de todos los elementos. Reacciona con casi cualquier sustancia, incluidos algunos gases nobles."
+  },
+  {
+    "key": "Br2",
+    "formula": "Br2",
+    "name": "Bromo molecular",
+    "elements": {
+      "Br": 2
+    },
+    "description": "El único no metal líquido a temperatura ambiente. Rojo oscuro y muy volátil; sus vapores atacan las vías respiratorias."
+  },
+  {
+    "key": "I2",
+    "formula": "I2",
+    "name": "Yodo molecular",
+    "elements": {
+      "I": 2
+    },
+    "description": "Sólido violeta que sublima sin pasar por el estado líquido. Con el almidón da un azul intenso, reacción usada como indicador."
+  },
+  {
+    "key": "P4",
+    "formula": "P4",
+    "name": "Fósforo blanco",
+    "elements": {
+      "P": 4
+    },
+    "description": "Forma alotrópica del fósforo, con moléculas tetraédricas de cuatro átomos. Se inflama al contacto con el aire, por eso se conserva sumergido en agua."
   }
 ]

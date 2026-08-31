@@ -14,11 +14,18 @@ import { ApiError, fetchCompoundInfo, shouldAutoRetry } from './api.js';
 const TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 /**
- * Maximo de entradas. El dataset tiene 30 compuestos; 60 deja margen sin
- * crecer sin techo. Cada entrada ronda los 200 bytes: 60 entradas son ~12 KB
- * contra los ~5 MB de localStorage, asi que no hace falta IndexedDB.
+ * Maximo de entradas.
+ *
+ * Tiene que superar al dataset: con un tope por debajo de los 81 compuestos,
+ * recorrer el laboratorio desaloja entradas que se van a volver a pedir, y la
+ * cache pasa a trabajar en contra. 120 deja margen para los compuestos que solo
+ * conoce PubChem sin crecer sin techo.
+ *
+ * Cada entrada ronda 1 KB desde que guarda tambien la descripcion externa, con
+ * un tope de 600 caracteres: 120 entradas son ~120 KB contra los ~5 MB de
+ * localStorage, asi que sigue sin hacer falta IndexedDB.
  */
-const MAX_ENTRIES = 60;
+const MAX_ENTRIES = 120;
 
 /**
  * Peticiones en vuelo, por clave. Si dos componentes piden el mismo compuesto a

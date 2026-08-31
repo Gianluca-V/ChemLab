@@ -142,7 +142,7 @@ Probá con una de estas
 
 Se conserva textual del diseño. Dice **"no encontramos un compuesto compatible en la base de datos de ChemLab"**, no "esta combinación es imposible".
 
-La descripción §10.4 lo exige: *"El mensaje no debe afirmar que la combinación sea químicamente imposible."* La ausencia en un dataset de 30 entradas no dice nada sobre la química del mundo.
+La descripción §10.4 lo exige: *"El mensaje no debe afirmar que la combinación sea químicamente imposible."* La ausencia en nuestro dataset no dice nada sobre la química del mundo.
 
 ### Sugerencias
 

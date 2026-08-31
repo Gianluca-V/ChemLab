@@ -161,6 +161,26 @@ function formatDate(timestamp) {
             <dd><code>{{ data.inchiKey ?? '—' }}</code></dd>
           </div>
         </dl>
+
+        <!--
+          Descripción de PubChem, solo para compuestos que NO están en el
+          dataset: los que sí están ya tienen la suya en español, escrita para
+          este público, y mostrar las dos sería ruido.
+
+          `lang="en"` no es decorativo: sin él un lector de pantalla en español
+          pronuncia el texto inglés con fonemas castellanos y se vuelve
+          ininteligible (SPEC 17).
+
+          La fuente se pinta como TEXTO, nunca como enlace: `DescriptionURL`
+          es un string arbitrario de una respuesta externa (SPEC 09 §6).
+        -->
+        <div v-if="compound.inDataset === false && data.description" class="info__desc">
+          <h4 class="info__source">Descripción · en inglés</h4>
+          <p lang="en">{{ data.description.text }}</p>
+          <p v-if="data.description.source" class="info__attrib">
+            Fuente: {{ data.description.source }}
+          </p>
+        </div>
       </template>
     </section>
 
@@ -171,14 +191,16 @@ function formatDate(timestamp) {
     </section>
 
     <!--
-      Compuesto que PubChem conoce y ChemLab no. No se inventa una descripción
-      ni se traduce el nombre: se dice de dónde salió y se deja claro que no
-      cuenta para el progreso, cuyo denominador es el tamaño del dataset.
+      Compuesto que PubChem conoce y ChemLab no. No se traduce el nombre ni se
+      escribe una descripción propia: se dice de dónde salió todo y se deja
+      claro que no cuenta para el progreso, cuyo denominador es el tamaño del
+      dataset.
     -->
     <p v-else-if="compound.inDataset === false" class="info__foreign">
       Este compuesto no forma parte del set de ChemLab: lo identificamos
-      consultando PubChem, así que su nombre viene en inglés y no tiene
-      descripción propia. Tampoco suma al contador de descubrimientos.
+      consultando PubChem, así que su nombre y su descripción vienen en inglés,
+      tal como los publica esa base. Tampoco suma al contador de
+      descubrimientos.
     </p>
   </article>
 </template>
@@ -244,6 +266,20 @@ function formatDate(timestamp) {
 
 .info__figure figcaption {
   margin-top: var(--sp-2);
+  color: var(--text-muted);
+  font-size: var(--fs-1);
+}
+
+.info__desc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-3);
+}
+
+.info__attrib {
   color: var(--text-muted);
   font-size: var(--fs-1);
 }

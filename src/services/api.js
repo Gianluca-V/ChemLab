@@ -15,6 +15,16 @@
 const BASE = 'https://pubchem.ncbi.nlm.nih.gov';
 const TIMEOUT_MS = 8000;
 
+/**
+ * Tope de la descripcion externa, en caracteres.
+ *
+ * La descripcion es texto libre de una fuente externa y termina en
+ * localStorage, que tiene ~5 MB para toda la aplicacion. Algunas entradas de
+ * PubChem pasan los 2000 caracteres. Se recorta en el ultimo punto que entra
+ * bajo el tope para no cortar una oracion por la mitad.
+ */
+const MAX_DESCRIPTION = 600;
+
 /** Intentos totales por compuesto: 1 automatico + manuales hasta 3 (SPEC 09 §3). */
 export const MAX_ATTEMPTS = 3;
 
@@ -71,6 +81,10 @@ export function errorMessage(error) {
     case 'network':
       return 'No pudimos conectarnos con la fuente de información química.';
     case 'http':
+      // 503 y 429 no son "un error de PubChem": es PubChem pidiendo esperar.
+      if (error.status === 503 || error.status === 429) {
+        return 'PubChem está recibiendo demasiadas consultas en este momento.';
+      }
       return `PubChem respondió con un error (código ${error.status}).`;
     case 'not-found':
       return 'PubChem no tiene ninguna sustancia con esa fórmula.';
@@ -81,15 +95,24 @@ export function errorMessage(error) {
 }
 
 /**
- * Un error de red momentaneo se reintenta; sin conexion o ante un 4xx, no.
+ * Un error momentaneo se reintenta; sin conexion o ante un 4xx, no.
  * Reintentar sin conexion es tiempo tirado —navigator.onLine ya lo sabia— y
  * ante un 4xx la respuesta no va a cambiar.
+ *
+ * El 503 se reintenta y esto NO es una excepcion arbitraria: PUG REST lo
+ * devuelve cuando esta saturado o cuando se supero su limite de 5 peticiones
+ * por segundo, y lo documenta como condicion transitoria. Se comprobo en vivo
+ * consultando las 81 claves del dataset seguidas: 20 devolvieron 503 y las 20
+ * resolvieron bien al repetirlas espaciadas. Tratarlo como un error definitivo
+ * le mostraria al usuario "sin compuesto registrado" por un problema de ritmo.
+ * El 429 se incluye por el mismo motivo.
  *
  * @param {ApiError} error
  * @returns {boolean}
  */
 export function shouldAutoRetry(error) {
-  return error?.type === 'timeout' || error?.type === 'network';
+  if (error?.type === 'timeout' || error?.type === 'network') return true;
+  return error?.type === 'http' && (error.status === 503 || error.status === 429);
 }
 
 /**
@@ -180,6 +203,57 @@ function normalize(payload, smilesProperty, expectedFormula = null) {
 }
 
 /**
+ * Recorta la descripcion al ultimo final de oracion que entra bajo el tope. Si
+ * no hay ninguno, corta duro y agrega puntos suspensivos.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function clampDescription(text) {
+  if (text.length <= MAX_DESCRIPTION) return text;
+  const head = text.slice(0, MAX_DESCRIPTION);
+  const lastStop = head.lastIndexOf('. ');
+  return lastStop > MAX_DESCRIPTION / 3 ? head.slice(0, lastStop + 1) : `${head.trimEnd()}…`;
+}
+
+/**
+ * Descripcion textual del compuesto, en INGLES, tal como la publica PubChem.
+ *
+ * Es deliberadamente NO FATAL: si falla, devuelve null y la identificacion
+ * sigue adelante con los datos duros. Una descripcion ausente no puede impedir
+ * que se muestre el CID y la masa molecular.
+ *
+ * `DescriptionURL` viene en la respuesta pero NO se propaga. Es un string
+ * arbitrario de una fuente externa y renderizarlo como enlace habilitaria un
+ * `javascript:` inyectado (SPEC 09 §6). Se conserva solo el nombre de la
+ * fuente, que se pinta como texto.
+ *
+ * @param {number} cid  CID numerico ya validado
+ * @returns {Promise<{text: string, source: string|null}|null>}
+ */
+async function fetchDescription(cid) {
+  try {
+    const response = await get(`${BASE}/rest/pug/compound/cid/${cid}/description/JSON`);
+    if (!response.ok) return null;
+
+    const payload = await response.json();
+    const rows = payload?.InformationList?.Information;
+    if (!Array.isArray(rows)) return null;
+
+    const row = rows.find((r) => typeof r.Description === 'string' && r.Description.trim() !== '');
+    if (!row) return null;
+
+    const source = row.DescriptionSourceName;
+    return {
+      text: clampDescription(row.Description.trim()),
+      source: typeof source === 'string' && source !== '' ? source : null,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Un unico intento de identificacion contra PubChem, POR FORMULA.
  *
  * Se consulta con la clave canonica de Hill tal cual: PubChem usa la misma
@@ -191,7 +265,7 @@ function normalize(payload, smilesProperty, expectedFormula = null) {
  * la caché.
  *
  * @param {string} hillKey  Clave canonica de Hill de la composicion
- * @returns {Promise<{cid: number, molecularMass: number|null, smiles: string|null, inchiKey: string|null, title: string|null, formula: string|null, imageUrl: string}>}
+ * @returns {Promise<{cid: number, molecularMass: number|null, smiles: string|null, inchiKey: string|null, title: string|null, formula: string|null, imageUrl: string, description: {text: string, source: string|null}|null}>}
  * @throws {ApiError}
  */
 export async function fetchCompoundInfo(hillKey) {
@@ -240,7 +314,15 @@ export async function fetchCompoundInfo(hillKey) {
     }
 
     resolvedSmilesProperty = smilesProperty;
-    return normalize(payload, smilesProperty, hillKey);
+    const info = normalize(payload, smilesProperty, hillKey);
+
+    /*
+      Segunda peticion, por CID, para la descripcion. No se puede pedir junto
+      con las propiedades: `property` y `description` son operaciones distintas
+      de PUG REST. Es no fatal: si falla, `description` queda en null.
+    */
+    info.description = await fetchDescription(info.cid);
+    return info;
   }
 
   throw lastError ?? new ApiError('data');

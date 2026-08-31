@@ -137,9 +137,33 @@ Con un solo campo hay que elegir entre mostrar `ClNa` al usuario o dejar al moto
 
 ### 2.2 `key` es derivado, no autoral
 
-`elements` es la fuente de verdad. `key` es el resultado de aplicar `hillKey()` sobre `elements` y se incluye en el archivo solo para permitir la búsqueda directa sin recalcular 30 claves en cada arranque.
+`elements` es la fuente de verdad. `key` es el resultado de aplicar `hillKey()` sobre `elements` y se incluye en el archivo solo para permitir la búsqueda directa sin recalcular todas las claves en cada arranque.
 
 Como es dato duplicado, puede desincronizarse. `services/compounds.js` valida al cargar, en desarrollo, que para toda entrada se cumpla `key === hillKey(elements)`, y falla ruidosamente si no. Un dataset inconsistente rompe el motor de forma silenciosa; es preferible que rompa temprano y fuerte.
+
+### 2.3 Todo compuesto tiene que ser ARMABLE en el laboratorio
+
+Regla dura, con dos condiciones que salen de los topes de SPEC 07:
+
+| Condición | Tope |
+|---|---|
+| Átomos de un mismo elemento | ≤ 20 (`MAX_PER_ELEMENT`) |
+| Átomos totales | ≤ 50 (`MAX_TOTAL_ATOMS`) |
+
+**Por qué no es opcional.** El denominador del progreso es el tamaño del
+dataset. Un compuesto que excede los topes suma a ese denominador y **nunca se
+puede descubrir**, porque el botón "+" se deshabilita antes de llegar a su
+composición. El resultado es un laboratorio que no se puede completar jamás, y
+el usuario no tiene forma de saber por qué. Es estrictamente peor que no tener
+ese compuesto.
+
+El caso concreto que motivó la regla: se había incorporado la **sacarosa**,
+C₁₂H₂₂O₁₁, que necesita 22 hidrógenos contra un tope de 20. Se reemplazó por el
+etilenglicol. El compuesto más grande que queda es la glucosa, con 24 átomos y
+un máximo de 12 de un mismo elemento: los dos topes quedan con margen.
+
+Si alguna vez hiciera falta un compuesto que no entra, la decisión a tomar es
+**subir el tope de SPEC 07**, nunca agregar el compuesto igual.
 
 ---
 

@@ -63,7 +63,7 @@ export function loadCompounds() {
 }
 
 /**
- * @returns {object[]} Los 30 compuestos. Vacio antes de `loadCompounds`.
+ * @returns {object[]} Todo el dataset. Vacio antes de `loadCompounds`.
  */
 export function allCompounds() {
   return all;

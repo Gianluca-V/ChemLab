@@ -24,6 +24,31 @@ Descripción §6.5: *"Un compuesto se considera descubierto cuando el usuario re
 
 El descubrimiento se gana **combinando**, no navegando. Abrir la ficha de un compuesto desde el bloque "Probá con una de estas" del frame 11 lo muestra, pero no lo desbloquea.
 
+### 1.1 Solo cuentan los compuestos del dataset
+
+> **Decisión registrada.** Desde que la identificación consulta PubChem primero
+> (ver el desvío en `services/compounds.js`), una mezcla puede resolver a un
+> compuesto que PubChem conoce y ChemLab no. **Esos no suman al progreso.**
+>
+> Se evaluó abrir el conteo a todo PubChem y se descartó con evidencia: se
+> probaron 20 fórmulas arbitrarias contra la API y **18 existían** —C2H6, C5H12,
+> H2S, N2O, CH4O, C3H6O, CHN, C8H18…—. Dos consecuencias, las dos malas:
+>
+> 1. **No habría denominador.** PubChem publica del orden de 10⁸ compuestos. La
+>    barra de progreso mide contra un total alcanzable; contra ese número no
+>    mide nada.
+> 2. **Descubrir dejaría de ser un logro.** Si casi cualquier combinación de dos
+>    elementos resuelve, tirar átomos al azar siempre gana, y el mecanismo que
+>    define esta misma sección se vuelve automático.
+>
+> En su lugar se **agrandó el dataset curado**: de 31 a 81 compuestos, cada uno
+> con nombre y descripción en español escritos por el equipo y con su clave de
+> Hill verificada contra PubChem. El denominador sigue siendo finito, todo sigue
+> en español, y la barra sigue significando algo.
+>
+> Un compuesto externo sí se muestra, con su ficha de PubChem y su descripción
+> en inglés atribuida, y la interfaz dice explícitamente que no suma.
+
 `status: 'multiple'` cuenta igual que `exact`: el compuesto fue identificado, y el multiplicador no cambia cuál es (SPEC 08 §6).
 
 ---
@@ -105,7 +130,7 @@ Aparece en `ResultView`, solo cuando `record()` devolvió `true`:
 
 - Contador `8 / 30` y barra.
 - La barra es un `<progress>` nativo con `max` y `value`, o un `div` con `role="progressbar"` y `aria-valuenow`/`aria-valuemin`/`aria-valuemax`.
-- El texto `Te faltan 22 para completar el laboratorio.` se calcula. Al llegar a 0 cambia a `Descubriste los 30 compuestos. Completaste el laboratorio.`
+- El texto `Te faltan 22 para completar el laboratorio.` se calcula. Al llegar a 0 cambia a `Descubriste los N compuestos. Completaste el laboratorio.`, con `N` tomado del tamaño del dataset —nunca escrito a mano.
 - **El color no es el único portador:** el número `8 / 30` acompaña siempre a la barra.
 
 ### Tarjeta descubierta
@@ -128,7 +153,7 @@ Muestra `formula`, no `key`: se ve `NaCl`, no `ClNa`.
 > Dos motivos:
 >
 > 1. **Vocabulario consistente.** El laboratorio ya cuenta átomos: el frame 08 dice `3 átomos` para H + H + O. Usar la misma palabra para la misma magnitud evita que el usuario tenga que traducir entre pantallas.
-> 2. **La pista discrimina.** Contando tipos, la enorme mayoría de los 30 compuestos diría "2 elementos" y la pista sería casi inútil. Contando átomos, el dataset se reparte entre 2 y 9.
+> 2. **La pista discrimina.** Contando tipos, la enorme mayoría de los compuestos diría "2 elementos" y la pista sería casi inútil. Contando átomos, el dataset se reparte en un rango mucho más amplio.
 
 ```js
 const hint = Object.values(compound.elements).reduce((a, b) => a + b, 0);
