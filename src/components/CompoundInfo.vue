@@ -23,7 +23,42 @@ import { onBeforeUnmount, ref, watch } from 'vue';
 import { resolveCompoundInfo } from '../services/cache.js';
 import ChemFormula from './ChemFormula.vue';
 import ErrorState from './ErrorState.vue';
+import PropertyTerm from './PropertyTerm.vue';
 import SkeletonBlock from './SkeletonBlock.vue';
+
+/**
+ * Definiciones de los cuatro datos que se muestran bajo la atribución PubChem.
+ *
+ * Son contenido de ChemLab, no de la API: están escritas para alguien que
+ * abre la ficha sin saber qué es un InChIKey, y por eso van en español aunque
+ * el dato que acompañan venga en inglés.
+ *
+ * Se enuncian sin afirmar de más: el CID identifica una ESTRUCTURA registrada,
+ * no una sustancia real, y la masa molecular es una suma de masas atómicas, no
+ * una medición.
+ */
+const PROPERTY_TERMS = {
+  mass: {
+    term: 'Masa molecular',
+    definition:
+      'Suma de las masas atómicas de todos los átomos de la fórmula, expresada en unidades de masa atómica (u). Es un valor calculado a partir de la composición, no una medición de laboratorio.',
+  },
+  cid: {
+    term: 'CID',
+    definition:
+      'Compound Identifier: el número con el que PubChem identifica de forma única a cada estructura química de su base. Dos sustancias con la misma fórmula pero distinta estructura tienen CID distintos.',
+  },
+  smiles: {
+    term: 'SMILES',
+    definition:
+      'Simplified Molecular Input Line Entry System: la estructura de la molécula escrita en una sola línea de texto. Cada átomo va por su símbolo y los signos indican enlaces, cargas y ramificaciones.',
+  },
+  inchiKey: {
+    term: 'InChIKey',
+    definition:
+      'Versión corta y de largo fijo del identificador InChI. Funciona como huella digital de la estructura: sirve para buscar el mismo compuesto en cualquier otra base de datos química.',
+  },
+};
 
 const props = defineProps({
   /** Identidad unificada: { key, formula, name, description, inDataset }. */
@@ -143,21 +178,26 @@ function formatDate(timestamp) {
           No pudimos cargar la imagen de la estructura molecular.
         </p>
 
+        <!--
+          Cada término lleva su definición a un toque, a un hover o a un Tab de
+          distancia: la ficha muestra cuatro datos que no se explican solos y
+          mandar al usuario a buscar qué es un SMILES es perderlo.
+        -->
         <dl class="info__props">
           <div>
-            <dt>Masa molecular</dt>
+            <dt><PropertyTerm v-bind="PROPERTY_TERMS.mass" /></dt>
             <dd class="mono">{{ data.molecularMass ?? '—' }}</dd>
           </div>
           <div>
-            <dt>CID</dt>
+            <dt><PropertyTerm v-bind="PROPERTY_TERMS.cid" /></dt>
             <dd class="mono">{{ data.cid }}</dd>
           </div>
           <div>
-            <dt>SMILES</dt>
+            <dt><PropertyTerm v-bind="PROPERTY_TERMS.smiles" /></dt>
             <dd><code>{{ data.smiles ?? '—' }}</code></dd>
           </div>
           <div>
-            <dt>InChIKey</dt>
+            <dt><PropertyTerm v-bind="PROPERTY_TERMS.inchiKey" /></dt>
             <dd><code>{{ data.inchiKey ?? '—' }}</code></dd>
           </div>
         </dl>
@@ -167,6 +207,13 @@ function formatDate(timestamp) {
           dataset: los que sí están ya tienen la suya en español, escrita para
           este público, y mostrar las dos sería ruido.
 
+          El bloque se pinta SIEMPRE para un compuesto de afuera, tenga o no
+          descripción. Ocultarlo cuando falta deja al usuario sin saber si el
+          dato no existe o si algo falló, y no son lo mismo: PubChem
+          sencillamente no publica descripción para buena parte de sus
+          registros —el FeO2 es uno— porque las toma de fuentes curadas de
+          sesgo orgánico. Se dice que no hay, y se dice por qué.
+
           `lang="en"` no es decorativo: sin él un lector de pantalla en español
           pronuncia el texto inglés con fonemas castellanos y se vuelve
           ininteligible (SPEC 17).
@@ -174,34 +221,38 @@ function formatDate(timestamp) {
           La fuente se pinta como TEXTO, nunca como enlace: `DescriptionURL`
           es un string arbitrario de una respuesta externa (SPEC 09 §6).
         -->
-        <div v-if="compound.inDataset === false && data.description" class="info__desc">
-          <h4 class="info__source">Descripción · en inglés</h4>
-          <p lang="en">{{ data.description.text }}</p>
-          <p v-if="data.description.source" class="info__attrib">
-            Fuente: {{ data.description.source }}
-          </p>
+        <div v-if="compound.inDataset === false" class="info__desc">
+          <template v-if="data.description">
+            <h4 class="info__source">Descripción · en inglés</h4>
+            <p lang="en">{{ data.description.text }}</p>
+            <p v-if="data.description.source" class="info__attrib">
+              Fuente: {{ data.description.source }}
+            </p>
+          </template>
+
+          <template v-else>
+            <h4 class="info__source">Descripción</h4>
+            <p class="info__empty">
+              Sin descripción disponible. PubChem no publica una para este compuesto.
+            </p>
+          </template>
         </div>
       </template>
     </section>
 
-    <!-- Dato interno de ChemLab. Sin atribución: es contenido propio. -->
+    <!--
+      Dato interno de ChemLab. Sin atribución: es contenido propio.
+
+      Un compuesto que solo conoce PubChem no pasa por acá y ya no lleva
+      leyenda propia: el encabezado `PubChem` de la sección de arriba dice de
+      dónde salió el dato, que es lo que exige SPEC 02 §4, y el rótulo
+      `Descripción · en inglés` dice en qué idioma está. Repetirlo en un
+      párrafo aparte era decir tres veces lo mismo.
+    -->
     <section v-if="compound.description" class="info__internal" aria-labelledby="description-heading">
       <h3 id="description-heading" class="info__source">Descripción</h3>
       <p>{{ compound.description }}</p>
     </section>
-
-    <!--
-      Compuesto que PubChem conoce y ChemLab no. No se traduce el nombre ni se
-      escribe una descripción propia: se dice de dónde salió todo y se deja
-      claro que no cuenta para el progreso, cuyo denominador es el tamaño del
-      dataset.
-    -->
-    <p v-else-if="compound.inDataset === false" class="info__foreign">
-      Este compuesto no forma parte del set de ChemLab: lo identificamos
-      consultando PubChem, así que su nombre y su descripción vienen en inglés,
-      tal como los publica esa base. Tampoco suma al contador de
-      descubrimientos.
-    </p>
   </article>
 </template>
 
@@ -284,10 +335,7 @@ function formatDate(timestamp) {
   font-size: var(--fs-1);
 }
 
-.info__foreign {
-  padding: var(--sp-3);
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--r-lg);
+.info__empty {
   color: var(--text-3);
   font-size: var(--fs-2);
 }
