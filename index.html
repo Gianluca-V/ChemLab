@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ChemLab</title>
+    <meta name="description" content="Laboratorio quimico interactivo: explora los 118 elementos, combinalos y descubri compuestos." />
+    <meta name="theme-color" content="#0f1116" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icons/icon-192.png" />
+
+    <!--
+      SPEC 14 §7 — Unica excepcion a la regla de que todo el JavaScript vive en src/.
+      Fija data-theme antes de la primera hoja de estilos para que quien eligio el
+      tema claro no vea un destello oscuro en cada carga.
+    -->
+    <script>
+      (function () {
+        var stored = null;
+        try { stored = JSON.parse(localStorage.getItem('chemlab_theme')); } catch (e) { stored = null; }
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var resolved = stored === 'light' || stored === 'dark' ? stored : (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = resolved;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

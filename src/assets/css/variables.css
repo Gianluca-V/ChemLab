@@ -1,0 +1,168 @@
+/*
+  ChemLab — tokens de diseño (SPEC 14)
+
+  Este archivo contiene ÚNICAMENTE custom properties. Ninguna regla de selector
+  que no sea la declaración de un tema. Todo valor visual del proyecto sale de
+  acá: ningún componente escribe un literal de color, tamaño, espaciado o radio.
+
+  Tema oscuro en :root, tema claro en [data-theme="light"]. El tema claro
+  redefine solo tokens; ninguna regla de componente se duplica por tema.
+*/
+
+:root {
+  color-scheme: dark;
+
+  /* superficies */
+  --surface-0: #0c0d11;   /* página / canvas                 */
+  --surface-1: #0f1116;   /* fondo del viewport de la app    */
+  --surface-2: #12141a;   /* tarjetas, inputs, hojas, celdas */
+  --surface-3: #1a1d24;   /* bloques elevados                */
+  --surface-4: #22252e;   /* segmento activo, chip elegido   */
+  --chip-bg: #1c1f26;     /* pill neutro, riel de progreso   */
+  --skeleton: #171a20;    /* bloque de carga                 */
+  --on-hazard: #1a0c0c;   /* tinta sobre relleno --hazard    */
+  --on-star: #1a1608;     /* tinta sobre relleno --star-on   */
+
+  /* bordes */
+  --border: #1c1f26;
+  --border-2: #1e2129;
+  --border-input: #262a34;
+  --border-strong: #2a2e38;
+
+  /* rampa de texto — AA sobre --surface-1 en todos los pasos */
+  --text-1: #f2f3f7;      /* 17.0:1  títulos, valores          */
+  --text-hi: #e2e5ee;     /* 14.5:1  etiquetas de control      */
+  --text-2: #c3c7d4;      /* 10.4:1  cuerpo                    */
+  --text-3: #9b9fae;      /*  6.9:1  cuerpo secundario         */
+  --text-muted: #868b9b;  /*  5.6:1  captions — piso           */
+  --mark-off: #7f8595;    /*  5.0:1  estrella vacía, bloqueado */
+
+  /* marca y estado */
+  --accent: oklch(0.72 0.15 300);
+  --accent-strong: oklch(0.78 0.15 300);
+  --accent-soft: oklch(0.78 0.13 300);
+  --accent-border: #2a2340;
+  --hazard: oklch(0.72 0.15 25);
+  --hazard-text: oklch(0.85 0.1 25);   /* 9.8:1 sobre tinte de peligro */
+  --star-on: oklch(0.78 0.14 85);
+
+  /*
+    Hues de categoría química. Son ángulos, no colores: la luminosidad y el
+    croma los aplica el componente. No se redefinen en el tema claro.
+    --cat-ng y --cat-ac ya vienen desplazados del documento de diseño (265 en
+    vez de 300, 340 en vez de 10) para no colisionar con el acento ni con el
+    rojo de peligro. No se los "corrige" de vuelta.
+  */
+  --cat-am: 25;
+  --cat-ae: 55;
+  --cat-tm: 95;
+  --cat-pt: 145;
+  --cat-ml: 185;
+  --cat-nm: 215;
+  --cat-hl: 250;
+  --cat-ng: 265;
+  --cat-ln: 330;
+  --cat-ac: 340;
+
+  /* escala tipográfica — 7 pasos, piso absoluto en 11px (SPEC 14 §3) */
+  --fs-1: 11px;   /* caption, meta, número atómico — PISO */
+  --fs-2: 13px;   /* texto secundario                     */
+  --fs-3: 15px;   /* cuerpo                               */
+  --fs-4: 17px;   /* énfasis, símbolo de elemento         */
+  --fs-5: 20px;   /* título de sección                    */
+  --fs-6: 24px;   /* título de vista                      */
+  --fs-7: 30px;   /* hero del Home                        */
+
+  /* familias */
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* escala de espaciado — grilla de 4px (SPEC 14 §5) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  /* escala de radios — 4 pasos (SPEC 14 §6) */
+  --r-sm: 6px;      /* chips, tags de peligro, muestras de color */
+  --r-md: 11px;     /* celda de tabla, stepper, inputs, botones  */
+  --r-lg: 16px;     /* tarjetas, diálogos, hojas inferiores      */
+  --r-full: 999px;  /* pills, barra de progreso, avatar          */
+
+  /* sombras — neutras, nunca coloreadas (SPEC 14 §9) */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.42);
+
+  /* piso táctil (SPEC 17 §3) */
+  --touch: 44px;
+  --touch-inline: 36px;
+
+  /* dimensiones de la tabla periódica (SPEC 03 §4) */
+  --cell-w: 56px;
+  --cell-h: 64px;
+  --cell-gap: 4px;
+  --table-viewport-h: 408px;  /* 6 filas × 64 + 5 gaps × 4 + 4 */
+
+  /*
+    Espacio que el ToastHost ocupa al pie, medido en 390x844: toast de 70 px
+    más los 12 px de padding del host arriba y abajo, 94 px en total. Las vistas
+    reservan este colchón para que la última accion nunca quede debajo del toast
+    (SPEC 06 §2, SPEC 15 §2).
+  */
+  --toast-clearance: calc(var(--sp-7) + var(--sp-7));
+
+  /* layout (SPEC 16 §3) */
+  --sidebar-w: 240px;
+  --panel-w: 320px;
+  --panel-w-lg: 360px;
+
+  /* curva y duración de las transiciones */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 0.12s;
+  --dur: 0.16s;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --surface-0: #eeeeea;
+  --surface-1: #f6f6f4;
+  --surface-2: #ffffff;
+  --surface-3: #efefec;
+  --surface-4: #e6e6e1;
+  --chip-bg: #ecece8;
+  --skeleton: #e7e7e3;
+  --on-hazard: #ffffff;
+  --on-star: #ffffff;
+
+  --border: #e2e2de;
+  --border-2: #e4e4e0;
+  --border-input: #d5d5d0;
+  --border-strong: #c8c8c2;
+
+  --text-1: #15171c;
+  --text-hi: #22242b;
+  --text-2: #3b3e47;
+  --text-3: #5c606b;
+  --text-muted: #62656d;
+  --mark-off: #6f737c;
+
+  --accent: oklch(0.55 0.16 300);
+  --accent-strong: oklch(0.48 0.17 300);
+  --accent-soft: oklch(0.5 0.16 300);
+  --accent-border: #ddd3ee;
+  --hazard: oklch(0.52 0.17 25);
+  --hazard-text: oklch(0.42 0.16 25);  /* 7.3:1 */
+  --star-on: oklch(0.52 0.14 85);
+}
+
+/* La celda pasa a 44×44 desde tablet (SPEC 03 §4). */
+@media (min-width: 768px) {
+  :root {
+    --cell-w: 44px;
+    --cell-h: 44px;
+  }
+}

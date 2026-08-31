@@ -1,0 +1,298 @@
+/*
+  ChemLab — estilos globales (SPEC 14 §10)
+
+  Reset, tipografía base, :focus-visible, ::selection, scrollbars y
+  prefers-reduced-motion. Todo lo demás vive en el <style scoped> de su
+  componente: no hay hoja de estilos de componentes global.
+*/
+
+/* ── Fuentes autoalojadas (SPEC 14 §4) ──────────────────────────────────────
+   Un <link> a Google Fonts rompe el funcionamiento offline exigido por RF14:
+   sin conexión la tipografía desaparece y cae a la del sistema. Los .woff2
+   viven en public/fonts/ y los precachea el Service Worker.
+   ------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/fonts/ibm-plex-mono-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: thin;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--surface-1);
+  color: var(--text-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-3);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* La tabla periódica scrollea dentro de su propio contenedor: el documento
+     nunca desborda en horizontal, en ningún breakpoint (SPEC 03 §4). */
+  overflow-x: hidden;
+}
+
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* ── Tipografía ────────────────────────────────────────────────────────────── */
+h1,
+h2,
+h3 {
+  color: var(--text-1);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: var(--fs-6);
+}
+
+h2 {
+  font-size: var(--fs-5);
+}
+
+h3 {
+  font-size: var(--fs-4);
+}
+
+code,
+kbd,
+samp,
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Bloques anchos de dato científico scrollean dentro de su contenedor. */
+code {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: var(--fs-2);
+}
+
+/* ── Foco, selección y caret (SPEC 14 §8, SPEC 17 §4) ──────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+::selection {
+  background: color-mix(in oklch, var(--accent) 38%, transparent);
+  color: var(--text-1);
+}
+
+input,
+textarea,
+[contenteditable] {
+  caret-color: var(--accent);
+}
+
+/* ── Enlace de salto (SPEC 17 §9) ──────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: var(--sp-2);
+  top: calc(-1 * var(--sp-7) - var(--sp-4));
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  padding: 0 var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--accent);
+  color: var(--surface-0);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--dur) var(--ease);
+}
+
+.skip-link:focus-visible {
+  top: var(--sp-2);
+}
+
+/* ── Botones (SPEC 14 §8) ──────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: var(--touch);
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface-3);
+  color: var(--text-1);
+  font-size: var(--fs-3);
+  font-weight: 500;
+  text-align: center;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    opacity var(--dur);
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+  text-decoration: none;
+}
+
+.btn:active {
+  filter: brightness(0.94);
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--surface-0);
+  font-weight: 600;
+}
+
+.btn--danger {
+  border-color: transparent;
+  background: var(--hazard);
+  color: var(--on-hazard);
+  font-weight: 600;
+}
+
+.btn--ghost {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text-2);
+}
+
+.btn--inline {
+  min-height: var(--touch-inline);
+  padding: 0 var(--sp-3);
+  font-size: var(--fs-2);
+}
+
+.btn[aria-disabled='true'],
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+}
+
+/* ── Utilidades ────────────────────────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── Movimiento reducido (SPEC 14 §8, SPEC 17 §12) ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
