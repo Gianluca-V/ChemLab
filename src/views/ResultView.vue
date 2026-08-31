@@ -3,8 +3,13 @@
  * Resultado de la combinación — frames 09, 10, 11, 22, 26; SPEC 08, SPEC 09
  *
  * NO es una vista de detalle: es el resultado de una acción. Por eso el
- * favorito va al pie, junto a su acción hermana "Volver a la mezcla", y por eso
- * NO registra historial. El frame 10 dibuja ese par y se respeta.
+ * favorito va al pie, junto a su acción hermana de cierre, y por eso NO
+ * registra historial. El frame 10 dibuja ese par y se respeta.
+ *
+ * Se pinta DENTRO del modal de LabView, no a pantalla completa (ver el desvío
+ * registrado ahí). Este componente no sabe que es un modal ni conoce al router:
+ * emite `close` y quien lo monta decide qué significa cerrar. Por eso las
+ * acciones que antes eran <RouterLink> a /lab ahora son botones.
  *
  * La identificación consulta PRIMERO a PubChem y cae al dataset local o a la
  * caché cuando la red no responde (ver el desvío registrado en
@@ -25,6 +30,9 @@ import { allCompounds } from '../services/compounds.js';
 import { suggest } from '../services/chemistry.js';
 import { useDiscoveries } from '../composables/useDiscoveries.js';
 import { useMixture } from '../composables/useMixture.js';
+
+/** Lo escucha LabView para cerrar el modal y volver a /lab. */
+const emit = defineEmits(['close']);
 
 const mixture = useMixture();
 const discoveries = useDiscoveries();
@@ -102,9 +110,9 @@ const undetermined = computed(
       description="Seleccioná elementos de la tabla periódica para comenzar."
     >
       <template #action>
-        <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
-          Abrir tabla periódica
-        </RouterLink>
+        <button type="button" class="btn btn--primary" @click="emit('close')">
+          Elegir elementos
+        </button>
       </template>
     </EmptyState>
 
@@ -149,7 +157,7 @@ const undetermined = computed(
       @retry="identify(true)"
     >
       <template #secondary>
-        <RouterLink :to="{ name: 'lab' }" class="btn btn--ghost">Editar mezcla</RouterLink>
+        <button type="button" class="btn btn--ghost" @click="emit('close')">Editar mezcla</button>
       </template>
     </ErrorState>
 
@@ -167,7 +175,9 @@ const undetermined = computed(
         description="No encontramos un compuesto compatible para esta combinación, ni en la base de datos de ChemLab ni en PubChem."
       >
         <template #action>
-          <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">Editar mezcla</RouterLink>
+          <button type="button" class="btn btn--primary" @click="emit('close')">
+            Editar mezcla
+          </button>
         </template>
       </EmptyState>
 
@@ -188,7 +198,9 @@ const undetermined = computed(
     </template>
 
     <div v-if="!mixture.isEmpty.value && !mixture.identifying.value" class="result__actions">
-      <RouterLink :to="{ name: 'lab' }" class="btn btn--ghost">Volver a la mezcla</RouterLink>
+      <button type="button" class="btn btn--ghost" @click="emit('close')">
+        Seguir mezclando
+      </button>
 
       <!--
         Solo se marca favorito un compuesto del dataset: el favorito guarda

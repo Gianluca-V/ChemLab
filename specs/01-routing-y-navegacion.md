@@ -25,12 +25,35 @@ Justificación: la aplicación se publica como sitio estático, sin servidor de 
 | `/element/:symbol` | `element` | `ElementDetailView` | 06 | RF4 |
 | `/compound/:formula` | `compound` | `CompoundDetailView` | 10 | RF4 |
 | `/lab` | `lab` | `LabView` | 07, 08 | RF9 |
-| `/lab/result` | `lab-result` | `ResultView` | 09, 10, 11, 22, 26 | RF10 |
+| `/lab/result` | `lab-result` | `ResultView` (modal sobre `LabView`, ver §2.1) | 09, 10, 11, 22, 26 | RF10 |
 | `/favorites` | `favorites` | `FavoritesView` | 12–15, 20, 23, 24 | RF5 |
 | `/history` | `history` | `HistoryView` | 16, 21 | RF6 |
 | `/discoveries` | `discoveries` | `DiscoveriesView` | 17 | RF11 |
 | `/contact` | `contact` | `ContactView` | 18 | RF7 |
 | `/:pathMatch(.*)*` | `not-found` | `NotFoundView` | sin frame | — |
+
+### 2.1 `/lab/result` es una ruta HIJA de `/lab`
+
+> **Desvío registrado, por decisión del equipo.**
+>
+> `lab-result` deja de ser una ruta hermana de `lab` y pasa a declararse como su
+> hija. `LabView` sigue montado debajo y renderiza el resultado dentro de un
+> `<dialog>` modal, en lugar de que `ResultView` ocupe la pantalla completa. El
+> path público **no cambia**: sigue siendo `/lab/result`.
+>
+> **Por qué sigue siendo una ruta y no un `ref` en `LabView`.** Un modal
+> gobernado por estado local pierde tres cosas que acá importan: el botón Atrás
+> deja de cerrarlo y saca al usuario del laboratorio, la URL deja de ser
+> compartible, y `document.title` deja de reflejar dónde está parado el usuario.
+> Con la ruta hija, Atrás cierra el modal y ninguna de las tres se pierde.
+>
+> **`meta.shellTitle`.** La ruta hija declara `title: 'Resultado'` y
+> `shellTitle: 'Laboratorio'`. `document.title` usa el primero; el encabezado de
+> la página usa el segundo, porque lo que hay DETRÁS del modal sigue siendo el
+> laboratorio y el modal ya lleva su propio título.
+>
+> El motivo del cambio y lo que cuesta están en el desvío registrado en
+> `views/LabView.vue`.
 
 Toda navegación interna usa rutas con nombre (`router.push({ name: 'element', params: { symbol } })`), nunca strings de path armados a mano.
 

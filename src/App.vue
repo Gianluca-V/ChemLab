@@ -50,7 +50,15 @@ const detail = computed(() => {
 
 const isDetailRoute = computed(() => route.name === 'element' || route.name === 'compound');
 
-const title = computed(() => detail.value?.name ?? route.meta?.title ?? 'ChemLab');
+/*
+  `shellTitle` gana sobre `title` cuando la ruta activa se pinta como modal
+  sobre otra: en /lab/result el encabezado sigue diciendo "Laboratorio" porque
+  lo que hay detrás del modal ES el laboratorio. El modal lleva su propio
+  título y document.title sí dice "Resultado".
+*/
+const title = computed(
+  () => detail.value?.name ?? route.meta?.shellTitle ?? route.meta?.title ?? 'ChemLab'
+);
 </script>
 
 <template>

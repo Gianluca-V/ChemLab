@@ -74,6 +74,16 @@
   scrollbar-width: thin;
 }
 
+/*
+  El reset de arriba pisa el `margin: auto` que el navegador le da por defecto a
+  un <dialog> abierto con showModal(), y el diálogo queda clavado en la esquina
+  superior izquierda en lugar de centrado. Se repone acá, una sola vez, para
+  todos los diálogos de la aplicación.
+*/
+dialog:modal {
+  margin: auto;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
 }

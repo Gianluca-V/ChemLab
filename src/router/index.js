@@ -51,8 +51,34 @@ const routes = [
     component: CompoundDetailView,
     meta: { title: 'Compuesto' },
   },
-  { path: '/lab', name: 'lab', component: LabView, meta: { title: 'Laboratorio' } },
-  { path: '/lab/result', name: 'lab-result', component: ResultView, meta: { title: 'Resultado' } },
+  /*
+    El resultado de COMBINAR es una RUTA HIJA, no una página hermana: LabView
+    sigue montado debajo y renderiza el resultado dentro de un <dialog> modal.
+
+    Que siga siendo una ruta —y no un simple `ref` en LabView— es deliberado:
+    Atrás cierra el modal en lugar de sacar al usuario del laboratorio, la URL
+    se puede compartir y pegar, y el título del documento sigue cambiando. Un
+    modal gobernado por estado local pierde las tres cosas.
+
+    `shellTitle` mantiene el encabezado de la página en "Laboratorio" mientras
+    el modal está abierto: lo que hay detrás del modal SIGUE siendo el
+    laboratorio, y el modal ya lleva su propio título. `title` solo alimenta
+    document.title.
+  */
+  {
+    path: '/lab',
+    name: 'lab',
+    component: LabView,
+    meta: { title: 'Laboratorio' },
+    children: [
+      {
+        path: 'result',
+        name: 'lab-result',
+        component: ResultView,
+        meta: { title: 'Resultado', shellTitle: 'Laboratorio' },
+      },
+    ],
+  },
   {
     path: '/favorites',
     name: 'favorites',
