@@ -36,27 +36,28 @@ import SkeletonBlock from './SkeletonBlock.vue';
  * Se enuncian sin afirmar de más: el CID identifica una ESTRUCTURA registrada,
  * no una sustancia real, y la masa molecular es una suma de masas atómicas, no
  * una medición.
+ *
+ * UNA ORACIÓN CADA UNA, y corta. El globo se ata al ancho de su celda de la
+ * grilla, que en un teléfono es angosta: una definición de tres renglones se
+ * vuelve un bloque de diez y tapa el resto de la ficha. Si algo no entra en una
+ * oración, no es una definición al paso: es documentación, y va a otro lado.
  */
 const PROPERTY_TERMS = {
   mass: {
     term: 'Masa molecular',
-    definition:
-      'Suma de las masas atómicas de todos los átomos de la fórmula, expresada en unidades de masa atómica (u). Es un valor calculado a partir de la composición, no una medición de laboratorio.',
+    definition: 'Suma de las masas de todos los átomos de la fórmula, en unidades de masa atómica (u).',
   },
   cid: {
     term: 'CID',
-    definition:
-      'Compound Identifier: el número con el que PubChem identifica de forma única a cada estructura química de su base. Dos sustancias con la misma fórmula pero distinta estructura tienen CID distintos.',
+    definition: 'El número con el que PubChem identifica de forma única a cada estructura de su base.',
   },
   smiles: {
     term: 'SMILES',
-    definition:
-      'Simplified Molecular Input Line Entry System: la estructura de la molécula escrita en una sola línea de texto. Cada átomo va por su símbolo y los signos indican enlaces, cargas y ramificaciones.',
+    definition: 'La estructura de la molécula escrita como una sola línea de texto.',
   },
   inchiKey: {
     term: 'InChIKey',
-    definition:
-      'Versión corta y de largo fijo del identificador InChI. Funciona como huella digital de la estructura: sirve para buscar el mismo compuesto en cualquier otra base de datos química.',
+    definition: 'Huella digital de la estructura: sirve para buscar el compuesto en otras bases.',
   },
 };
 

@@ -50,6 +50,16 @@ const detail = computed(() => {
 
 const isDetailRoute = computed(() => route.name === 'element' || route.name === 'compound');
 
+/**
+ * El panel del laboratorio se muestra salvo que la ruta lo apague con
+ * `meta.panel: false` — Favoritos, Historial y Contacto.
+ *
+ * La condición es la RUTA, no el ancho de la ventana: sigue sin haber lógica
+ * de breakpoint en JavaScript. El default es mostrarlo, así que una ruta nueva
+ * lo hereda sin tener que acordarse de pedirlo.
+ */
+const showPanel = computed(() => route.meta?.panel !== false);
+
 /*
   `shellTitle` gana sobre `title` cuando la ruta activa se pinta como modal
   sobre otra: en /lab/result el encabezado sigue diciendo "Laboratorio" porque
@@ -85,18 +95,28 @@ const title = computed(
         </template>
       </TopBar>
 
-      <div class="shell">
+      <div class="shell" :class="{ 'shell--solo': !showPanel }">
         <main id="main" class="shell__main" tabindex="-1">
           <RouterView />
         </main>
 
         <!--
-          Panel de mezcla persistente en TODAS las rutas. Va DEBAJO del
-          contenido hasta 1023 px y al costado desde ahí: a 768–1023 px el panel
-          lateral le robaba 320 px a una tabla que ya necesitaba scroll
-          horizontal, y apilarlo le devuelve el ancho completo a la grilla.
+          Panel de mezcla, presente en las rutas donde armar una mezcla tiene
+          sentido. Va DEBAJO del contenido hasta 1023 px y al costado desde ahí:
+          a 768–1023 px el panel lateral le robaba 320 px a una tabla que ya
+          necesitaba scroll horizontal, y apilarlo le devuelve el ancho completo
+          a la grilla.
+
+          En Favoritos, Historial y Contacto no se monta (meta.panel: false) y
+          `shell--solo` colapsa la columna que ocupaba, para que el contenido se
+          quede con el ancho entero en vez de dejar 360 px vacíos al costado.
         -->
-        <aside id="mixture" class="shell__panel" aria-label="Panel del laboratorio">
+        <aside
+          v-if="showPanel"
+          id="mixture"
+          class="shell__panel"
+          aria-label="Panel del laboratorio"
+        >
           <MixturePanel variant="aside" />
         </aside>
       </div>
@@ -164,6 +184,11 @@ const title = computed(
     gap: var(--sp-4);
     padding: var(--sp-5);
     padding-bottom: var(--toast-clearance);
+  }
+
+  /* Sin panel no hay segunda columna que reservar. */
+  .shell--solo {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .shell__panel {

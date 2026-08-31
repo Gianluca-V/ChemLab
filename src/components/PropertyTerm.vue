@@ -74,9 +74,21 @@ function hide() {
 </template>
 
 <style scoped>
+/*
+  El contenedor es de BLOQUE a propósito, aunque el disparador sea inline.
+
+  Es lo que ancla el globo: como `.term` ocupa el ancho entero de su celda, el
+  globo puede estirarse con `inset-inline: 0` y queda encerrado en esa celda por
+  construcción. Con un contenedor inline el globo arrancaba en el borde del
+  texto y se iba de la pantalla en la columna derecha de la grilla y en
+  cualquier término cerca del borde.
+
+  Sin JavaScript de posicionamiento, sin medir el viewport y sin un solo
+  listener de resize: el ancho lo resuelve el layout, que es quien lo sabe.
+*/
 .term {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 
 .term__trigger {
@@ -102,10 +114,10 @@ function hide() {
 .term__popover {
   position: absolute;
   top: 100%;
-  inset-inline-start: 0;
+  /* Ambos bordes atados a la celda: el globo no puede sobrarla ni a un lado
+     ni al otro, así que tampoco puede salirse de la pantalla. */
+  inset-inline: 0;
   z-index: 1;
-  width: max-content;
-  max-width: min(20rem, 70vw);
   margin-top: var(--sp-1);
   padding: var(--sp-3);
   border: 1px solid var(--border-strong);

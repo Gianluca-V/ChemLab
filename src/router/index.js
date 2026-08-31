@@ -79,20 +79,42 @@ const routes = [
       },
     ],
   },
+  /*
+    `panel: false` saca el panel del laboratorio de esta ruta.
+
+    Favoritos, Historial y Contacto son pantallas de CONSULTA: se lee lo que ya
+    pasó o se manda un mensaje, no se arma una mezcla. El panel ahí no ofrecía
+    ninguna acción con sentido y en escritorio le comía 360 px a una lista que
+    los necesita.
+
+    Es meta de ruta y no una condición por ancho: el panel se muestra o no
+    según DÓNDE está el usuario, no según el tamaño de su pantalla. Lo
+    responsive sigue siendo CSS puro, sin un solo listener de resize.
+  */
   {
     path: '/favorites',
     name: 'favorites',
     component: FavoritesView,
-    meta: { title: 'Favoritos' },
+    meta: { title: 'Favoritos', panel: false },
   },
-  { path: '/history', name: 'history', component: HistoryView, meta: { title: 'Historial' } },
+  {
+    path: '/history',
+    name: 'history',
+    component: HistoryView,
+    meta: { title: 'Historial', panel: false },
+  },
   {
     path: '/discoveries',
     name: 'discoveries',
     component: DiscoveriesView,
     meta: { title: 'Descubrimientos' },
   },
-  { path: '/contact', name: 'contact', component: ContactView, meta: { title: 'Contacto' } },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactView,
+    meta: { title: 'Contacto', panel: false },
+  },
   {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
