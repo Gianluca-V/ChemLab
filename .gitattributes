@@ -1,0 +1,25 @@
+# Normalize line endings so the repository never records CRLF.
+#
+# The team works across Windows, macOS and Linux. Without this, a file written
+# on Windows is committed with CRLF and shows up as a whole-file diff for
+# everyone else, even when nobody touched it.
+#
+# `text=auto` lets Git detect text files and store them with LF; the working
+# copy still gets the platform's native endings on checkout.
+* text=auto eol=lf
+
+# Binary assets must never be normalized: rewriting bytes corrupts them.
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.webp    binary
+*.woff    binary
+*.woff2   binary
+*.ttf     binary
+*.otf     binary
+*.pdf     binary
+
+# SVG is text, but keep it out of diff noise heuristics.
+*.svg     text eol=lf

@@ -3,7 +3,6 @@
     "key": "H2O",
     "formula": "H2O",
     "name": "Agua",
-    "query": "water",
     "elements": {
       "H": 2,
       "O": 1
@@ -14,7 +13,6 @@
     "key": "CO2",
     "formula": "CO2",
     "name": "Dióxido de carbono",
-    "query": "carbon dioxide",
     "elements": {
       "C": 1,
       "O": 2
@@ -25,7 +23,6 @@
     "key": "ClNa",
     "formula": "NaCl",
     "name": "Cloruro de sodio",
-    "query": "sodium chloride",
     "elements": {
       "Na": 1,
       "Cl": 1
@@ -36,7 +33,6 @@
     "key": "HNaO",
     "formula": "NaOH",
     "name": "Hidróxido de sodio",
-    "query": "sodium hydroxide",
     "elements": {
       "Na": 1,
       "O": 1,
@@ -48,7 +44,6 @@
     "key": "H2O4S",
     "formula": "H2SO4",
     "name": "Ácido sulfúrico",
-    "query": "sulfuric acid",
     "elements": {
       "H": 2,
       "S": 1,
@@ -60,7 +55,6 @@
     "key": "CCaO3",
     "formula": "CaCO3",
     "name": "Carbonato de calcio",
-    "query": "calcium carbonate",
     "elements": {
       "Ca": 1,
       "C": 1,
@@ -72,7 +66,6 @@
     "key": "H3N",
     "formula": "NH3",
     "name": "Amoníaco",
-    "query": "ammonia",
     "elements": {
       "N": 1,
       "H": 3
@@ -83,7 +76,6 @@
     "key": "ClH",
     "formula": "HCl",
     "name": "Ácido clorhídrico",
-    "query": "hydrochloric acid",
     "elements": {
       "H": 1,
       "Cl": 1
@@ -94,7 +86,6 @@
     "key": "C2H6O",
     "formula": "C2H5OH",
     "name": "Etanol",
-    "query": "ethanol",
     "elements": {
       "C": 2,
       "H": 6,
@@ -106,7 +97,6 @@
     "key": "C2H4O2",
     "formula": "CH3COOH",
     "name": "Ácido acético",
-    "query": "acetic acid",
     "elements": {
       "C": 2,
       "H": 4,
@@ -118,7 +108,6 @@
     "key": "Fe2O3",
     "formula": "Fe2O3",
     "name": "Óxido de hierro(III)",
-    "query": "iron(III) oxide",
     "elements": {
       "Fe": 2,
       "O": 3
@@ -129,7 +118,6 @@
     "key": "O2",
     "formula": "O2",
     "name": "Oxígeno molecular",
-    "query": "oxygen",
     "elements": {
       "O": 2
     },
@@ -139,7 +127,6 @@
     "key": "H2",
     "formula": "H2",
     "name": "Hidrógeno molecular",
-    "query": "hydrogen",
     "elements": {
       "H": 2
     },
@@ -149,7 +136,6 @@
     "key": "N2",
     "formula": "N2",
     "name": "Nitrógeno molecular",
-    "query": "nitrogen",
     "elements": {
       "N": 2
     },
@@ -159,7 +145,6 @@
     "key": "H2O2",
     "formula": "H2O2",
     "name": "Peróxido de hidrógeno",
-    "query": "hydrogen peroxide",
     "elements": {
       "H": 2,
       "O": 2
@@ -170,7 +155,6 @@
     "key": "CH4",
     "formula": "CH4",
     "name": "Metano",
-    "query": "methane",
     "elements": {
       "C": 1,
       "H": 4
@@ -181,7 +165,6 @@
     "key": "CO",
     "formula": "CO",
     "name": "Monóxido de carbono",
-    "query": "carbon monoxide",
     "elements": {
       "C": 1,
       "O": 1
@@ -192,7 +175,6 @@
     "key": "O2S",
     "formula": "SO2",
     "name": "Dióxido de azufre",
-    "query": "sulfur dioxide",
     "elements": {
       "S": 1,
       "O": 2
@@ -203,7 +185,6 @@
     "key": "O3S",
     "formula": "SO3",
     "name": "Trióxido de azufre",
-    "query": "sulfur trioxide",
     "elements": {
       "S": 1,
       "O": 3
@@ -214,7 +195,6 @@
     "key": "HNO3",
     "formula": "HNO3",
     "name": "Ácido nítrico",
-    "query": "nitric acid",
     "elements": {
       "H": 1,
       "N": 1,
@@ -226,7 +206,6 @@
     "key": "CHNaO3",
     "formula": "NaHCO3",
     "name": "Bicarbonato de sodio",
-    "query": "sodium bicarbonate",
     "elements": {
       "Na": 1,
       "H": 1,
@@ -239,7 +218,6 @@
     "key": "C6H12O6",
     "formula": "C6H12O6",
     "name": "Glucosa",
-    "query": "glucose",
     "elements": {
       "C": 6,
       "H": 12,
@@ -251,7 +229,6 @@
     "key": "ClK",
     "formula": "KCl",
     "name": "Cloruro de potasio",
-    "query": "potassium chloride",
     "elements": {
       "K": 1,
       "Cl": 1
@@ -262,7 +239,6 @@
     "key": "MgO",
     "formula": "MgO",
     "name": "Óxido de magnesio",
-    "query": "magnesium oxide",
     "elements": {
       "Mg": 1,
       "O": 1
@@ -273,7 +249,6 @@
     "key": "CaO",
     "formula": "CaO",
     "name": "Óxido de calcio",
-    "query": "calcium oxide",
     "elements": {
       "Ca": 1,
       "O": 1
@@ -284,7 +259,6 @@
     "key": "Al2O3",
     "formula": "Al2O3",
     "name": "Óxido de aluminio",
-    "query": "aluminum oxide",
     "elements": {
       "Al": 2,
       "O": 3
@@ -295,7 +269,6 @@
     "key": "OZn",
     "formula": "ZnO",
     "name": "Óxido de zinc",
-    "query": "zinc oxide",
     "elements": {
       "Zn": 1,
       "O": 1
@@ -306,7 +279,6 @@
     "key": "IK",
     "formula": "KI",
     "name": "Yoduro de potasio",
-    "query": "potassium iodide",
     "elements": {
       "K": 1,
       "I": 1
@@ -317,7 +289,6 @@
     "key": "NO2",
     "formula": "NO2",
     "name": "Dióxido de nitrógeno",
-    "query": "nitrogen dioxide",
     "elements": {
       "N": 1,
       "O": 2
@@ -328,7 +299,6 @@
     "key": "CuO4S",
     "formula": "CuSO4",
     "name": "Sulfato de cobre(II)",
-    "query": "copper(II) sulfate",
     "elements": {
       "Cu": 1,
       "S": 1,
@@ -340,7 +310,6 @@
     "key": "O3",
     "formula": "O3",
     "name": "Ozono",
-    "query": "ozone",
     "elements": {
       "O": 3
     },

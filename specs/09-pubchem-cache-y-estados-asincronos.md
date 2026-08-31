@@ -28,7 +28,24 @@ Descripción §13 y nota del frame 04: *"PubChem se consulta solo al combinar."*
 
 ## 2. Enmienda a SPEC 02 — campo `query`
 
-`compounds.json` incorpora un campo:
+> **Desvío registrado, por decisión del equipo. Esta sección quedó sin efecto.**
+>
+> El campo `query` existía porque la identificación consultaba PubChem por
+> nombre (`/compound/name/{query}`), y `name` está en español. Al invertirse la
+> identificación —PubChem primero, dataset como respaldo, ver el desvío
+> registrado en `services/compounds.js`— la consulta pasó a hacerse por
+> fórmula contra `/compound/fastformula/{key}`, que no necesita ningún término
+> en inglés: la clave de Hill ya es el parámetro de búsqueda.
+>
+> El campo quedó sin un solo lector en `src/`. Se eliminó de las 31 entradas de
+> `compounds.json`. **Lo que cuesta:** si alguna vez hiciera falta volver a
+> buscar por nombre —por ejemplo para un compuesto cuya fórmula sea ambigua—
+> hay que reponer el campo. Se prefirió eso a mantener en el dataset un dato
+> que ningún código lee y que sugiere un mecanismo que ya no existe.
+>
+> El resto de la sección se conserva como registro de por qué el campo existió.
+
+`compounds.json` incorporaba un campo:
 
 ```json
 {

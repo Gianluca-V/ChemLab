@@ -141,8 +141,8 @@ Cosas que ningún frame resolvía y que las SPECs definen.
 
 ## Pendientes antes de implementar
 
-1. **Verificar el nombre de la propiedad SMILES en PubChem PUG REST.** Fue renombrada; según la versión vigente puede ser `SMILES` o `ConnectivitySMILES`. Pedir una propiedad inexistente devuelve HTTP 400, no un campo vacío. (SPEC 09 §3)
-2. **Construir `elements.json`** con los 118 elementos y los 17 campos, incluidos `hazard` y `glossary`, con `null` explícito donde no aplique. (SPEC 02 §1)
-3. **Construir `compounds.json`** con 30 entradas: los 20 obligatorios de la §6.2 más 10, cada uno con su `key` de Hill verificada y su `query` en inglés. (SPEC 02 §2, SPEC 09 §2)
+1. ~~**Verificar el nombre de la propiedad SMILES en PubChem PUG REST.**~~ **Resuelto:** se probó contra la API. Las tres candidatas responden 200; la vigente es `SMILES`. `api.js` la busca entre las tres por compatibilidad. (SPEC 09 §3)
+2. ~~**Construir `elements.json`**~~ **Hecho:** 118 elementos, 17 campos. Grupo, período y bloque derivados de Z. (SPEC 02 §1)
+3. ~~**Construir `compounds.json`**~~ **Hecho:** 31 entradas —los 20 obligatorios de la §6.2, 10 más y el ozono—, cada una con su `key` de Hill derivada por `hillKey()`, nunca escrita a mano. **Sin `query`:** el campo se eliminó, ver el desvío registrado en SPEC 09 §2. (SPEC 02 §2)
 4. **Diseñar los íconos** 192, 512 y `maskable-512` a partir de la marca "C ChemLab". (SPEC 18 §2)
 5. **Descargar y subsetear las fuentes** Space Grotesk y IBM Plex Mono a `woff2`. (SPEC 14 §4)
