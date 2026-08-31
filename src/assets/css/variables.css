@@ -166,3 +166,18 @@
     --cell-h: 44px;
   }
 }
+
+/*
+  En escritorio la celda vuelve a 56×64. A 44×44 los cuatro datos que SPEC 03 §3
+  pide para este breakpoint —número, símbolo, nombre y masa— entraban apretados
+  y quedaban ilegibles. Con 56×64 el apilado da 12 + 19 + 12 + 12 = 55 px de
+  texto más 4 px de padding, y sobra alto. El costo es que la grilla pasa de
+  860 a 1076 px y scrollea más dentro de su contenedor, que es donde el scroll
+  tiene que estar de todos modos.
+*/
+@media (min-width: 1024px) {
+  :root {
+    --cell-w: 56px;
+    --cell-h: 64px;
+  }
+}

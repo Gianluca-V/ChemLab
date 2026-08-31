@@ -2,8 +2,12 @@
 /**
  * Fila de la mezcla — SPEC 07 §3
  *
- * Número atómico, símbolo, nombre, tag de peligro cuando `hazard` no es null, y
- * el stepper.
+ * Número atómico, símbolo, nombre, tag de peligro cuando `hazard` no es null,
+ * el botón que abre el detalle y el stepper.
+ *
+ * El botón de detalle es la vía por la que se llega a /element/:symbol desde el
+ * laboratorio: con el tap de la celda reasignado a "agregar a la mezcla", ésta
+ * es la puerta al detalle y, por lo tanto, al registro de historial.
  *
  * El tag de peligro es información de seguridad y viene del dataset. NO se
  * omite por falta de espacio. Describe la propiedad del elemento, jamás un
@@ -17,7 +21,7 @@ defineProps({
   canIncrease: { type: Boolean, default: true },
 });
 
-defineEmits(['increase', 'decrease']);
+defineEmits(['increase', 'decrease', 'open']);
 </script>
 
 <template>
@@ -36,6 +40,24 @@ defineEmits(['increase', 'decrease']);
       </p>
     </div>
 
+    <button
+      type="button"
+      class="row__detail"
+      :aria-label="`Ver el detalle de ${element.name}`"
+      @click="$emit('open', element.symbol)"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8" />
+        <path
+          d="M12 10.6v6M12 7.6v.1"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
     <QuantityStepper
       :quantity="quantity"
       :element-name="element.name"
@@ -50,7 +72,7 @@ defineEmits(['increase', 'decrease']);
 .row {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   padding: var(--sp-2) 0;
   border-bottom: 1px solid var(--border);
 }
@@ -99,5 +121,25 @@ defineEmits(['increase', 'decrease']);
   color: var(--hazard-text);
   font-size: var(--fs-1);
   line-height: 1.7;
+}
+
+.row__detail {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: var(--touch);
+  height: var(--touch);
+  border-radius: var(--r-md);
+  color: var(--text-3);
+}
+
+.row__detail:hover {
+  background: var(--surface-3);
+  color: var(--text-1);
+}
+
+.row__detail svg {
+  width: var(--sp-5);
+  height: var(--sp-5);
 }
 </style>

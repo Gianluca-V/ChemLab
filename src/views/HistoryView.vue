@@ -20,7 +20,7 @@ import EmptyState from '../components/EmptyState.vue';
       description="El historial ya registra cada detalle que visitás; la pantalla que lo lista se especifica en la SPEC 11."
     >
       <template #action>
-        <RouterLink :to="{ name: 'table' }" class="btn btn--primary">
+        <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
           Abrir tabla periódica
         </RouterLink>
       </template>

@@ -166,7 +166,7 @@ const addLabel = computed(() =>
     :description="`«${route.params.symbol}» no corresponde a ninguno de los 118 elementos.`"
   >
     <template #action>
-      <RouterLink :to="{ name: 'table' }" class="btn btn--primary">
+      <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
         Abrir tabla periódica
       </RouterLink>
     </template>

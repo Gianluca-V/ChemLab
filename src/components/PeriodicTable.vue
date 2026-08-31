@@ -19,7 +19,8 @@
  * impide todo scroll; su propio figcaption dice "scroll en ambos ejes" y dibuja
  * el hint. Se implementa la intención declarada, no el defecto de la maqueta.
  */
-import { onActivated, onMounted, ref } from 'vue';
+import { computed, onActivated, onMounted, ref } from 'vue';
+import { MAX_PER_ELEMENT } from '../composables/useMixture.js';
 import ElementCell from './ElementCell.vue';
 
 const props = defineProps({
@@ -28,12 +29,14 @@ const props = defineProps({
   visibleSymbols: { type: Object, default: null },
   /** Cantidades de la mezcla, para el estado seleccionado. */
   quantities: { type: Object, default: () => ({}) },
+  /** false cuando la mezcla llegó al tope de 50 átomos totales. */
+  canAddMore: { type: Boolean, default: true },
 });
 
 const emit = defineEmits(['select']);
 
 const viewport = ref(null);
-const atEnd = ref(false);
+const atEnd = ref(true);
 
 /**
  * Posición de scroll conservada internamente: volver desde un detalle de
@@ -66,17 +69,35 @@ onActivated(restoreScroll);
  */
 function onClick(event) {
   const cell = event.target.closest('.cell');
-  if (cell?.dataset.symbol) emit('select', cell.dataset.symbol);
+  if (!cell?.dataset.symbol) return;
+  if (cell.getAttribute('aria-disabled') === 'true') return;
+  emit('select', cell.dataset.symbol);
 }
 
 /** @param {string} symbol */
 function isDimmed(symbol) {
   return props.visibleSymbols !== null && !props.visibleSymbols.has(symbol);
 }
+
+/** @param {string} symbol */
+function canAdd(symbol) {
+  return props.canAddMore && (props.quantities[symbol] ?? 0) < MAX_PER_ELEMENT;
+}
 </script>
 
 <template>
-  <div class="table">
+  <!--
+    El degradado del borde derecho reemplaza al texto "deslizá →" del frame 03.
+
+    > Desvío registrado respecto de SPEC 03 §4, por decisión del equipo. La SPEC
+    > exige un indicador de scroll y da un motivo que sigue valiendo: sin él,
+    > siete de dieciocho grupos se leen como si la tabla terminara ahí. Lo que
+    > se descarta es la COPY, no la función: "deslizá" describe un gesto táctil
+    > y en escritorio no se desliza. El degradado señala lo mismo sin enunciar
+    > un gesto que no corresponde al dispositivo, y desaparece al llegar al
+    > final igual que el texto que reemplaza.
+  -->
+  <div class="table" :class="{ 'table--more': !atEnd }">
     <div ref="viewport" class="table__viewport" @scroll="onScroll">
       <div class="table__grid" @click="onClick">
         <ElementCell
@@ -85,23 +106,27 @@ function isDimmed(symbol) {
           :element="element"
           :quantity="quantities[element.symbol] ?? 0"
           :dimmed="isDimmed(element.symbol)"
+          :can-add="canAdd(element.symbol)"
         />
       </div>
     </div>
-
-    <!--
-      El hint no es decorativo: sin él, siete de dieciocho grupos visibles se
-      leen como si la tabla terminara ahí.
-    -->
-    <p v-if="!atEnd" class="table__hint">deslizá →</p>
   </div>
 </template>
 
 <style scoped>
+/*
+  La superficie propia separa la grilla del fondo de la página. Sin ella, las
+  celdas —que son tintes al 16 % del hue de su categoría— flotaban sobre el
+  fondo del viewport sin ningún borde que las contuviera y el conjunto perdía
+  contraste.
+*/
 .table {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-1);
+  position: relative;
+  overflow: hidden;
+  padding: var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
 }
 
 /*
@@ -125,10 +150,16 @@ function isDimmed(symbol) {
   width: max-content;
 }
 
-.table__hint {
-  align-self: flex-end;
-  color: var(--text-muted);
-  font-size: var(--fs-1);
+/* Indicador de que hay contenido a la derecha. Puramente decorativo. */
+.table--more::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--sp-6);
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--surface-2));
 }
 
 /*
@@ -142,7 +173,7 @@ function isDimmed(symbol) {
   }
 }
 
-/* Tablet: la grilla mide 860 px contra 544 de columna y necesita scroll en X. */
+/* Tablet: la grilla mide 860 px y necesita scroll horizontal contenido. */
 @media (min-width: 768px) {
   .table__viewport {
     height: auto;
@@ -152,10 +183,9 @@ function isDimmed(symbol) {
 }
 
 /*
-  Desde 1024 px la grilla de 860 px entra en la columna que le queda al área
-  principal y no aparece ninguna barra. El overflow-x: auto SE MANTIENE igual:
-  con la sidebar de 240 px y el panel de 360 px, un viewport de 1280 px deja al
-  área principal en unos 600 px, y ahí la grilla vuelve a necesitar scroll. Con
+  El overflow-x: auto SE MANTIENE en escritorio. Con la sidebar de 240 px y el
+  panel de 360 px, un viewport de 1280 px deja al área principal en unos 616 px
+  contra los 1076 px que mide la grilla con celdas de 56 px. Con
   `overflow: visible` la tabla se derramaba POR DEBAJO del panel lateral y las
   columnas 14 a 18 quedaban tapadas, que es exactamente lo que SPEC 03 §4
   prohíbe: el overflow tiene que quedar contenido en su propio componente.

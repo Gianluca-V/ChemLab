@@ -20,7 +20,7 @@ import EmptyState from '../components/EmptyState.vue';
       description="Tus favoritos se guardan y persisten, pero la pantalla que los lista se especifica en la SPEC 10."
     >
       <template #action>
-        <RouterLink :to="{ name: 'table' }" class="btn btn--primary">
+        <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
           Abrir tabla periódica
         </RouterLink>
       </template>

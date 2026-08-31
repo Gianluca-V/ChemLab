@@ -11,25 +11,23 @@
  * al match: si no responde, el compuesto sigue identificado y el descubrimiento
  * igual se registra.
  *
- * Desde 768 px el área principal muestra la tabla: el <aside> del shell ya
- * lleva el bloque de resultado, como en el frame 28 (SPEC 16 §4).
+ * El resultado se muestra siempre en el área principal. Antes, desde 768 px se
+ * mostraba la tabla acá porque el <aside> ya llevaba el bloque de resultado;
+ * con el panel apilado debajo del contenido esa duplicación dejó de tener
+ * sentido.
  */
 import { computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
 
 import ChemFormula from '../components/ChemFormula.vue';
 import CompoundInfo from '../components/CompoundInfo.vue';
 import EmptyState from '../components/EmptyState.vue';
 import FavoriteStar from '../components/FavoriteStar.vue';
-import PeriodicTable from '../components/PeriodicTable.vue';
 
-import { allElements } from '../services/elements.js';
 import { allCompounds, matchMixture } from '../services/compounds.js';
 import { subscriptFormula, suggest } from '../services/chemistry.js';
 import { useDiscoveries } from '../composables/useDiscoveries.js';
 import { useMixture } from '../composables/useMixture.js';
 
-const router = useRouter();
 const mixture = useMixture();
 const discoveries = useDiscoveries();
 
@@ -63,12 +61,6 @@ const suggestions = computed(() => {
   });
 });
 
-const elements = allElements();
-
-/** @param {string} symbol */
-function openElement(symbol) {
-  router.push({ name: 'element', params: { symbol } });
-}
 </script>
 
 <template>
@@ -82,7 +74,7 @@ function openElement(symbol) {
         description="Seleccioná elementos de la tabla periódica para comenzar."
       >
         <template #action>
-          <RouterLink :to="{ name: 'table' }" class="btn btn--primary">
+          <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
             Abrir tabla periódica
           </RouterLink>
         </template>
@@ -160,15 +152,6 @@ function openElement(symbol) {
       </div>
     </div>
 
-    <!-- ≥768 px: el resultado ya está en el panel lateral; acá va la tabla. -->
-    <section class="result__table" aria-labelledby="result-grid-heading">
-      <h2 id="result-grid-heading" class="result__section">Tabla periódica</h2>
-      <PeriodicTable
-        :elements="elements"
-        :quantities="mixture.items.value"
-        @select="openElement"
-      />
-    </section>
   </div>
 </template>
 
@@ -177,10 +160,6 @@ function openElement(symbol) {
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
-}
-
-.result__table {
-  display: none;
 }
 
 .result__banner {
@@ -229,13 +208,4 @@ function openElement(symbol) {
   font-size: var(--fs-3);
 }
 
-@media (min-width: 768px) {
-  .result__main {
-    display: none;
-  }
-
-  .result__table {
-    display: block;
-  }
-}
 </style>

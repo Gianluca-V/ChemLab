@@ -25,9 +25,9 @@ const mixture = useMixture();
       <ChemFormula class="mixture-bar__formula" :formula="mixture.tentativeKey.value" />
     </div>
 
-    <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
+    <a href="#mixture" class="btn btn--primary">
       Ver mezcla ({{ mixture.totalAtoms.value }})
-    </RouterLink>
+    </a>
   </div>
 </template>
 

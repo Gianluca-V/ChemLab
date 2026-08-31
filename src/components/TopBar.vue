@@ -142,7 +142,9 @@ function goBack(fallback) {
   .topbar {
     position: static;
     border-bottom: none;
-    padding-inline: 0;
+    /* Alineado con el padding de .shell, para que el título no quede pegado
+       al borde de la sidebar. */
+    padding: var(--sp-5) var(--sp-5) 0;
   }
 
   .topbar__icon--nav {

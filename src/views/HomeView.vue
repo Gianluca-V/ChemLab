@@ -23,7 +23,7 @@ const discoveries = useDiscoveries();
     </header>
 
     <nav class="home__actions" aria-label="Accesos principales">
-      <RouterLink :to="{ name: 'table' }" class="btn btn--primary">Tabla periódica</RouterLink>
+      <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">Tabla periódica</RouterLink>
       <RouterLink :to="{ name: 'lab' }" class="btn">Laboratorio</RouterLink>
       <RouterLink :to="{ name: 'search' }" class="btn btn--ghost">Búsqueda</RouterLink>
     </nav>

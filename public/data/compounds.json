@@ -335,5 +335,15 @@
       "O": 4
     },
     "description": "Sal de color azul intenso en su forma hidratada. Se usa como fungicida y en experimentos de electrólisis."
+  },
+  {
+    "key": "O3",
+    "formula": "O3",
+    "name": "Ozono",
+    "query": "ozone",
+    "elements": {
+      "O": 3
+    },
+    "description": "Forma triatómica del oxígeno, de olor penetrante. En la estratosfera absorbe la radiación ultravioleta; a nivel del suelo es un contaminante irritante."
   }
 ]

@@ -6,11 +6,18 @@
  * <div>: un div clickeable no es alcanzable por teclado, no se anuncia como
  * control y no responde a Enter ni a Espacio.
  *
- * Contenido por breakpoint: número atómico, símbolo y nombre siempre; la masa
- * atómica se suma a partir de 1024 px. La descripción funcional la exigía en
- * todo breakpoint, pero apilar cuatro datos en 56×64 px obliga a tipografía por
- * debajo del piso de 11 px. La masa sigue accesible sin excepción: en el
- * aria-label de toda celda en todo breakpoint, y siempre en el detalle.
+ * ACCIÓN: tocar la celda AGREGA un átomo a la mezcla.
+ *
+ * > Desvío registrado respecto de SPEC 03 §6, por decisión del equipo. La SPEC
+ * > resolvía "un tap, un destino" y navegaba al detalle, con este motivo: si la
+ * > celda agrega a la mezcla, recorrer la tabla no deja rastro y el historial
+ * > queda casi vacío. Con este cambio el historial se alimenta solo desde los
+ * > resultados de búsqueda, las filas de la mezcla y los chips de sugerencia.
+ * > El detalle del elemento pasa a abrirse desde su fila en MixtureRow.
+ *
+ * Contenido por breakpoint: número atómico, símbolo y nombre en mobile; solo
+ * número y símbolo en tablet, donde la celda mide 44×44; los cuatro datos con
+ * la masa atómica desde 1024 px, donde vuelve a 56×64.
  *
  * El color NUNCA es el único portador de la categoría: va también en el
  * aria-label, en la leyenda y como texto en el detalle.
@@ -24,16 +31,28 @@ const props = defineProps({
   quantity: { type: Number, default: 0 },
   /** Atenuada por el filtro. Sigue siendo focusable y activable. */
   dimmed: { type: Boolean, default: false },
+  /** false cuando se alcanzó el límite de 20 por elemento o de 50 átomos. */
+  canAdd: { type: Boolean, default: true },
 });
 
 const categoryLabel = computed(() => CATEGORY_LABELS_SINGULAR[props.element.category]);
 
-const label = computed(
-  () =>
-    `${props.element.name}, símbolo ${props.element.symbol}, número atómico ` +
-    `${props.element.atomicNumber}, masa atómica ${props.element.atomicMass}, ${categoryLabel.value}` +
-    (props.quantity > 0 ? `, ${props.quantity} en la mezcla` : '')
-);
+/**
+ * El nombre accesible enuncia la ACCIÓN, no solo la identidad: la celda es un
+ * botón que agrega a la mezcla, y un lector de pantalla tiene que poder saber
+ * qué pasa al activarlo sin haberlo activado.
+ */
+const label = computed(() => {
+  const { name, symbol, atomicNumber, atomicMass } = props.element;
+  const identity =
+    `${name}, símbolo ${symbol}, número atómico ${atomicNumber}, ` +
+    `masa atómica ${atomicMass}, ${categoryLabel.value}`;
+  const state = props.quantity > 0 ? `, ${props.quantity} en la mezcla` : '';
+  const action = props.canAdd
+    ? `. Agregar un átomo de ${name.toLowerCase()} a la mezcla`
+    : '. Límite de átomos alcanzado';
+  return identity + state + action;
+});
 
 /**
  * Posición en la grilla. Los bloques s, p y d salen directo de `group` y
@@ -58,9 +77,10 @@ const position = computed(() => {
     :class="{ 'cell--dimmed': dimmed, 'cell--picked': quantity > 0 }"
     :data-symbol="element.symbol"
     :aria-label="label"
+    :aria-disabled="!canAdd"
     :style="{ ...position, '--cat-hue': `var(--cat-${element.category})` }"
   >
-    <span class="cell__z" aria-hidden="true">{{ element.atomicNumber }}</span>
+    <span class="cell__z mono" aria-hidden="true">{{ element.atomicNumber }}</span>
     <span class="cell__symbol" aria-hidden="true">{{ element.symbol }}</span>
     <span class="cell__name" aria-hidden="true">{{ element.name }}</span>
     <span class="cell__mass mono" aria-hidden="true">{{ element.atomicMass }}</span>
@@ -101,9 +121,14 @@ const position = computed(() => {
   color: var(--text-1);
 }
 
+.cell[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .cell__z {
   font-size: var(--fs-1);
-  font-family: var(--font-mono);
   line-height: 1.1;
   color: var(--text-3);
 }
@@ -129,7 +154,6 @@ const position = computed(() => {
   white-space: nowrap;
 }
 
-/* La masa atómica en la celda recién aparece en desktop. */
 .cell__mass {
   display: none;
   color: var(--text-muted);
@@ -146,7 +170,7 @@ const position = computed(() => {
   font-weight: 600;
 }
 
-/* Desde tablet la celda es 44×44: solo entran el número y el símbolo. */
+/* Tablet: la celda es 44×44 y solo entran el número y el símbolo. */
 @media (min-width: 768px) {
   .cell__name {
     display: none;
@@ -158,10 +182,9 @@ const position = computed(() => {
 }
 
 /*
-  Desde 1024 px la celda suma la masa atómica. Tres líneas en 44 px de alto
-  entran manteniendo el piso de 11 px: 11 + 13 + 11 con interlineado 1.1 son
-  38.5 px, más 4 px de padding. Lo que cede es el padding y el cuerpo del
-  símbolo, nunca el tamaño del texto (SPEC 14 §3, SPEC 17 §8).
+  Escritorio: la celda vuelve a 56×64 y muestra los cuatro datos que SPEC 03 §3
+  pide para este breakpoint. El padding baja a 2 px para que las cuatro líneas
+  entren sin que ningún texto baje del piso de 11 px (SPEC 14 §3, SPEC 17 §8).
 */
 @media (min-width: 1024px) {
   .cell {
@@ -169,9 +192,10 @@ const position = computed(() => {
   }
 
   .cell__symbol {
-    font-size: var(--fs-2);
+    font-size: var(--fs-4);
   }
 
+  .cell__name,
   .cell__mass {
     display: block;
   }

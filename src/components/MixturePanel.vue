@@ -2,10 +2,9 @@
 /**
  * Panel de mezcla — frames 07 y 08; como <aside>, frames 27 y 28
  *
- * Componente COMPARTIDO. LabView (mobile) y el <aside> persistente de
- * tablet/desktop renderizan el mismo MixturePanel: solo cambia el contenedor.
- * Ambos leen useMixture(), que ya es un singleton, así que agregar un elemento
- * desde la tabla actualiza el panel sin ningún cableado extra.
+ * Lo renderiza el shell en TODAS las rutas: debajo del contenido por debajo de
+ * 1024 px y al costado desde ahí. Lee useMixture(), que es un singleton, así
+ * que tocar una celda de la tabla lo actualiza sin ningún cableado extra.
  *
  * Comunicación científica (SPEC 07 §7, SPEC 19 §6):
  *   · Se titula "Tu mezcla", no "Tu reacción". No hay reacción: hay una
@@ -27,13 +26,12 @@ import ProgressBar from './ProgressBar.vue';
 
 const props = defineProps({
   /**
-   * `view` — pantalla completa de /lab en mobile.
-   * `aside` — panel lateral persistente desde 768 px, que además muestra el
-   *   bloque de resultado y el progreso de descubrimientos.
+   * `aside` suma el bloque de resultado y el progreso de descubrimientos.
+   * `view` es la forma desnuda, por si hace falta embeberlo en otra pantalla.
    */
   variant: {
     type: String,
-    default: 'view',
+    default: 'aside',
     validator: (value) => ['view', 'aside'].includes(value),
   },
 });
@@ -75,6 +73,17 @@ function combine() {
   router.push({ name: 'lab-result' });
 }
 
+/**
+ * Abre el detalle del elemento. Con el tap de la celda reasignado a "agregar a
+ * la mezcla", ésta es la vía al detalle desde el laboratorio y, por lo tanto,
+ * la que alimenta el historial (SPEC 01 §5).
+ *
+ * @param {string} symbol
+ */
+function openDetail(symbol) {
+  router.push({ name: 'element', params: { symbol } });
+}
+
 /** @param {string} symbol */
 function decrease(symbol) {
   const current = mixture.quantityOf(symbol);
@@ -99,7 +108,7 @@ function decrease(symbol) {
       description="Seleccioná elementos de la tabla periódica para comenzar."
     >
       <template #action>
-        <RouterLink :to="{ name: 'table' }" class="btn btn--primary">
+        <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
           Abrir tabla periódica
         </RouterLink>
       </template>
@@ -132,6 +141,7 @@ function decrease(symbol) {
           :can-increase="mixture.canAdd(row.element.symbol)"
           @increase="mixture.add"
           @decrease="decrease"
+          @open="openDetail"
         />
       </ul>
 

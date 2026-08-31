@@ -63,7 +63,7 @@ const title = computed(() => detail.value?.name ?? route.meta?.title ?? 'ChemLab
       <TopBar
         :title="title"
         :back="isDetailRoute"
-        back-fallback="table"
+        back-fallback="lab"
         @open-nav="navOpen = true"
       >
         <template #actions>
@@ -82,8 +82,13 @@ const title = computed(() => detail.value?.name ?? route.meta?.title ?? 'ChemLab
           <RouterView />
         </main>
 
-        <!-- Panel de mezcla persistente desde 768 px, en TODAS las rutas. -->
-        <aside class="shell__panel" aria-label="Panel del laboratorio">
+        <!--
+          Panel de mezcla persistente en TODAS las rutas. Va DEBAJO del
+          contenido hasta 1023 px y al costado desde ahí: a 768–1023 px el panel
+          lateral le robaba 320 px a una tabla que ya necesitaba scroll
+          horizontal, y apilarlo le devuelve el ancho completo a la grilla.
+        -->
+        <aside id="mixture" class="shell__panel" aria-label="Panel del laboratorio">
           <MixturePanel variant="aside" />
         </aside>
       </div>
@@ -119,29 +124,24 @@ const title = computed(() => detail.value?.name ?? route.meta?.title ?? 'ChemLab
   outline: none;
 }
 
+/*
+  El panel se apila debajo del contenido, en una sola columna, hasta 1023 px.
+  Es visible en todas las rutas: no hace falta navegar a ningún lado para ver
+  la mezcla.
+*/
 .shell__panel {
-  display: none;
+  display: block;
+  margin-top: var(--sp-4);
 }
 
-/* Tablet: aparece el panel lateral. La navegación sigue siendo el drawer. */
 @media (min-width: 768px) {
   .shell {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) var(--panel-w);
-    align-items: start;
-    gap: var(--sp-4);
     padding: var(--sp-4);
     padding-bottom: var(--toast-clearance);
   }
-
-  .shell__panel {
-    display: block;
-    position: sticky;
-    top: var(--sp-4);
-  }
 }
 
-/* Desktop: la sidebar fija reemplaza a la hamburguesa. */
+/* Desktop: la sidebar fija reemplaza a la hamburguesa y el panel va al costado. */
 @media (min-width: 1024px) {
   .layout {
     display: grid;
@@ -150,9 +150,18 @@ const title = computed(() => detail.value?.name ?? route.meta?.title ?? 'ChemLab
   }
 
   .shell {
+    display: grid;
     grid-template-columns: minmax(0, 1fr) var(--panel-w-lg);
+    align-items: start;
+    gap: var(--sp-4);
     padding: var(--sp-5);
     padding-bottom: var(--toast-clearance);
+  }
+
+  .shell__panel {
+    position: sticky;
+    top: var(--sp-5);
+    margin-top: 0;
   }
 }
 </style>

@@ -13,7 +13,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 import HomeView from '../views/HomeView.vue';
-import TableView from '../views/TableView.vue';
 import SearchView from '../views/SearchView.vue';
 import ResultsView from '../views/ResultsView.vue';
 import ElementDetailView from '../views/ElementDetailView.vue';
@@ -30,7 +29,14 @@ import { useHistory } from '../composables/useHistory.js';
 
 const routes = [
   { path: '/', name: 'home', component: HomeView, meta: { title: 'ChemLab' } },
-  { path: '/table', name: 'table', component: TableView, meta: { title: 'Elementos' } },
+  /*
+    /table era "Elementos" y /lab era el panel de mezcla a pantalla completa.
+    Mostraban lo mismo, así que se fusionaron en una sola sección: LabView lleva
+    la búsqueda, las categorías y la tabla, y la mezcla vive en el panel que el
+    shell renderiza en todas las rutas. La ruta vieja se conserva como redirect
+    para que ningún enlace guardado o compartido se rompa.
+  */
+  { path: '/table', redirect: '/lab' },
   { path: '/search', name: 'search', component: SearchView, meta: { title: 'Búsqueda' } },
   { path: '/results', name: 'results', component: ResultsView, meta: { title: 'Resultados' } },
   {
@@ -78,7 +84,6 @@ const routes = [
  */
 export const NAV_ITEMS = Object.freeze([
   { name: 'lab', label: 'Laboratorio' },
-  { name: 'table', label: 'Elementos' },
   { name: 'search', label: 'Búsqueda' },
   { name: 'discoveries', label: 'Descubrimientos', badge: 'discoveries' },
   { name: 'favorites', label: 'Favoritos', badge: 'favorites' },

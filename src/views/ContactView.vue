@@ -20,7 +20,7 @@ import EmptyState from '../components/EmptyState.vue';
       description="Los datos de contacto y el mapa se especifican en la SPEC 13."
     >
       <template #action>
-        <RouterLink :to="{ name: 'table' }" class="btn btn--primary">
+        <RouterLink :to="{ name: 'lab' }" class="btn btn--primary">
           Abrir tabla periódica
         </RouterLink>
       </template>

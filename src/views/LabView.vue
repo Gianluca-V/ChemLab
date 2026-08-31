@@ -1,70 +1,101 @@
 <script setup>
 /**
- * Laboratorio — frames 07 y 08, SPEC 07; comportamiento de ancho en SPEC 16 §4
+ * Laboratorio — frames 03, 07 y 08; SPEC 03 y SPEC 07
  *
- * La ruta /lab sobrevive en todos los anchos: sigue siendo una URL válida y
- * compartible.
+ * Sección única. Antes había dos vistas que mostraban lo mismo: /table
+ * ("Elementos", con búsqueda, categorías y tabla) y /lab (el panel de mezcla a
+ * pantalla completa). Se fusionaron: acá viven la búsqueda, las categorías y la
+ * tabla, y la mezcla la renderiza el shell en el panel que acompaña a TODAS las
+ * rutas. /table quedó como redirect.
  *
- *   ≤767 px  MixturePanel a pantalla completa.
- *   ≥768 px  El <aside> del shell ya muestra la mezcla, así que el área
- *            principal aprovecha el espacio con la tabla en lugar de repetir el
- *            panel.
+ * Los chips y el campo de búsqueda filtran LA TABLA EN SU LUGAR: los elementos
+ * que no coinciden se atenúan, no se quitan de la grilla. La estructura del
+ * período y el grupo tiene que sobrevivir al filtrado; una tabla periódica con
+ * huecos arbitrarios deja de ser una tabla periódica, porque los huecos son
+ * información química.
  *
- * No hay redirección: la ruta se resuelve siempre igual y lo único que cambia
- * es qué componente ocupa el área principal, decidido por una media query y no
- * por JavaScript.
+ * Tocar una celda AGREGA un átomo a la mezcla. El detalle del elemento se abre
+ * desde su fila en el panel (ver el desvío registrado en ElementCell).
  */
-import { useRouter } from 'vue-router';
+import { computed, ref } from 'vue';
 
-import MixturePanel from '../components/MixturePanel.vue';
+import CategoryLegend from '../components/CategoryLegend.vue';
+import MixtureBar from '../components/MixtureBar.vue';
 import PeriodicTable from '../components/PeriodicTable.vue';
-import { allElements } from '../services/elements.js';
-import { useMixture } from '../composables/useMixture.js';
+import SearchField from '../components/SearchField.vue';
 
-const router = useRouter();
+import { allElements, searchElements } from '../services/elements.js';
+import { useMixture, MAX_TOTAL_ATOMS } from '../composables/useMixture.js';
+
 const mixture = useMixture();
-const elements = allElements();
 
-/** @param {string} symbol */
-function open(symbol) {
-  router.push({ name: 'element', params: { symbol } });
-}
+const elements = allElements();
+const q = ref('');
+const cat = ref('all');
+
+const hasFilter = computed(() => q.value !== '' || cat.value !== 'all');
+
+/**
+ * Símbolos que pasan el filtro. `null` cuando no hay filtro activo: así
+ * PeriodicTable no atenúa nada y no recorre 118 comparaciones de más.
+ */
+const visibleSymbols = computed(() => {
+  if (!hasFilter.value) return null;
+  return new Set(searchElements({ q: q.value, cat: cat.value }).map((e) => e.symbol));
+});
+
+const matchCount = computed(() => visibleSymbols.value?.size ?? elements.length);
+
+const canAddMore = computed(() => mixture.totalAtoms.value < MAX_TOTAL_ATOMS);
 </script>
 
 <template>
-  <div class="lab">
-    <div class="lab__panel">
-      <MixturePanel variant="view" />
-    </div>
+  <div class="view">
+    <SearchField v-model="q" id="lab-q" label="Buscar símbolo, nombre o número" />
 
-    <section class="lab__table" aria-labelledby="lab-grid-heading">
-      <h2 id="lab-grid-heading" class="lab__section">Tabla periódica</h2>
+    <CategoryLegend v-model="cat" />
+
+    <p v-if="hasFilter" class="view__count" role="status">
+      {{ matchCount }} {{ matchCount === 1 ? 'elemento coincide' : 'elementos coinciden' }}. El
+      resto queda atenuado, no se quita de la grilla.
+    </p>
+
+    <section aria-labelledby="grid-heading">
+      <h2 id="grid-heading" class="view__section">Tabla periódica</h2>
+      <p class="view__hint">Tocá un elemento para sumarlo a tu mezcla.</p>
+
       <PeriodicTable
         :elements="elements"
+        :visible-symbols="visibleSymbols"
         :quantities="mixture.items.value"
-        @select="open"
+        :can-add-more="canAddMore"
+        @select="mixture.add"
       />
     </section>
+
+    <MixtureBar />
   </div>
 </template>
 
 <style scoped>
-.lab__table {
-  display: none;
+.view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
 }
 
-.lab__section {
-  margin-bottom: var(--sp-2);
+.view__count {
+  color: var(--text-3);
+  font-size: var(--fs-2);
+}
+
+.view__section {
   font-size: var(--fs-4);
 }
 
-@media (min-width: 768px) {
-  .lab__panel {
-    display: none;
-  }
-
-  .lab__table {
-    display: block;
-  }
+.view__hint {
+  margin: var(--sp-1) 0 var(--sp-3);
+  color: var(--text-muted);
+  font-size: var(--fs-2);
 }
 </style>
