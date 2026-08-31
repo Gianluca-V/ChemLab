@@ -1,0 +1,339 @@
+[
+  {
+    "key": "H2O",
+    "formula": "H2O",
+    "name": "Agua",
+    "query": "water",
+    "elements": {
+      "H": 2,
+      "O": 1
+    },
+    "description": "Disolvente universal y base de la vida. Líquido incoloro cuya molécula angular y polar explica su alta tensión superficial y su capacidad de disolver sales."
+  },
+  {
+    "key": "CO2",
+    "formula": "CO2",
+    "name": "Dióxido de carbono",
+    "query": "carbon dioxide",
+    "elements": {
+      "C": 1,
+      "O": 2
+    },
+    "description": "Gas incoloro producto de la respiración y de la combustión completa de compuestos de carbono. Molécula lineal y apolar."
+  },
+  {
+    "key": "ClNa",
+    "formula": "NaCl",
+    "name": "Cloruro de sodio",
+    "query": "sodium chloride",
+    "elements": {
+      "Na": 1,
+      "Cl": 1
+    },
+    "description": "Sal común. Sólido cristalino iónico muy soluble en agua, con red cúbica de iones sodio y cloruro alternados."
+  },
+  {
+    "key": "HNaO",
+    "formula": "NaOH",
+    "name": "Hidróxido de sodio",
+    "query": "sodium hydroxide",
+    "elements": {
+      "Na": 1,
+      "O": 1,
+      "H": 1
+    },
+    "description": "Soda cáustica. Base fuerte, sólida y muy higroscópica; se disuelve en agua liberando una cantidad notable de calor."
+  },
+  {
+    "key": "H2O4S",
+    "formula": "H2SO4",
+    "name": "Ácido sulfúrico",
+    "query": "sulfuric acid",
+    "elements": {
+      "H": 2,
+      "S": 1,
+      "O": 4
+    },
+    "description": "El compuesto químico más producido del mundo. Líquido denso, ácido fuerte y agente deshidratante enérgico."
+  },
+  {
+    "key": "CCaO3",
+    "formula": "CaCO3",
+    "name": "Carbonato de calcio",
+    "query": "calcium carbonate",
+    "elements": {
+      "Ca": 1,
+      "C": 1,
+      "O": 3
+    },
+    "description": "Componente principal de la caliza, el mármol y las conchas marinas. Sólido blanco poco soluble que reacciona con ácidos liberando dióxido de carbono."
+  },
+  {
+    "key": "H3N",
+    "formula": "NH3",
+    "name": "Amoníaco",
+    "query": "ammonia",
+    "elements": {
+      "N": 1,
+      "H": 3
+    },
+    "description": "Gas incoloro de olor penetrante y molécula piramidal. Materia prima de los fertilizantes nitrogenados."
+  },
+  {
+    "key": "ClH",
+    "formula": "HCl",
+    "name": "Ácido clorhídrico",
+    "query": "hydrochloric acid",
+    "elements": {
+      "H": 1,
+      "Cl": 1
+    },
+    "description": "Ácido fuerte en disolución acuosa. Está presente en el jugo gástrico y es un reactivo básico de laboratorio."
+  },
+  {
+    "key": "C2H6O",
+    "formula": "C2H5OH",
+    "name": "Etanol",
+    "query": "ethanol",
+    "elements": {
+      "C": 2,
+      "H": 6,
+      "O": 1
+    },
+    "description": "Alcohol de las bebidas fermentadas y disolvente muy usado. Líquido volátil, miscible con agua en cualquier proporción."
+  },
+  {
+    "key": "C2H4O2",
+    "formula": "CH3COOH",
+    "name": "Ácido acético",
+    "query": "acetic acid",
+    "elements": {
+      "C": 2,
+      "H": 4,
+      "O": 2
+    },
+    "description": "Componente que da al vinagre su sabor y su olor. Ácido débil de cadena corta, líquido a temperatura ambiente."
+  },
+  {
+    "key": "Fe2O3",
+    "formula": "Fe2O3",
+    "name": "Óxido de hierro(III)",
+    "query": "iron(III) oxide",
+    "elements": {
+      "Fe": 2,
+      "O": 3
+    },
+    "description": "Herrumbre en su forma anhidra. Sólido rojizo, principal mena del hierro y pigmento conocido desde la prehistoria."
+  },
+  {
+    "key": "O2",
+    "formula": "O2",
+    "name": "Oxígeno molecular",
+    "query": "oxygen",
+    "elements": {
+      "O": 2
+    },
+    "description": "Forma en que el oxígeno existe en la atmósfera. Molécula diatómica oxidante: favorece la combustión sin ser ella misma combustible."
+  },
+  {
+    "key": "H2",
+    "formula": "H2",
+    "name": "Hidrógeno molecular",
+    "query": "hydrogen",
+    "elements": {
+      "H": 2
+    },
+    "description": "La molécula más liviana que existe. Gas incoloro y altamente inflamable, estudiado como vector energético."
+  },
+  {
+    "key": "N2",
+    "formula": "N2",
+    "name": "Nitrógeno molecular",
+    "query": "nitrogen",
+    "elements": {
+      "N": 2
+    },
+    "description": "Constituye cerca del 78 % del aire. Su triple enlace es tan estable que el nitrógeno atmosférico resulta prácticamente inerte."
+  },
+  {
+    "key": "H2O2",
+    "formula": "H2O2",
+    "name": "Peróxido de hidrógeno",
+    "query": "hydrogen peroxide",
+    "elements": {
+      "H": 2,
+      "O": 2
+    },
+    "description": "Agua oxigenada. Líquido incoloro que se descompone en agua y oxígeno; se usa como desinfectante y blanqueador."
+  },
+  {
+    "key": "CH4",
+    "formula": "CH4",
+    "name": "Metano",
+    "query": "methane",
+    "elements": {
+      "C": 1,
+      "H": 4
+    },
+    "description": "El hidrocarburo más simple y componente principal del gas natural. Molécula tetraédrica, incolora e inodora en estado puro."
+  },
+  {
+    "key": "CO",
+    "formula": "CO",
+    "name": "Monóxido de carbono",
+    "query": "carbon monoxide",
+    "elements": {
+      "C": 1,
+      "O": 1
+    },
+    "description": "Gas incoloro e inodoro que se forma en combustiones incompletas. Se une a la hemoglobina con mucha más afinidad que el oxígeno."
+  },
+  {
+    "key": "O2S",
+    "formula": "SO2",
+    "name": "Dióxido de azufre",
+    "query": "sulfur dioxide",
+    "elements": {
+      "S": 1,
+      "O": 2
+    },
+    "description": "Gas de olor irritante liberado por volcanes y por la quema de combustibles con azufre. Precursor de la lluvia ácida."
+  },
+  {
+    "key": "O3S",
+    "formula": "SO3",
+    "name": "Trióxido de azufre",
+    "query": "sulfur trioxide",
+    "elements": {
+      "S": 1,
+      "O": 3
+    },
+    "description": "Intermediario en la producción industrial de ácido sulfúrico. Reacciona con el agua de forma muy enérgica."
+  },
+  {
+    "key": "HNO3",
+    "formula": "HNO3",
+    "name": "Ácido nítrico",
+    "query": "nitric acid",
+    "elements": {
+      "H": 1,
+      "N": 1,
+      "O": 3
+    },
+    "description": "Ácido fuerte y oxidante, líquido incoloro que amarillea con la luz. Base de fertilizantes y explosivos."
+  },
+  {
+    "key": "CHNaO3",
+    "formula": "NaHCO3",
+    "name": "Bicarbonato de sodio",
+    "query": "sodium bicarbonate",
+    "elements": {
+      "Na": 1,
+      "H": 1,
+      "C": 1,
+      "O": 3
+    },
+    "description": "Polvo blanco de uso doméstico y alimentario. Al calentarse o al reaccionar con ácidos libera dióxido de carbono."
+  },
+  {
+    "key": "C6H12O6",
+    "formula": "C6H12O6",
+    "name": "Glucosa",
+    "query": "glucose",
+    "elements": {
+      "C": 6,
+      "H": 12,
+      "O": 6
+    },
+    "description": "Azúcar simple y principal fuente de energía celular. Producto de la fotosíntesis y punto de partida de la respiración celular."
+  },
+  {
+    "key": "ClK",
+    "formula": "KCl",
+    "name": "Cloruro de potasio",
+    "query": "potassium chloride",
+    "elements": {
+      "K": 1,
+      "Cl": 1
+    },
+    "description": "Sal cristalina usada como fertilizante potásico y como sustituto dietético de la sal común."
+  },
+  {
+    "key": "MgO",
+    "formula": "MgO",
+    "name": "Óxido de magnesio",
+    "query": "magnesium oxide",
+    "elements": {
+      "Mg": 1,
+      "O": 1
+    },
+    "description": "Sólido blanco de punto de fusión muy alto. Producto de la combustión del magnesio y material refractario habitual."
+  },
+  {
+    "key": "CaO",
+    "formula": "CaO",
+    "name": "Óxido de calcio",
+    "query": "calcium oxide",
+    "elements": {
+      "Ca": 1,
+      "O": 1
+    },
+    "description": "Cal viva. Se obtiene calcinando caliza y reacciona con el agua liberando bastante calor."
+  },
+  {
+    "key": "Al2O3",
+    "formula": "Al2O3",
+    "name": "Óxido de aluminio",
+    "query": "aluminum oxide",
+    "elements": {
+      "Al": 2,
+      "O": 3
+    },
+    "description": "Alúmina. Sólido muy duro que forma la capa protectora del aluminio; el corindón, el rubí y el zafiro son variedades cristalinas suyas."
+  },
+  {
+    "key": "OZn",
+    "formula": "ZnO",
+    "name": "Óxido de zinc",
+    "query": "zinc oxide",
+    "elements": {
+      "Zn": 1,
+      "O": 1
+    },
+    "description": "Polvo blanco semiconductor. Se usa en protectores solares por su capacidad de bloquear la radiación ultravioleta."
+  },
+  {
+    "key": "IK",
+    "formula": "KI",
+    "name": "Yoduro de potasio",
+    "query": "potassium iodide",
+    "elements": {
+      "K": 1,
+      "I": 1
+    },
+    "description": "Sal soluble empleada para yodar la sal de mesa y para proteger la tiroides frente a la exposición a yodo radiactivo."
+  },
+  {
+    "key": "NO2",
+    "formula": "NO2",
+    "name": "Dióxido de nitrógeno",
+    "query": "nitrogen dioxide",
+    "elements": {
+      "N": 1,
+      "O": 2
+    },
+    "description": "Gas pardo rojizo característico de la contaminación urbana. Interviene en la formación del smog fotoquímico."
+  },
+  {
+    "key": "CuO4S",
+    "formula": "CuSO4",
+    "name": "Sulfato de cobre(II)",
+    "query": "copper(II) sulfate",
+    "elements": {
+      "Cu": 1,
+      "S": 1,
+      "O": 4
+    },
+    "description": "Sal de color azul intenso en su forma hidratada. Se usa como fungicida y en experimentos de electrólisis."
+  }
+]

@@ -1,0 +1,2833 @@
+[
+  {
+    "atomicNumber": 1,
+    "symbol": "H",
+    "name": "Hidrógeno",
+    "atomicMass": 1.008,
+    "category": "nm",
+    "group": 1,
+    "period": 1,
+    "block": "s",
+    "electronConfiguration": "1s¹",
+    "electronegativity": 2.2,
+    "meltingPoint": -259.16,
+    "boilingPoint": -252.879,
+    "density": 0.08988,
+    "oxidationStates": [
+      -1,
+      1
+    ],
+    "state": "gas",
+    "description": "El elemento más abundante del universo y el más liviano de la tabla. Gas diatómico incoloro, muy inflamable, presente en el agua y en prácticamente toda la materia orgánica.",
+    "hazard": {
+      "icon": "🔥",
+      "label": "Altamente inflamable"
+    },
+    "glossary": "Su masa atómica de 1.008 u es la más baja de la tabla: un átomo de hidrógeno es un protón con un electrón. Esa simplicidad explica que su punto de ebullición sea de −252.9 °C, apenas veinte grados sobre el cero absoluto."
+  },
+  {
+    "atomicNumber": 2,
+    "symbol": "He",
+    "name": "Helio",
+    "atomicMass": 4.0026,
+    "category": "ng",
+    "group": 18,
+    "period": 1,
+    "block": "s",
+    "electronConfiguration": "1s²",
+    "electronegativity": null,
+    "meltingPoint": -272.2,
+    "boilingPoint": -268.928,
+    "density": 0.1786,
+    "oxidationStates": [
+      0
+    ],
+    "state": "gas",
+    "description": "Segundo elemento más abundante del universo y el gas noble más liviano. Químicamente inerte, no forma compuestos estables y tiene el punto de ebullición más bajo conocido.",
+    "hazard": null,
+    "glossary": "La electronegatividad figura como no disponible porque el helio no forma enlaces: su capa electrónica está completa con dos electrones. Un elemento que no comparte electrones no tiene tendencia a atraerlos."
+  },
+  {
+    "atomicNumber": 3,
+    "symbol": "Li",
+    "name": "Litio",
+    "atomicMass": 6.94,
+    "category": "am",
+    "group": 1,
+    "period": 2,
+    "block": "s",
+    "electronConfiguration": "1s² 2s¹",
+    "electronegativity": 0.98,
+    "meltingPoint": 180.5,
+    "boilingPoint": 1342,
+    "density": 0.534,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "El metal más liviano. Blando, se corta con cuchillo y flota en el agua. Es la base de las baterías recargables de los dispositivos portátiles.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 4,
+    "symbol": "Be",
+    "name": "Berilio",
+    "atomicMass": 9.0122,
+    "category": "ae",
+    "group": 2,
+    "period": 2,
+    "block": "s",
+    "electronConfiguration": "1s² 2s²",
+    "electronegativity": 1.57,
+    "meltingPoint": 1287,
+    "boilingPoint": 2469,
+    "density": 1.85,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal gris, liviano y muy rígido. Transparente a los rayos X, lo que lo hace útil en ventanas de equipos de radiación. Sus polvos son tóxicos.",
+    "hazard": {
+      "icon": "☠️",
+      "label": "Tóxico"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 5,
+    "symbol": "B",
+    "name": "Boro",
+    "atomicMass": 10.81,
+    "category": "ml",
+    "group": 13,
+    "period": 2,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p¹",
+    "electronegativity": 2.04,
+    "meltingPoint": 2076,
+    "boilingPoint": 4000,
+    "density": 2.34,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Metaloide duro y quebradizo. Se usa en vidrios resistentes al choque térmico y en fibras de refuerzo de alta rigidez.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 6,
+    "symbol": "C",
+    "name": "Carbono",
+    "atomicMass": 12.011,
+    "category": "nm",
+    "group": 14,
+    "period": 2,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p²",
+    "electronegativity": 2.55,
+    "meltingPoint": 3550,
+    "boilingPoint": 4027,
+    "density": 2.267,
+    "oxidationStates": [
+      -4,
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Base de toda la química orgánica. Forma cadenas y anillos estables, y existe en variedades tan distintas como el diamante, el grafito y el grafeno.",
+    "hazard": null,
+    "glossary": "Con electronegatividad 2.55 —en el medio exacto de la escala— el carbono no cede ni arranca electrones con fuerza: los comparte. De ahí que forme cuatro enlaces covalentes estables y que exista una química orgánica entera construida sobre él."
+  },
+  {
+    "atomicNumber": 7,
+    "symbol": "N",
+    "name": "Nitrógeno",
+    "atomicMass": 14.007,
+    "category": "nm",
+    "group": 15,
+    "period": 2,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p³",
+    "electronegativity": 3.04,
+    "meltingPoint": -210,
+    "boilingPoint": -195.79,
+    "density": 1.251,
+    "oxidationStates": [
+      -3,
+      3,
+      5
+    ],
+    "state": "gas",
+    "description": "Constituye cerca del 78 % del aire que respiramos. Su molécula diatómica es muy estable, por eso el nitrógeno atmosférico es prácticamente inerte.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 8,
+    "symbol": "O",
+    "name": "Oxígeno",
+    "atomicMass": 15.999,
+    "category": "nm",
+    "group": 16,
+    "period": 2,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁴",
+    "electronegativity": 3.44,
+    "meltingPoint": -218.79,
+    "boilingPoint": -182.95,
+    "density": 1.429,
+    "oxidationStates": [
+      -2,
+      -1
+    ],
+    "state": "gas",
+    "description": "Gas incoloro e inodoro, segundo elemento más electronegativo. Sostiene la respiración celular y actúa como oxidante en la combustión.",
+    "hazard": {
+      "icon": "⚠️",
+      "label": "Oxidante"
+    },
+    "glossary": "La electronegatividad 3.44 indica que el oxígeno atrae electrones con mucha fuerza: por eso forma enlaces polares y actúa como oxidante, favoreciendo la combustión de otras sustancias sin ser él mismo combustible."
+  },
+  {
+    "atomicNumber": 9,
+    "symbol": "F",
+    "name": "Flúor",
+    "atomicMass": 18.998,
+    "category": "hl",
+    "group": 17,
+    "period": 2,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁵",
+    "electronegativity": 3.98,
+    "meltingPoint": -219.67,
+    "boilingPoint": -188.11,
+    "density": 1.696,
+    "oxidationStates": [
+      -1
+    ],
+    "state": "gas",
+    "description": "El elemento más electronegativo de todos. Gas amarillo pálido, extremadamente reactivo: ataca casi cualquier material orgánico.",
+    "hazard": {
+      "icon": "⚠️",
+      "label": "Corrosivo y oxidante"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 10,
+    "symbol": "Ne",
+    "name": "Neón",
+    "atomicMass": 20.18,
+    "category": "ng",
+    "group": 18,
+    "period": 2,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶",
+    "electronegativity": null,
+    "meltingPoint": -248.59,
+    "boilingPoint": -246.046,
+    "density": 0.9002,
+    "oxidationStates": [
+      0
+    ],
+    "state": "gas",
+    "description": "Gas noble inerte. Su descarga eléctrica emite la luz rojo-anaranjada característica de los carteles de neón.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 11,
+    "symbol": "Na",
+    "name": "Sodio",
+    "atomicMass": 22.99,
+    "category": "am",
+    "group": 1,
+    "period": 3,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s¹",
+    "electronegativity": 0.93,
+    "meltingPoint": 97.79,
+    "boilingPoint": 882.94,
+    "density": 0.971,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Metal alcalino blando y plateado. Reacciona con violencia con el agua liberando hidrógeno. Forma la sal común junto al cloro.",
+    "hazard": {
+      "icon": "🔥",
+      "label": "Reacciona violentamente con el agua"
+    },
+    "glossary": "Su electronegatividad de 0.93, la más baja del período, significa que suelta su único electrón de valencia con facilidad. Por eso reacciona con el agua y por eso su estado de oxidación es siempre +1."
+  },
+  {
+    "atomicNumber": 12,
+    "symbol": "Mg",
+    "name": "Magnesio",
+    "atomicMass": 24.305,
+    "category": "ae",
+    "group": 2,
+    "period": 3,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s²",
+    "electronegativity": 1.31,
+    "meltingPoint": 650,
+    "boilingPoint": 1090,
+    "density": 1.738,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal liviano y estructural. Arde con una llama blanca intensa y es el átomo central de la clorofila.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 13,
+    "symbol": "Al",
+    "name": "Aluminio",
+    "atomicMass": 26.982,
+    "category": "pt",
+    "group": 13,
+    "period": 3,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p¹",
+    "electronegativity": 1.61,
+    "meltingPoint": 660.32,
+    "boilingPoint": 2470,
+    "density": 2.7,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "El metal más abundante de la corteza terrestre. Liviano y resistente a la corrosión gracias a la capa de óxido que se forma en su superficie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 14,
+    "symbol": "Si",
+    "name": "Silicio",
+    "atomicMass": 28.085,
+    "category": "ml",
+    "group": 14,
+    "period": 3,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p²",
+    "electronegativity": 1.9,
+    "meltingPoint": 1414,
+    "boilingPoint": 3265,
+    "density": 2.329,
+    "oxidationStates": [
+      -4,
+      4
+    ],
+    "state": "solid",
+    "description": "Metaloide base de la industria electrónica. Constituye la mayor parte de la arena y las rocas en forma de dióxido de silicio.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 15,
+    "symbol": "P",
+    "name": "Fósforo",
+    "atomicMass": 30.974,
+    "category": "nm",
+    "group": 15,
+    "period": 3,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p³",
+    "electronegativity": 2.19,
+    "meltingPoint": 44.15,
+    "boilingPoint": 280.5,
+    "density": 1.823,
+    "oxidationStates": [
+      -3,
+      3,
+      5
+    ],
+    "state": "solid",
+    "description": "No metal esencial para la vida: forma parte del ADN, del ATP y de los huesos. Su variedad blanca se inflama espontáneamente al aire.",
+    "hazard": {
+      "icon": "🔥",
+      "label": "Inflamable"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 16,
+    "symbol": "S",
+    "name": "Azufre",
+    "atomicMass": 32.06,
+    "category": "nm",
+    "group": 16,
+    "period": 3,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁴",
+    "electronegativity": 2.58,
+    "meltingPoint": 115.21,
+    "boilingPoint": 444.6,
+    "density": 2.07,
+    "oxidationStates": [
+      -2,
+      4,
+      6
+    ],
+    "state": "solid",
+    "description": "Sólido amarillo quebradizo, conocido desde la antigüedad. Base industrial del ácido sulfúrico, el compuesto químico más producido del mundo.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 17,
+    "symbol": "Cl",
+    "name": "Cloro",
+    "atomicMass": 35.45,
+    "category": "hl",
+    "group": 17,
+    "period": 3,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁵",
+    "electronegativity": 3.16,
+    "meltingPoint": -101.5,
+    "boilingPoint": -34.04,
+    "density": 3.2,
+    "oxidationStates": [
+      -1,
+      1,
+      3,
+      5,
+      7
+    ],
+    "state": "gas",
+    "description": "Gas verde amarillento de olor penetrante. Potente desinfectante del agua potable y componente de la sal común.",
+    "hazard": {
+      "icon": "⚠️",
+      "label": "Tóxico e irritante"
+    },
+    "glossary": "La electronegatividad 3.16 y el estado de oxidación −1 van juntos: al cloro le falta un electrón para completar su capa y lo toma de casi cualquier metal. Eso produce sales iónicas como el cloruro de sodio."
+  },
+  {
+    "atomicNumber": 18,
+    "symbol": "Ar",
+    "name": "Argón",
+    "atomicMass": 39.948,
+    "category": "ng",
+    "group": 18,
+    "period": 3,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶",
+    "electronegativity": null,
+    "meltingPoint": -189.34,
+    "boilingPoint": -185.85,
+    "density": 1.784,
+    "oxidationStates": [
+      0
+    ],
+    "state": "gas",
+    "description": "Gas noble más abundante en la atmósfera. Se usa como atmósfera inerte en soldadura y en lámparas incandescentes.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 19,
+    "symbol": "K",
+    "name": "Potasio",
+    "atomicMass": 39.098,
+    "category": "am",
+    "group": 1,
+    "period": 4,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹",
+    "electronegativity": 0.82,
+    "meltingPoint": 63.5,
+    "boilingPoint": 759,
+    "density": 0.862,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Metal alcalino esencial para la transmisión del impulso nervioso. Reacciona con el agua con más violencia todavía que el sodio.",
+    "hazard": {
+      "icon": "🔥",
+      "label": "Reacciona violentamente con el agua"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 20,
+    "symbol": "Ca",
+    "name": "Calcio",
+    "atomicMass": 40.078,
+    "category": "ae",
+    "group": 2,
+    "period": 4,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s²",
+    "electronegativity": 1,
+    "meltingPoint": 842,
+    "boilingPoint": 1484,
+    "density": 1.55,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal alcalinotérreo estructural en los seres vivos: forma huesos, dientes y conchas marinas en forma de carbonato.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 21,
+    "symbol": "Sc",
+    "name": "Escandio",
+    "atomicMass": 44.956,
+    "category": "tm",
+    "group": 3,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹",
+    "electronegativity": 1.36,
+    "meltingPoint": 1541,
+    "boilingPoint": 2836,
+    "density": 2.985,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Metal de transición liviano y poco común. Sus aleaciones con aluminio se usan en equipamiento deportivo de alta gama.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 22,
+    "symbol": "Ti",
+    "name": "Titanio",
+    "atomicMass": 47.867,
+    "category": "tm",
+    "group": 4,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d²",
+    "electronegativity": 1.54,
+    "meltingPoint": 1668,
+    "boilingPoint": 3287,
+    "density": 4.506,
+    "oxidationStates": [
+      2,
+      3,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal de transición con una relación resistencia-peso excepcional y muy resistente a la corrosión. Se usa en implantes y en aeronáutica.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 23,
+    "symbol": "V",
+    "name": "Vanadio",
+    "atomicMass": 50.942,
+    "category": "tm",
+    "group": 5,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d³",
+    "electronegativity": 1.63,
+    "meltingPoint": 1910,
+    "boilingPoint": 3407,
+    "density": 6.11,
+    "oxidationStates": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "state": "solid",
+    "description": "Metal de transición duro. Añadido en pequeñas proporciones al acero, aumenta notablemente su resistencia.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 24,
+    "symbol": "Cr",
+    "name": "Cromo",
+    "atomicMass": 51.996,
+    "category": "tm",
+    "group": 6,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹ 3d⁵",
+    "electronegativity": 1.66,
+    "meltingPoint": 1907,
+    "boilingPoint": 2671,
+    "density": 7.15,
+    "oxidationStates": [
+      2,
+      3,
+      6
+    ],
+    "state": "solid",
+    "description": "Metal de transición brillante y muy resistente a la corrosión. Da al acero inoxidable su nombre y su acabado espejado.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 25,
+    "symbol": "Mn",
+    "name": "Manganeso",
+    "atomicMass": 54.938,
+    "category": "tm",
+    "group": 7,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁵",
+    "electronegativity": 1.55,
+    "meltingPoint": 1246,
+    "boilingPoint": 2061,
+    "density": 7.21,
+    "oxidationStates": [
+      2,
+      4,
+      7
+    ],
+    "state": "solid",
+    "description": "Metal de transición imprescindible en la producción de acero. Es también un micronutriente esencial en plantas y animales.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 26,
+    "symbol": "Fe",
+    "name": "Hierro",
+    "atomicMass": 55.845,
+    "category": "tm",
+    "group": 8,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁶",
+    "electronegativity": 1.83,
+    "meltingPoint": 1538,
+    "boilingPoint": 2862,
+    "density": 7.874,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "El metal más usado por la humanidad y el principal componente del núcleo terrestre. Transporta el oxígeno en la sangre dentro de la hemoglobina.",
+    "hazard": null,
+    "glossary": "Los estados de oxidación +2 y +3 explican por qué el hierro forma dos familias de compuestos distintas. El paso reversible entre ambos es lo que permite a la hemoglobina tomar y soltar oxígeno."
+  },
+  {
+    "atomicNumber": 27,
+    "symbol": "Co",
+    "name": "Cobalto",
+    "atomicMass": 58.933,
+    "category": "tm",
+    "group": 9,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁷",
+    "electronegativity": 1.88,
+    "meltingPoint": 1495,
+    "boilingPoint": 2927,
+    "density": 8.9,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "Metal de transición ferromagnético. Da el color azul intenso a vidrios y cerámicas, y forma parte de la vitamina B12.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 28,
+    "symbol": "Ni",
+    "name": "Níquel",
+    "atomicMass": 58.693,
+    "category": "tm",
+    "group": 10,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁸",
+    "electronegativity": 1.91,
+    "meltingPoint": 1455,
+    "boilingPoint": 2913,
+    "density": 8.908,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "Metal de transición dúctil y resistente a la corrosión. Componente clave del acero inoxidable y de las baterías recargables.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 29,
+    "symbol": "Cu",
+    "name": "Cobre",
+    "atomicMass": 63.546,
+    "category": "tm",
+    "group": 11,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹ 3d¹⁰",
+    "electronegativity": 1.9,
+    "meltingPoint": 1084.62,
+    "boilingPoint": 2562,
+    "density": 8.96,
+    "oxidationStates": [
+      1,
+      2
+    ],
+    "state": "solid",
+    "description": "Metal rojizo, excelente conductor eléctrico y térmico. Es el cableado de la mayoría de las instalaciones eléctricas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 30,
+    "symbol": "Zn",
+    "name": "Zinc",
+    "atomicMass": 65.38,
+    "category": "tm",
+    "group": 12,
+    "period": 4,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰",
+    "electronegativity": 1.65,
+    "meltingPoint": 419.53,
+    "boilingPoint": 907,
+    "density": 7.14,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal azulado que protege al acero de la corrosión mediante el galvanizado. Es también un oligoelemento esencial.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 31,
+    "symbol": "Ga",
+    "name": "Galio",
+    "atomicMass": 69.723,
+    "category": "pt",
+    "group": 13,
+    "period": 4,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p¹",
+    "electronegativity": 1.81,
+    "meltingPoint": 29.76,
+    "boilingPoint": 2400,
+    "density": 5.91,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Metal post-transición que funde en la mano: su punto de fusión está apenas por encima de los 29 °C. Base de los LED y los semiconductores de alta frecuencia.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 32,
+    "symbol": "Ge",
+    "name": "Germanio",
+    "atomicMass": 72.63,
+    "category": "ml",
+    "group": 14,
+    "period": 4,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p²",
+    "electronegativity": 2.01,
+    "meltingPoint": 938.25,
+    "boilingPoint": 2833,
+    "density": 5.323,
+    "oxidationStates": [
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Metaloide semiconductor. Fue el material de los primeros transistores, antes de que el silicio lo desplazara.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 33,
+    "symbol": "As",
+    "name": "Arsénico",
+    "atomicMass": 74.922,
+    "category": "ml",
+    "group": 15,
+    "period": 4,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p³",
+    "electronegativity": 2.18,
+    "meltingPoint": 817,
+    "boilingPoint": 614,
+    "density": 5.727,
+    "oxidationStates": [
+      -3,
+      3,
+      5
+    ],
+    "state": "solid",
+    "description": "Metaloide históricamente conocido por su toxicidad. Se usa en semiconductores compuestos como el arseniuro de galio.",
+    "hazard": {
+      "icon": "☠️",
+      "label": "Tóxico"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 34,
+    "symbol": "Se",
+    "name": "Selenio",
+    "atomicMass": 78.971,
+    "category": "nm",
+    "group": 16,
+    "period": 4,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁴",
+    "electronegativity": 2.55,
+    "meltingPoint": 221,
+    "boilingPoint": 685,
+    "density": 4.81,
+    "oxidationStates": [
+      -2,
+      4,
+      6
+    ],
+    "state": "solid",
+    "description": "No metal fotoconductor: su conductividad aumenta con la luz. Oligoelemento esencial en dosis muy pequeñas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 35,
+    "symbol": "Br",
+    "name": "Bromo",
+    "atomicMass": 79.904,
+    "category": "hl",
+    "group": 17,
+    "period": 4,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁵",
+    "electronegativity": 2.96,
+    "meltingPoint": -7.2,
+    "boilingPoint": 58.8,
+    "density": 3.1028,
+    "oxidationStates": [
+      -1,
+      1,
+      3,
+      5
+    ],
+    "state": "liquid",
+    "description": "Uno de los dos elementos líquidos a temperatura ambiente. Líquido rojizo, denso, de vapores corrosivos.",
+    "hazard": {
+      "icon": "⚠️",
+      "label": "Corrosivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 36,
+    "symbol": "Kr",
+    "name": "Kriptón",
+    "atomicMass": 83.798,
+    "category": "ng",
+    "group": 18,
+    "period": 4,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶",
+    "electronegativity": 3,
+    "meltingPoint": -157.37,
+    "boilingPoint": -153.415,
+    "density": 3.749,
+    "oxidationStates": [
+      0,
+      2
+    ],
+    "state": "gas",
+    "description": "Gas noble usado en iluminación de alta intensidad. Forma unos pocos compuestos, a diferencia de los gases nobles más livianos.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 37,
+    "symbol": "Rb",
+    "name": "Rubidio",
+    "atomicMass": 85.468,
+    "category": "am",
+    "group": 1,
+    "period": 5,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s¹",
+    "electronegativity": 0.82,
+    "meltingPoint": 39.31,
+    "boilingPoint": 688,
+    "density": 1.532,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Metal alcalino muy reactivo y blando. Se usa en relojes atómicos y en celdas fotoeléctricas.",
+    "hazard": {
+      "icon": "🔥",
+      "label": "Reacciona violentamente con el agua"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 38,
+    "symbol": "Sr",
+    "name": "Estroncio",
+    "atomicMass": 87.62,
+    "category": "ae",
+    "group": 2,
+    "period": 5,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s²",
+    "electronegativity": 0.95,
+    "meltingPoint": 777,
+    "boilingPoint": 1377,
+    "density": 2.64,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal alcalinotérreo que tiñe las llamas de rojo intenso: es el responsable del color rojo de los fuegos artificiales.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 39,
+    "symbol": "Y",
+    "name": "Itrio",
+    "atomicMass": 88.906,
+    "category": "tm",
+    "group": 3,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹",
+    "electronegativity": 1.22,
+    "meltingPoint": 1526,
+    "boilingPoint": 3336,
+    "density": 4.472,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Metal de transición de las tierras raras. Sus compuestos son la base de los fósforos rojos de las pantallas y de superconductores cerámicos.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 40,
+    "symbol": "Zr",
+    "name": "Circonio",
+    "atomicMass": 91.224,
+    "category": "tm",
+    "group": 4,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d²",
+    "electronegativity": 1.33,
+    "meltingPoint": 1855,
+    "boilingPoint": 4409,
+    "density": 6.52,
+    "oxidationStates": [
+      4
+    ],
+    "state": "solid",
+    "description": "Metal de transición muy resistente a la corrosión y transparente a los neutrones, lo que lo hace ideal para revestir combustible nuclear.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 41,
+    "symbol": "Nb",
+    "name": "Niobio",
+    "atomicMass": 92.906,
+    "category": "tm",
+    "group": 5,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s¹ 4d⁴",
+    "electronegativity": 1.6,
+    "meltingPoint": 2477,
+    "boilingPoint": 4744,
+    "density": 8.57,
+    "oxidationStates": [
+      3,
+      5
+    ],
+    "state": "solid",
+    "description": "Metal de transición usado en aleaciones superconductoras para los imanes de resonancia magnética y aceleradores.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 42,
+    "symbol": "Mo",
+    "name": "Molibdeno",
+    "atomicMass": 95.95,
+    "category": "tm",
+    "group": 6,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s¹ 4d⁵",
+    "electronegativity": 2.16,
+    "meltingPoint": 2623,
+    "boilingPoint": 4639,
+    "density": 10.28,
+    "oxidationStates": [
+      4,
+      6
+    ],
+    "state": "solid",
+    "description": "Metal de transición de punto de fusión muy alto. Refuerza aceros de herramienta y es esencial para varias enzimas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 43,
+    "symbol": "Tc",
+    "name": "Tecnecio",
+    "atomicMass": 98,
+    "category": "tm",
+    "group": 7,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d⁵",
+    "electronegativity": 1.9,
+    "meltingPoint": 2157,
+    "boilingPoint": 4265,
+    "density": 11,
+    "oxidationStates": [
+      4,
+      7
+    ],
+    "state": "solid",
+    "description": "Primer elemento obtenido artificialmente y el más liviano sin isótopos estables. Su isótopo 99m es el trazador más usado en medicina nuclear.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 44,
+    "symbol": "Ru",
+    "name": "Rutenio",
+    "atomicMass": 101.07,
+    "category": "tm",
+    "group": 8,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s¹ 4d⁷",
+    "electronegativity": 2.2,
+    "meltingPoint": 2334,
+    "boilingPoint": 4150,
+    "density": 12.45,
+    "oxidationStates": [
+      3,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal del grupo del platino, duro y resistente. Se emplea como catalizador y en contactos eléctricos.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 45,
+    "symbol": "Rh",
+    "name": "Rodio",
+    "atomicMass": 102.91,
+    "category": "tm",
+    "group": 9,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s¹ 4d⁸",
+    "electronegativity": 2.28,
+    "meltingPoint": 1964,
+    "boilingPoint": 3695,
+    "density": 12.41,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Metal del grupo del platino, muy reflectante y raro. Es el componente activo de los catalizadores de los automóviles.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 46,
+    "symbol": "Pd",
+    "name": "Paladio",
+    "atomicMass": 106.42,
+    "category": "tm",
+    "group": 10,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 4d¹⁰",
+    "electronegativity": 2.2,
+    "meltingPoint": 1554.9,
+    "boilingPoint": 2963,
+    "density": 12.023,
+    "oxidationStates": [
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal del grupo del platino capaz de absorber grandes volúmenes de hidrógeno. Catalizador central en química fina.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 47,
+    "symbol": "Ag",
+    "name": "Plata",
+    "atomicMass": 107.87,
+    "category": "tm",
+    "group": 11,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s¹ 4d¹⁰",
+    "electronegativity": 1.93,
+    "meltingPoint": 961.78,
+    "boilingPoint": 2162,
+    "density": 10.49,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "El mejor conductor eléctrico y térmico de todos los elementos. Sus sales son sensibles a la luz: fue la base de la fotografía química.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 48,
+    "symbol": "Cd",
+    "name": "Cadmio",
+    "atomicMass": 112.41,
+    "category": "tm",
+    "group": 12,
+    "period": 5,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰",
+    "electronegativity": 1.69,
+    "meltingPoint": 321.07,
+    "boilingPoint": 767,
+    "density": 8.65,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal blando y tóxico, usado históricamente en baterías y pigmentos amarillos. Su uso está hoy fuertemente restringido.",
+    "hazard": {
+      "icon": "☠️",
+      "label": "Tóxico"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 49,
+    "symbol": "In",
+    "name": "Indio",
+    "atomicMass": 114.82,
+    "category": "pt",
+    "group": 13,
+    "period": 5,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p¹",
+    "electronegativity": 1.78,
+    "meltingPoint": 156.6,
+    "boilingPoint": 2072,
+    "density": 7.31,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Metal post-transición blando. Su óxido con estaño forma el electrodo transparente de las pantallas táctiles.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 50,
+    "symbol": "Sn",
+    "name": "Estaño",
+    "atomicMass": 118.71,
+    "category": "pt",
+    "group": 14,
+    "period": 5,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p²",
+    "electronegativity": 1.96,
+    "meltingPoint": 231.93,
+    "boilingPoint": 2602,
+    "density": 7.31,
+    "oxidationStates": [
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal conocido desde la antigüedad: aleado con cobre forma el bronce. Se usa en soldaduras y en el recubrimiento de latas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 51,
+    "symbol": "Sb",
+    "name": "Antimonio",
+    "atomicMass": 121.76,
+    "category": "ml",
+    "group": 15,
+    "period": 5,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p³",
+    "electronegativity": 2.05,
+    "meltingPoint": 630.63,
+    "boilingPoint": 1587,
+    "density": 6.697,
+    "oxidationStates": [
+      -3,
+      3,
+      5
+    ],
+    "state": "solid",
+    "description": "Metaloide usado como retardante de llama y en aleaciones de plomo para endurecerlas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 52,
+    "symbol": "Te",
+    "name": "Telurio",
+    "atomicMass": 127.6,
+    "category": "ml",
+    "group": 16,
+    "period": 5,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁴",
+    "electronegativity": 2.1,
+    "meltingPoint": 449.51,
+    "boilingPoint": 988,
+    "density": 6.24,
+    "oxidationStates": [
+      -2,
+      4,
+      6
+    ],
+    "state": "solid",
+    "description": "Metaloide raro y quebradizo. Se emplea en aleaciones y en celdas solares de teluro de cadmio.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 53,
+    "symbol": "I",
+    "name": "Yodo",
+    "atomicMass": 126.9,
+    "category": "hl",
+    "group": 17,
+    "period": 5,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁵",
+    "electronegativity": 2.66,
+    "meltingPoint": 113.7,
+    "boilingPoint": 184.3,
+    "density": 4.933,
+    "oxidationStates": [
+      -1,
+      1,
+      5,
+      7
+    ],
+    "state": "solid",
+    "description": "Halógeno sólido violeta que sublima con facilidad. Es esencial para la síntesis de las hormonas tiroideas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 54,
+    "symbol": "Xe",
+    "name": "Xenón",
+    "atomicMass": 131.29,
+    "category": "ng",
+    "group": 18,
+    "period": 5,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶",
+    "electronegativity": 2.6,
+    "meltingPoint": -111.75,
+    "boilingPoint": -108.099,
+    "density": 5.894,
+    "oxidationStates": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "state": "gas",
+    "description": "Gas noble pesado. Forma compuestos estables con flúor y se usa en lámparas de destello y como anestésico.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 55,
+    "symbol": "Cs",
+    "name": "Cesio",
+    "atomicMass": 132.91,
+    "category": "am",
+    "group": 1,
+    "period": 6,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s¹",
+    "electronegativity": 0.79,
+    "meltingPoint": 28.44,
+    "boilingPoint": 671,
+    "density": 1.93,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Metal alcalino de color dorado, el más electropositivo de los estables. Define el segundo del Sistema Internacional mediante el reloj atómico.",
+    "hazard": {
+      "icon": "🔥",
+      "label": "Reacciona violentamente con el agua"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 56,
+    "symbol": "Ba",
+    "name": "Bario",
+    "atomicMass": 137.33,
+    "category": "ae",
+    "group": 2,
+    "period": 6,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s²",
+    "electronegativity": 0.89,
+    "meltingPoint": 727,
+    "boilingPoint": 1845,
+    "density": 3.51,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal alcalinotérreo denso. Su sulfato, insoluble, se usa como contraste en radiografías digestivas.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 57,
+    "symbol": "La",
+    "name": "Lantano",
+    "atomicMass": 138.91,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 5d¹",
+    "electronegativity": 1.1,
+    "meltingPoint": 920,
+    "boilingPoint": 3464,
+    "density": 6.162,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 58,
+    "symbol": "Ce",
+    "name": "Cerio",
+    "atomicMass": 140.12,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹ 5d¹",
+    "electronegativity": 1.12,
+    "meltingPoint": 795,
+    "boilingPoint": 3443,
+    "density": 6.77,
+    "oxidationStates": [
+      3,
+      4
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 59,
+    "symbol": "Pr",
+    "name": "Praseodimio",
+    "atomicMass": 140.91,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f³",
+    "electronegativity": 1.13,
+    "meltingPoint": 935,
+    "boilingPoint": 3520,
+    "density": 6.77,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 60,
+    "symbol": "Nd",
+    "name": "Neodimio",
+    "atomicMass": 144.24,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f⁴",
+    "electronegativity": 1.14,
+    "meltingPoint": 1024,
+    "boilingPoint": 3074,
+    "density": 7.01,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 61,
+    "symbol": "Pm",
+    "name": "Prometio",
+    "atomicMass": 145,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f⁵",
+    "electronegativity": 1.13,
+    "meltingPoint": 1042,
+    "boilingPoint": 3000,
+    "density": 7.26,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 62,
+    "symbol": "Sm",
+    "name": "Samario",
+    "atomicMass": 150.36,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f⁶",
+    "electronegativity": 1.17,
+    "meltingPoint": 1072,
+    "boilingPoint": 1900,
+    "density": 7.52,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 63,
+    "symbol": "Eu",
+    "name": "Europio",
+    "atomicMass": 151.96,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f⁷",
+    "electronegativity": 1.2,
+    "meltingPoint": 822,
+    "boilingPoint": 1529,
+    "density": 5.264,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 64,
+    "symbol": "Gd",
+    "name": "Gadolinio",
+    "atomicMass": 157.25,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f⁷ 5d¹",
+    "electronegativity": 1.2,
+    "meltingPoint": 1313,
+    "boilingPoint": 3273,
+    "density": 7.9,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 65,
+    "symbol": "Tb",
+    "name": "Terbio",
+    "atomicMass": 158.93,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f⁹",
+    "electronegativity": 1.1,
+    "meltingPoint": 1356,
+    "boilingPoint": 3230,
+    "density": 8.23,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 66,
+    "symbol": "Dy",
+    "name": "Disprosio",
+    "atomicMass": 162.5,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁰",
+    "electronegativity": 1.22,
+    "meltingPoint": 1412,
+    "boilingPoint": 2567,
+    "density": 8.54,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 67,
+    "symbol": "Ho",
+    "name": "Holmio",
+    "atomicMass": 164.93,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹¹",
+    "electronegativity": 1.23,
+    "meltingPoint": 1474,
+    "boilingPoint": 2700,
+    "density": 8.79,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 68,
+    "symbol": "Er",
+    "name": "Erbio",
+    "atomicMass": 167.26,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹²",
+    "electronegativity": 1.24,
+    "meltingPoint": 1529,
+    "boilingPoint": 2868,
+    "density": 9.066,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 69,
+    "symbol": "Tm",
+    "name": "Tulio",
+    "atomicMass": 168.93,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹³",
+    "electronegativity": 1.25,
+    "meltingPoint": 1545,
+    "boilingPoint": 1950,
+    "density": 9.32,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 70,
+    "symbol": "Yb",
+    "name": "Iterbio",
+    "atomicMass": 173.05,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴",
+    "electronegativity": 1.1,
+    "meltingPoint": 819,
+    "boilingPoint": 1196,
+    "density": 6.9,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 71,
+    "symbol": "Lu",
+    "name": "Lutecio",
+    "atomicMass": 174.97,
+    "category": "ln",
+    "group": null,
+    "period": 6,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹",
+    "electronegativity": 1.27,
+    "meltingPoint": 1663,
+    "boilingPoint": 3402,
+    "density": 9.841,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Lantánido del período 6. Metal plateado y reactivo que se oxida al contacto con el aire; se obtiene de minerales de tierras raras junto a sus vecinos de serie.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 72,
+    "symbol": "Hf",
+    "name": "Hafnio",
+    "atomicMass": 178.49,
+    "category": "tm",
+    "group": 4,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d²",
+    "electronegativity": 1.3,
+    "meltingPoint": 2233,
+    "boilingPoint": 4603,
+    "density": 13.31,
+    "oxidationStates": [
+      4
+    ],
+    "state": "solid",
+    "description": "Metal de transición muy absorbente de neutrones. Se usa en barras de control de reactores nucleares.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 73,
+    "symbol": "Ta",
+    "name": "Tantalio",
+    "atomicMass": 180.95,
+    "category": "tm",
+    "group": 5,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d³",
+    "electronegativity": 1.5,
+    "meltingPoint": 3017,
+    "boilingPoint": 5458,
+    "density": 16.69,
+    "oxidationStates": [
+      5
+    ],
+    "state": "solid",
+    "description": "Metal de transición muy resistente a la corrosión y biocompatible. Base de los condensadores de la electrónica compacta.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 74,
+    "symbol": "W",
+    "name": "Wolframio",
+    "atomicMass": 183.84,
+    "category": "tm",
+    "group": 6,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d⁴",
+    "electronegativity": 2.36,
+    "meltingPoint": 3422,
+    "boilingPoint": 5555,
+    "density": 19.25,
+    "oxidationStates": [
+      4,
+      6
+    ],
+    "state": "solid",
+    "description": "El metal con el punto de fusión más alto de todos. Fue el filamento de las lámparas incandescentes y es la base del carburo de tungsteno.",
+    "hazard": null,
+    "glossary": "Su punto de fusión de 3422 °C es el más alto de todos los metales. Los enlaces metálicos del wolframio son tan fuertes que hace falta esa temperatura para separarlos, y por eso fue el filamento de las lámparas."
+  },
+  {
+    "atomicNumber": 75,
+    "symbol": "Re",
+    "name": "Renio",
+    "atomicMass": 186.21,
+    "category": "tm",
+    "group": 7,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d⁵",
+    "electronegativity": 1.9,
+    "meltingPoint": 3186,
+    "boilingPoint": 5596,
+    "density": 21.02,
+    "oxidationStates": [
+      4,
+      7
+    ],
+    "state": "solid",
+    "description": "Uno de los elementos más raros de la corteza. Sus superaleaciones soportan las temperaturas de las turbinas de avión.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 76,
+    "symbol": "Os",
+    "name": "Osmio",
+    "atomicMass": 190.23,
+    "category": "tm",
+    "group": 8,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d⁶",
+    "electronegativity": 2.2,
+    "meltingPoint": 3033,
+    "boilingPoint": 5012,
+    "density": 22.59,
+    "oxidationStates": [
+      3,
+      4
+    ],
+    "state": "solid",
+    "description": "El elemento más denso conocido. Muy duro y quebradizo, se usa en puntas de instrumentos de precisión.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 77,
+    "symbol": "Ir",
+    "name": "Iridio",
+    "atomicMass": 192.22,
+    "category": "tm",
+    "group": 9,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d⁷",
+    "electronegativity": 2.2,
+    "meltingPoint": 2466,
+    "boilingPoint": 4428,
+    "density": 22.56,
+    "oxidationStates": [
+      3,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal extremadamente resistente a la corrosión. Su anomalía en el registro geológico marca el impacto que extinguió a los dinosaurios.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 78,
+    "symbol": "Pt",
+    "name": "Platino",
+    "atomicMass": 195.08,
+    "category": "tm",
+    "group": 10,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s¹ 4f¹⁴ 5d⁹",
+    "electronegativity": 2.28,
+    "meltingPoint": 1768.3,
+    "boilingPoint": 3825,
+    "density": 21.45,
+    "oxidationStates": [
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal noble, catalizador industrial de primera línea y material de joyería. No se oxida al aire a ninguna temperatura.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 79,
+    "symbol": "Au",
+    "name": "Oro",
+    "atomicMass": 196.97,
+    "category": "tm",
+    "group": 11,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s¹ 4f¹⁴ 5d¹⁰",
+    "electronegativity": 2.54,
+    "meltingPoint": 1064.18,
+    "boilingPoint": 2856,
+    "density": 19.3,
+    "oxidationStates": [
+      1,
+      3
+    ],
+    "state": "solid",
+    "description": "Metal noble por excelencia: no se oxida ni se corroe. Excelente conductor, se usa en contactos electrónicos críticos.",
+    "hazard": null,
+    "glossary": "Que el oro no se oxide no es casualidad: su electronegatividad de 2.54 es altísima para un metal, así que retiene sus propios electrones en lugar de cederlos al oxígeno del aire."
+  },
+  {
+    "atomicNumber": 80,
+    "symbol": "Hg",
+    "name": "Mercurio",
+    "atomicMass": 200.59,
+    "category": "tm",
+    "group": 12,
+    "period": 6,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰",
+    "electronegativity": 2,
+    "meltingPoint": -38.83,
+    "boilingPoint": 356.73,
+    "density": 13.534,
+    "oxidationStates": [
+      1,
+      2
+    ],
+    "state": "liquid",
+    "description": "El único metal líquido a temperatura ambiente. Muy tóxico por inhalación de sus vapores y por bioacumulación.",
+    "hazard": {
+      "icon": "☠️",
+      "label": "Tóxico"
+    },
+    "glossary": "Un metal líquido a temperatura ambiente es una anomalía: sus átomos se atraen entre sí con una fuerza inusualmente débil, y por eso funde a −38.83 °C mientras el resto de los metales lo hace por encima de los cero grados."
+  },
+  {
+    "atomicNumber": 81,
+    "symbol": "Tl",
+    "name": "Talio",
+    "atomicMass": 204.38,
+    "category": "pt",
+    "group": 13,
+    "period": 6,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p¹",
+    "electronegativity": 1.62,
+    "meltingPoint": 304,
+    "boilingPoint": 1473,
+    "density": 11.85,
+    "oxidationStates": [
+      1,
+      3
+    ],
+    "state": "solid",
+    "description": "Metal post-transición blando y altamente tóxico. Sus usos están hoy limitados a detectores de infrarrojos.",
+    "hazard": {
+      "icon": "☠️",
+      "label": "Tóxico"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 82,
+    "symbol": "Pb",
+    "name": "Plomo",
+    "atomicMass": 207.2,
+    "category": "pt",
+    "group": 14,
+    "period": 6,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p²",
+    "electronegativity": 2.33,
+    "meltingPoint": 327.46,
+    "boilingPoint": 1749,
+    "density": 11.34,
+    "oxidationStates": [
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal denso y blando, conocido desde la antigüedad. Su toxicidad acumulativa llevó a retirarlo de pinturas y combustibles.",
+    "hazard": {
+      "icon": "☠️",
+      "label": "Tóxico"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 83,
+    "symbol": "Bi",
+    "name": "Bismuto",
+    "atomicMass": 208.98,
+    "category": "pt",
+    "group": 15,
+    "period": 6,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p³",
+    "electronegativity": 2.02,
+    "meltingPoint": 271.4,
+    "boilingPoint": 1564,
+    "density": 9.78,
+    "oxidationStates": [
+      3,
+      5
+    ],
+    "state": "solid",
+    "description": "Metal post-transición de baja toxicidad, inusual entre los metales pesados. Forma cristales de colores iridiscentes.",
+    "hazard": null,
+    "glossary": null
+  },
+  {
+    "atomicNumber": 84,
+    "symbol": "Po",
+    "name": "Polonio",
+    "atomicMass": 209,
+    "category": "pt",
+    "group": 16,
+    "period": 6,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁴",
+    "electronegativity": 2,
+    "meltingPoint": 254,
+    "boilingPoint": 962,
+    "density": 9.2,
+    "oxidationStates": [
+      2,
+      4
+    ],
+    "state": "solid",
+    "description": "Metal radiactivo extremadamente raro, descubierto por Marie Curie. Emite partículas alfa con enorme intensidad.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 85,
+    "symbol": "At",
+    "name": "Astato",
+    "atomicMass": 210,
+    "category": "hl",
+    "group": 17,
+    "period": 6,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁵",
+    "electronegativity": 2.2,
+    "meltingPoint": 302,
+    "boilingPoint": 337,
+    "density": null,
+    "oxidationStates": [
+      -1,
+      1
+    ],
+    "state": "solid",
+    "description": "Halógeno radiactivo, el elemento natural más escaso de la corteza terrestre. Se estudia para radioterapia dirigida.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 86,
+    "symbol": "Rn",
+    "name": "Radón",
+    "atomicMass": 222,
+    "category": "ng",
+    "group": 18,
+    "period": 6,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶",
+    "electronegativity": 2.2,
+    "meltingPoint": -71,
+    "boilingPoint": -61.7,
+    "density": 9.73,
+    "oxidationStates": [
+      0,
+      2
+    ],
+    "state": "gas",
+    "description": "Gas noble radiactivo producido por la desintegración del radio. Se acumula en sótanos y es un riesgo sanitario conocido.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 87,
+    "symbol": "Fr",
+    "name": "Francio",
+    "atomicMass": 223,
+    "category": "am",
+    "group": 1,
+    "period": 7,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s¹",
+    "electronegativity": 0.7,
+    "meltingPoint": 27,
+    "boilingPoint": 677,
+    "density": null,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Metal alcalino radiactivo, el más inestable de los elementos naturales. Nunca se ha aislado una muestra visible.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 88,
+    "symbol": "Ra",
+    "name": "Radio",
+    "atomicMass": 226,
+    "category": "ae",
+    "group": 2,
+    "period": 7,
+    "block": "s",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s²",
+    "electronegativity": 0.9,
+    "meltingPoint": 700,
+    "boilingPoint": 1737,
+    "density": 5.5,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Metal alcalinotérreo radiactivo descubierto por Marie y Pierre Curie. Su luminiscencia lo hizo popular antes de conocerse sus riesgos.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 89,
+    "symbol": "Ac",
+    "name": "Actinio",
+    "atomicMass": 227,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 6d¹",
+    "electronegativity": 1.1,
+    "meltingPoint": 1050,
+    "boilingPoint": 3200,
+    "density": 10.07,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El actinio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 90,
+    "symbol": "Th",
+    "name": "Torio",
+    "atomicMass": 232.04,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 6d²",
+    "electronegativity": 1.3,
+    "meltingPoint": 1750,
+    "boilingPoint": 4788,
+    "density": 11.72,
+    "oxidationStates": [
+      4
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo relativamente abundante. Se investiga como combustible nuclear alternativo al uranio.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 91,
+    "symbol": "Pa",
+    "name": "Protactinio",
+    "atomicMass": 231.04,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f² 6d¹",
+    "electronegativity": 1.5,
+    "meltingPoint": 1568,
+    "boilingPoint": 4027,
+    "density": 15.37,
+    "oxidationStates": [
+      4,
+      5
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo muy escaso, intermedio en la cadena de desintegración del uranio.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 92,
+    "symbol": "U",
+    "name": "Uranio",
+    "atomicMass": 238.03,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f³ 6d¹",
+    "electronegativity": 1.38,
+    "meltingPoint": 1132.2,
+    "boilingPoint": 4131,
+    "density": 19.1,
+    "oxidationStates": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo y el elemento natural más pesado en cantidad apreciable. Combustible de los reactores nucleares.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 93,
+    "symbol": "Np",
+    "name": "Neptunio",
+    "atomicMass": 237,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f⁴ 6d¹",
+    "electronegativity": 1.36,
+    "meltingPoint": 644,
+    "boilingPoint": 3902,
+    "density": 20.45,
+    "oxidationStates": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "state": "solid",
+    "description": "Primer elemento transuránico obtenido. Se forma en los reactores nucleares a partir del uranio.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 94,
+    "symbol": "Pu",
+    "name": "Plutonio",
+    "atomicMass": 244,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f⁶",
+    "electronegativity": 1.28,
+    "meltingPoint": 639.4,
+    "boilingPoint": 3228,
+    "density": 19.85,
+    "oxidationStates": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "state": "solid",
+    "description": "Actínido sintético usado como combustible nuclear y en fuentes de energía de sondas espaciales.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 95,
+    "symbol": "Am",
+    "name": "Americio",
+    "atomicMass": 243,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f⁷",
+    "electronegativity": 1.13,
+    "meltingPoint": 1176,
+    "boilingPoint": 2011,
+    "density": 12,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El americio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 96,
+    "symbol": "Cm",
+    "name": "Curio",
+    "atomicMass": 247,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f⁷ 6d¹",
+    "electronegativity": 1.28,
+    "meltingPoint": 1345,
+    "boilingPoint": 3110,
+    "density": 13.51,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El curio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 97,
+    "symbol": "Bk",
+    "name": "Berkelio",
+    "atomicMass": 247,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f⁹",
+    "electronegativity": 1.3,
+    "meltingPoint": 1050,
+    "boilingPoint": 2900,
+    "density": 14.78,
+    "oxidationStates": [
+      3,
+      4
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El berkelio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 98,
+    "symbol": "Cf",
+    "name": "Californio",
+    "atomicMass": 251,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁰",
+    "electronegativity": 1.3,
+    "meltingPoint": 900,
+    "boilingPoint": 1470,
+    "density": 15.1,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El californio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 99,
+    "symbol": "Es",
+    "name": "Einstenio",
+    "atomicMass": 252,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹¹",
+    "electronegativity": 1.3,
+    "meltingPoint": 860,
+    "boilingPoint": 996,
+    "density": 8.84,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El einstenio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 100,
+    "symbol": "Fm",
+    "name": "Fermio",
+    "atomicMass": 257,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹²",
+    "electronegativity": 1.3,
+    "meltingPoint": 1527,
+    "boilingPoint": null,
+    "density": null,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El fermio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 101,
+    "symbol": "Md",
+    "name": "Mendelevio",
+    "atomicMass": 258,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹³",
+    "electronegativity": 1.3,
+    "meltingPoint": 827,
+    "boilingPoint": null,
+    "density": null,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El mendelevio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 102,
+    "symbol": "No",
+    "name": "Nobelio",
+    "atomicMass": 259,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴",
+    "electronegativity": 1.3,
+    "meltingPoint": 827,
+    "boilingPoint": null,
+    "density": null,
+    "oxidationStates": [
+      2,
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El nobelio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 103,
+    "symbol": "Lr",
+    "name": "Lawrencio",
+    "atomicMass": 266,
+    "category": "ac",
+    "group": null,
+    "period": 7,
+    "block": "f",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 7p¹",
+    "electronegativity": 1.3,
+    "meltingPoint": 1627,
+    "boilingPoint": null,
+    "density": null,
+    "oxidationStates": [
+      3
+    ],
+    "state": "solid",
+    "description": "Actínido radiactivo del período 7. El lawrencio se produce artificialmente y solo se ha obtenido en cantidades muy pequeñas.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 104,
+    "symbol": "Rf",
+    "name": "Rutherfordio",
+    "atomicMass": 267,
+    "category": "tm",
+    "group": 4,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d²",
+    "electronegativity": null,
+    "meltingPoint": 2100,
+    "boilingPoint": 5500,
+    "density": 17,
+    "oxidationStates": [
+      4
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 105,
+    "symbol": "Db",
+    "name": "Dubnio",
+    "atomicMass": 268,
+    "category": "tm",
+    "group": 5,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d³",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 21.6,
+    "oxidationStates": [
+      5
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 106,
+    "symbol": "Sg",
+    "name": "Seaborgio",
+    "atomicMass": 269,
+    "category": "tm",
+    "group": 6,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d⁴",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 23.2,
+    "oxidationStates": [
+      6
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 107,
+    "symbol": "Bh",
+    "name": "Bohrio",
+    "atomicMass": 270,
+    "category": "tm",
+    "group": 7,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d⁵",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 26.2,
+    "oxidationStates": [
+      7
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 108,
+    "symbol": "Hs",
+    "name": "Hasio",
+    "atomicMass": 269,
+    "category": "tm",
+    "group": 8,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d⁶",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 27.4,
+    "oxidationStates": [
+      8
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 109,
+    "symbol": "Mt",
+    "name": "Meitnerio",
+    "atomicMass": 278,
+    "category": "tm",
+    "group": 9,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d⁷",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 27.5,
+    "oxidationStates": [],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 110,
+    "symbol": "Ds",
+    "name": "Darmstadtio",
+    "atomicMass": 281,
+    "category": "tm",
+    "group": 10,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d⁸",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 26.5,
+    "oxidationStates": [],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 111,
+    "symbol": "Rg",
+    "name": "Roentgenio",
+    "atomicMass": 282,
+    "category": "tm",
+    "group": 11,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d⁹",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 23,
+    "oxidationStates": [],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 112,
+    "symbol": "Cn",
+    "name": "Copernicio",
+    "atomicMass": 285,
+    "category": "tm",
+    "group": 12,
+    "period": 7,
+    "block": "d",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 14,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 113,
+    "symbol": "Nh",
+    "name": "Nihonio",
+    "atomicMass": 286,
+    "category": "pt",
+    "group": 13,
+    "period": 7,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰ 7p¹",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 16,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 114,
+    "symbol": "Fl",
+    "name": "Flerovio",
+    "atomicMass": 289,
+    "category": "pt",
+    "group": 14,
+    "period": 7,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰ 7p²",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 14,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 115,
+    "symbol": "Mc",
+    "name": "Moscovio",
+    "atomicMass": 290,
+    "category": "pt",
+    "group": 15,
+    "period": 7,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰ 7p³",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 13.5,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 116,
+    "symbol": "Lv",
+    "name": "Livermorio",
+    "atomicMass": 293,
+    "category": "pt",
+    "group": 16,
+    "period": 7,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰ 7p⁴",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 12.9,
+    "oxidationStates": [
+      2
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 117,
+    "symbol": "Ts",
+    "name": "Teneso",
+    "atomicMass": 294,
+    "category": "hl",
+    "group": 17,
+    "period": 7,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰ 7p⁵",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 7.2,
+    "oxidationStates": [
+      1
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  },
+  {
+    "atomicNumber": 118,
+    "symbol": "Og",
+    "name": "Oganesón",
+    "atomicMass": 294,
+    "category": "ng",
+    "group": 18,
+    "period": 7,
+    "block": "p",
+    "electronConfiguration": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p⁶ 5s² 4d¹⁰ 5p⁶ 6s² 4f¹⁴ 5d¹⁰ 6p⁶ 7s² 5f¹⁴ 6d¹⁰ 7p⁶",
+    "electronegativity": null,
+    "meltingPoint": null,
+    "boilingPoint": null,
+    "density": 5,
+    "oxidationStates": [
+      0
+    ],
+    "state": "solid",
+    "description": "Elemento sintético y radiactivo del período 7, producido en aceleradores de partículas átomo por átomo. Sus propiedades químicas se conocen solo por predicción.",
+    "hazard": {
+      "icon": "☢️",
+      "label": "Radiactivo"
+    },
+    "glossary": null
+  }
+]
