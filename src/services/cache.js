@@ -110,8 +110,8 @@ export function clear() {
  */
 
 /**
- * Resuelve la informacion externa de un compuesto implementando el diagrama de
- * flujo de SPEC 09 §4:
+ * Resuelve la informacion externa de una clave de Hill implementando el
+ * diagrama de flujo de SPEC 09 §4:
  *
  *   ¿en caché y vigente?  → usar caché, sin pantalla de loading
  *   ¿sin conexion?        → servir caché vencida avisando la fecha, o error
@@ -126,14 +126,14 @@ export function clear() {
  * es el caso mas comun, sin cobrarle un toque al usuario, y deja la peor espera
  * en 16 segundos y no en 24. Los reintentos siguientes son manuales.
  *
- * @param {object} compound            Entrada de compounds.json
+ * @param {string} key                     Clave canonica de Hill
  * @param {object} [options]
  * @param {number} [options.attemptsUsed]  Intentos ya consumidos en esta pantalla
  * @param {boolean} [options.skipCache]    Fuerza la consulta de red (boton Reintentar)
  * @returns {Promise<CompoundInfoResult>}
  */
-export async function resolveCompoundInfo(compound, { attemptsUsed = 0, skipCache = false } = {}) {
-  const cached = peek(compound.key);
+export async function resolveCompoundInfo(key, { attemptsUsed = 0, skipCache = false } = {}) {
+  const cached = peek(key);
 
   if (!skipCache && cached && !cached.expired) {
     return {
@@ -172,12 +172,12 @@ export async function resolveCompoundInfo(compound, { attemptsUsed = 0, skipCach
   for (let i = 0; i < maxThisCall; i += 1) {
     attempts += 1;
     try {
-      const request = inFlight.get(compound.key) ?? fetchCompoundInfo(compound.query);
-      inFlight.set(compound.key, request);
+      const request = inFlight.get(key) ?? fetchCompoundInfo(key);
+      inFlight.set(key, request);
 
-      const data = await request.finally(() => inFlight.delete(compound.key));
+      const data = await request.finally(() => inFlight.delete(key));
 
-      put(compound.key, data);
+      put(key, data);
       return {
         status: 'ok',
         data,
@@ -188,6 +188,18 @@ export async function resolveCompoundInfo(compound, { attemptsUsed = 0, skipCach
       };
     } catch (error) {
       lastError = error instanceof ApiError ? error : new ApiError('data');
+      // `not-found` es una respuesta, no una falla: PubChem contesto que no
+      // tiene esa formula. No se reintenta y no se sirve caché vencida.
+      if (lastError.type === 'not-found') {
+        return {
+          status: 'error',
+          data: null,
+          storedAt: null,
+          fromCache: false,
+          error: lastError,
+          attemptsUsed: attempts,
+        };
+      }
       if (!shouldAutoRetry(lastError)) break;
     }
   }

@@ -26,7 +26,13 @@ import ErrorState from './ErrorState.vue';
 import SkeletonBlock from './SkeletonBlock.vue';
 
 const props = defineProps({
+  /** Identidad unificada: { key, formula, name, description, inDataset }. */
   compound: { type: Object, required: true },
+  /**
+   * Dato externo ya resuelto. Cuando llega, no se vuelve a consultar: la
+   * identificación de la mezcla ya trajo esto de PubChem.
+   */
+  external: { type: Object, default: null },
 });
 
 const loading = ref(false);
@@ -48,7 +54,7 @@ async function load(skipCache = false) {
   staleSince.value = null;
   imageFailed.value = false;
 
-  const result = await resolveCompoundInfo(props.compound, {
+  const result = await resolveCompoundInfo(props.compound.key, {
     attemptsUsed: attemptsUsed.value,
     skipCache,
   });
@@ -64,9 +70,16 @@ async function load(skipCache = false) {
 
 // El contador de intentos se reinicia al cambiar de compuesto (SPEC 09 §3).
 watch(
-  () => props.compound.key,
+  [() => props.compound.key, () => props.external],
   () => {
     attemptsUsed.value = 0;
+    if (props.external) {
+      // Ya resuelto por la identificación: no se repite la consulta.
+      data.value = props.external;
+      error.value = null;
+      loading.value = false;
+      return;
+    }
     data.value = null;
     load();
   },
@@ -152,10 +165,21 @@ function formatDate(timestamp) {
     </section>
 
     <!-- Dato interno de ChemLab. Sin atribución: es contenido propio. -->
-    <section class="info__internal" aria-labelledby="description-heading">
+    <section v-if="compound.description" class="info__internal" aria-labelledby="description-heading">
       <h3 id="description-heading" class="info__source">Descripción</h3>
       <p>{{ compound.description }}</p>
     </section>
+
+    <!--
+      Compuesto que PubChem conoce y ChemLab no. No se inventa una descripción
+      ni se traduce el nombre: se dice de dónde salió y se deja claro que no
+      cuenta para el progreso, cuyo denominador es el tamaño del dataset.
+    -->
+    <p v-else-if="compound.inDataset === false" class="info__foreign">
+      Este compuesto no forma parte del set de ChemLab: lo identificamos
+      consultando PubChem, así que su nombre viene en inglés y no tiene
+      descripción propia. Tampoco suma al contador de descubrimientos.
+    </p>
   </article>
 </template>
 
@@ -222,6 +246,14 @@ function formatDate(timestamp) {
   margin-top: var(--sp-2);
   color: var(--text-muted);
   font-size: var(--fs-1);
+}
+
+.info__foreign {
+  padding: var(--sp-3);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+  color: var(--text-3);
+  font-size: var(--fs-2);
 }
 
 .info__no-image {

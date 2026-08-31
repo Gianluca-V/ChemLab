@@ -33,7 +33,13 @@ let resolvedSmilesProperty = null;
 /**
  * Error de la capa de API, con su tipo clasificado — SPEC 09 §3.
  *
- * `offline` · `timeout` · `network` · `http` · `data`
+ * `offline` · `timeout` · `network` · `http` · `data` · `not-found`
+ *
+ * `not-found` se suma a la taxonomía de la SPEC: PubChem responde 404 con
+ * `PUGREST.NotFound` cuando ninguna sustancia tiene esa fórmula. NO es una
+ * falla: es una respuesta. Se distingue de `http` porque no habilita reintento
+ * —la respuesta no va a cambiar— y porque no debe disparar el respaldo local
+ * por falta de red, que es otra situación.
  */
 export class ApiError extends Error {
   /**
@@ -66,6 +72,8 @@ export function errorMessage(error) {
       return 'No pudimos conectarnos con la fuente de información química.';
     case 'http':
       return `PubChem respondió con un error (código ${error.status}).`;
+    case 'not-found':
+      return 'PubChem no tiene ninguna sustancia con esa fórmula.';
     case 'data':
     default:
       return 'La información ampliada no está disponible actualmente.';
@@ -124,12 +132,25 @@ async function get(url) {
  * Valida la forma de la respuesta y la normaliza al contrato de salida. Campos
  * ausentes se devuelven como null: no se inventan valores (SPEC 02 §1).
  *
+ * La búsqueda por fórmula devuelve TODAS las sustancias con esa composición:
+ * isómeros, isotopólogos e iones. Para O3 llegan Ozono, Trioxirano y el ion
+ * O3-. Se descartan las filas cuya MolecularFormula no coincide exactamente
+ * con lo pedido —así se van los iones— y se toma la primera de las que quedan,
+ * que es la de CID más bajo y en la práctica la sustancia canónica.
+ *
  * @param {unknown} payload
  * @param {string} smilesProperty
- * @returns {{cid: number, molecularMass: number|null, smiles: string|null, inchiKey: string|null, imageUrl: string}}
+ * @param {string} [expectedFormula]
+ * @returns {{cid: number, molecularMass: number|null, smiles: string|null, inchiKey: string|null, title: string|null, imageUrl: string}}
  */
-function normalize(payload, smilesProperty) {
-  const row = payload?.PropertyTable?.Properties?.[0];
+function normalize(payload, smilesProperty, expectedFormula = null) {
+  const rows = payload?.PropertyTable?.Properties;
+  if (!Array.isArray(rows) || rows.length === 0) throw new ApiError('data');
+
+  const exact = expectedFormula
+    ? rows.filter((r) => r.MolecularFormula === expectedFormula)
+    : rows;
+  const row = exact[0] ?? rows[0];
   if (!row) throw new ApiError('data');
 
   const cid = Number(row.CID);
@@ -151,19 +172,29 @@ function normalize(payload, smilesProperty) {
     molecularMass: Number.isFinite(mass) ? mass : null,
     smiles,
     inchiKey: asText(row.InChIKey),
+    /** Nombre en inglés que da PubChem. Es dato EXTERNO (SPEC 02 §4). */
+    title: asText(row.Title),
+    formula: asText(row.MolecularFormula),
     imageUrl: structureImageUrl(cid),
   };
 }
 
 /**
- * Un unico intento de enriquecimiento externo. La politica de reintentos vive
- * en cache.js, que es quien conoce el estado de la caché.
+ * Un unico intento de identificacion contra PubChem, POR FORMULA.
  *
- * @param {string} query  Termino de busqueda en ingles (SPEC 09 §2)
- * @returns {Promise<{cid: number, molecularMass: number|null, smiles: string|null, inchiKey: string|null, imageUrl: string}>}
+ * Se consulta con la clave canonica de Hill tal cual: PubChem usa la misma
+ * notacion para MolecularFormula, asi que `ClNa` resuelve a Sodium Chloride sin
+ * ninguna traduccion intermedia. Es lo que permite identificar composiciones
+ * que no estan en compounds.json.
+ *
+ * La politica de reintentos vive en cache.js, que es quien conoce el estado de
+ * la caché.
+ *
+ * @param {string} hillKey  Clave canonica de Hill de la composicion
+ * @returns {Promise<{cid: number, molecularMass: number|null, smiles: string|null, inchiKey: string|null, title: string|null, formula: string|null, imageUrl: string}>}
  * @throws {ApiError}
  */
-export async function fetchCompoundInfo(query) {
+export async function fetchCompoundInfo(hillKey) {
   // Cortocircuito por navigator.onLine: sin conexion no se gasta un timeout.
   if (typeof navigator !== 'undefined' && navigator.onLine === false) {
     throw new ApiError('offline');
@@ -176,10 +207,22 @@ export async function fetchCompoundInfo(query) {
   let lastError = null;
 
   for (const smilesProperty of candidates) {
-    const properties = ['MolecularFormula', 'MolecularWeight', smilesProperty, 'InChIKey'].join(',');
-    const url = `${BASE}/rest/pug/compound/name/${encodeURIComponent(query)}/property/${properties}/JSON`;
+    const properties = [
+      'MolecularFormula',
+      'MolecularWeight',
+      smilesProperty,
+      'InChIKey',
+      'Title',
+    ].join(',');
+    const url =
+      `${BASE}/rest/pug/compound/fastformula/${encodeURIComponent(hillKey)}` +
+      `/property/${properties}/JSON?MaxRecords=8`;
 
     const response = await get(url);
+
+    // 404 con PUGREST.NotFound: PubChem no tiene esa formula. Es una respuesta,
+    // no una falla, y se propaga como tal.
+    if (response.status === 404) throw new ApiError('not-found');
 
     if (!response.ok) {
       // Un 400 con una propiedad no resuelta significa "ese nombre de propiedad
@@ -197,7 +240,7 @@ export async function fetchCompoundInfo(query) {
     }
 
     resolvedSmilesProperty = smilesProperty;
-    return normalize(payload, smilesProperty);
+    return normalize(payload, smilesProperty, hillKey);
   }
 
   throw lastError ?? new ApiError('data');

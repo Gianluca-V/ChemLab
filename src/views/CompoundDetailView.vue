@@ -16,7 +16,15 @@ import { getCompoundByFormula } from '../services/compounds.js';
 
 const route = useRoute();
 
-const compound = computed(() => getCompoundByFormula(String(route.params.formula)));
+/**
+ * Identidad unificada, con la misma forma que produce identifyMixture: esta
+ * ruta solo alcanza compuestos del dataset, así que `inDataset` es siempre
+ * true y la descripción interna siempre está.
+ */
+const compound = computed(() => {
+  const entry = getCompoundByFormula(String(route.params.formula));
+  return entry ? { ...entry, inDataset: true } : null;
+});
 </script>
 
 <template>

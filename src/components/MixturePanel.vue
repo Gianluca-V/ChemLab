@@ -18,7 +18,6 @@ import { useRouter } from 'vue-router';
 import { useMixture, MAX_TOTAL_ATOMS } from '../composables/useMixture.js';
 import { useDiscoveries } from '../composables/useDiscoveries.js';
 import { getElement } from '../services/elements.js';
-import { matchMixture } from '../services/compounds.js';
 import ChemFormula from './ChemFormula.vue';
 import EmptyState from './EmptyState.vue';
 import MixtureRow from './MixtureRow.vue';
@@ -62,11 +61,18 @@ const canCombine = computed(() => mixture.totalAtoms.value >= 2);
 
 const atLimit = computed(() => mixture.totalAtoms.value >= MAX_TOTAL_ATOMS);
 
-/** Resultado para el bloque compacto del panel lateral. */
-const result = computed(() =>
-  mixture.combined.value && !mixture.isEmpty.value ? matchMixture(mixture.items.value) : null
-);
+/**
+ * Resultado para el bloque compacto. Sale de la identificación que hace
+ * useMixture, así que el panel y la vista de resultado muestran siempre lo
+ * mismo sin repetir la consulta a PubChem.
+ */
+const result = computed(() => mixture.result.value);
 
+/**
+ * COMBINAR navega de inmediato y deja que ResultView dispare la identificación:
+ * bloquear la navegación hasta que PubChem conteste dejaría al usuario mirando
+ * un botón muerto hasta 16 segundos.
+ */
 function combine() {
   if (!canCombine.value) return;
   mixture.markCombined();
@@ -169,10 +175,14 @@ function decrease(symbol) {
       </div>
 
       <!-- Bloque de resultado del frame 28: solo en el panel lateral. -->
-      <div v-if="variant === 'aside' && result" class="panel__result">
+      <div v-if="variant === 'aside' && (result || mixture.identifying.value)" class="panel__result">
         <h3 class="panel__label">Resultado</h3>
 
-        <template v-if="result.compound">
+        <p v-if="mixture.identifying.value" class="panel__hint" role="status">
+          Identificando la combinación…
+        </p>
+
+        <template v-else-if="result && result.compound">
           <p class="panel__result-name">
             <ChemFormula :formula="result.compound.formula" :name="result.compound.name" />
             <span>{{ result.compound.name }}</span>
@@ -181,17 +191,20 @@ function decrease(symbol) {
             Tu mezcla equivale a {{ result.multiplier }} unidades de {{ result.compound.formula }}.
           </p>
           <RouterLink
+            v-if="result.compound.inDataset"
             class="btn btn--inline btn--ghost"
             :to="{ name: 'compound', params: { formula: result.compound.formula } }"
           >
             Ver la ficha completa
           </RouterLink>
+          <RouterLink v-else class="btn btn--inline btn--ghost" :to="{ name: 'lab-result' }">
+            Ver el resultado
+          </RouterLink>
         </template>
 
-        <template v-else>
+        <template v-else-if="result">
           <p class="panel__hint">
-            No encontramos un compuesto compatible en la base de datos de ChemLab para esta
-            combinación.
+            No encontramos un compuesto compatible para esta combinación.
           </p>
         </template>
       </div>

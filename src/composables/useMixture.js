@@ -16,6 +16,7 @@ import { computed, reactive } from 'vue';
 import { KEYS, read, write } from '../services/storage.js';
 import { hillKey, subscriptFormula, totalAtoms as sumAtoms } from '../services/chemistry.js';
 import { getElement } from '../services/elements.js';
+import { identifyMixture } from '../services/compounds.js';
 import { useToast } from './useToast.js';
 
 /** Cantidad máxima por elemento. */
@@ -52,6 +53,10 @@ const state = reactive({
    * acción, no estado guardado. Cualquier mutación de la mezcla lo baja.
    */
   combined: false,
+  /** Identificación en curso contra PubChem. */
+  identifying: false,
+  /** Última identificación. En memoria: no sobrevive a una recarga. */
+  result: null,
 });
 
 /** Nombres acumulados en la ráfaga de toasts en curso (SPEC 15 §2). */
@@ -61,6 +66,15 @@ const toast = useToast();
 
 function persist() {
   if (!write(KEYS.MIXTURE, state.items)) toast.storageError();
+}
+
+/**
+ * Toda mutación invalida la identificación: el resultado que se está mostrando
+ * corresponde a una composición que ya no es la actual.
+ */
+function invalidate() {
+  state.combined = false;
+  state.result = null;
 }
 
 const totalAtoms = computed(() => sumAtoms(state.items));
@@ -109,6 +123,8 @@ export function useMixture() {
     tentativeKey,
     isEmpty: computed(() => elementCount.value === 0),
     combined: computed(() => state.combined),
+    identifying: computed(() => state.identifying),
+    result: computed(() => state.result),
     quantityOf,
     canAdd,
 
@@ -124,7 +140,7 @@ export function useMixture() {
 
       const previous = { ...state.items };
       state.items[symbol] = (state.items[symbol] ?? 0) + 1;
-      state.combined = false;
+      invalidate();
       persist();
 
       const name = getElement(symbol)?.name ?? symbol;
@@ -137,7 +153,7 @@ export function useMixture() {
         format: addToastFormat,
         undo: () => {
           state.items = previous;
-          state.combined = false;
+          invalidate();
           persist();
         },
       });
@@ -159,14 +175,14 @@ export function useMixture() {
       } else {
         state.items[symbol] = clamped;
       }
-      state.combined = false;
+      invalidate();
       persist();
     },
 
     /** @param {string} symbol */
     remove(symbol) {
       delete state.items[symbol];
-      state.combined = false;
+      invalidate();
       persist();
     },
 
@@ -179,7 +195,7 @@ export function useMixture() {
     clear() {
       const previous = { ...state.items };
       state.items = {};
-      state.combined = false;
+      invalidate();
       persist();
 
       toast.show({
@@ -188,6 +204,7 @@ export function useMixture() {
         detail: 'Se quitaron todos los elementos.',
         undo: () => {
           state.items = previous;
+          invalidate();
           persist();
         },
       });
@@ -196,6 +213,30 @@ export function useMixture() {
     /** Marca que se ejecutó COMBINAR. Lo consume el panel lateral y ResultView. */
     markCombined() {
       state.combined = true;
+    },
+
+    /**
+     * Identifica la mezcla actual. Consulta PRIMERO a PubChem y cae al dataset
+     * local o a la caché si la red no responde (ver el desvío registrado en
+     * services/compounds.js).
+     *
+     * El resultado queda en memoria para que el panel y la vista de resultado
+     * muestren lo mismo sin repetir la consulta.
+     *
+     * @param {object} [options]
+     * @returns {Promise<object|null>}
+     */
+    async identify(options = {}) {
+      if (elementCount.value === 0) return null;
+
+      state.identifying = true;
+      state.combined = true;
+      try {
+        state.result = await identifyMixture({ ...state.items }, options);
+        return state.result;
+      } finally {
+        state.identifying = false;
+      }
     },
   };
 }
