@@ -74,12 +74,6 @@
   scrollbar-width: thin;
 }
 
-/*
-  El reset de arriba pisa el `margin: auto` que el navegador le da por defecto a
-  un <dialog> abierto con showModal(), y el diálogo queda clavado en la esquina
-  superior izquierda en lugar de centrado. Se repone acá, una sola vez, para
-  todos los diálogos de la aplicación.
-*/
 dialog:modal {
   margin: auto;
 }
@@ -96,8 +90,6 @@ body {
   font-size: var(--fs-3);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  /* La tabla periódica scrollea dentro de su propio contenedor: el documento
-     nunca desborda en horizontal, en ningún breakpoint (SPEC 03 §4). */
   overflow-x: hidden;
 }
 
@@ -170,7 +162,6 @@ samp,
   font-family: var(--font-mono);
 }
 
-/* Bloques anchos de dato científico scrollean dentro de su contenedor. */
 code {
   display: inline-block;
   max-width: 100%;
@@ -218,6 +209,10 @@ textarea,
   top: var(--sp-2);
 }
 
+.skip-link:hover {
+  filter: brightness(1.08);
+}
+
 /* ── Botones (SPEC 14 §8) ──────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -236,6 +231,7 @@ textarea,
   transition:
     background-color var(--dur) var(--ease),
     border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease),
     opacity var(--dur);
 }
 
@@ -267,6 +263,12 @@ textarea,
   border-color: var(--border);
   background: transparent;
   color: var(--text-2);
+}
+
+.btn--ghost:not(:disabled):not([aria-disabled='true']):hover {
+  border-color: var(--border-strong);
+  background: var(--surface-3);
+  color: var(--text-1);
 }
 
 .btn--inline {

@@ -30,9 +30,20 @@ defineProps({
     <p class="card__name">{{ compound.name }}</p>
   </RouterLink>
 
-  <div v-else class="card card--locked" :aria-label="`Compuesto sin descubrir, ${hint} átomos`">
+  <!--
+    role="img" para que el aria-label se anuncie: sobre un <div> genérico, sin
+    rol, el árbol de accesibilidad ignora el label y la tarjeta se lee como
+    "signo de pregunta, signo de pregunta…". El rol además la trata como una
+    unidad, que es lo que es: una pista, no dos textos sueltos.
+  -->
+  <div
+    v-else
+    class="card card--locked"
+    role="img"
+    :aria-label="`Compuesto sin descubrir, ${hint} átomos`"
+  >
     <p class="card__formula" aria-hidden="true">? ? ?</p>
-    <p class="card__name mono">{{ hint }} átomos</p>
+    <p class="card__name mono" aria-hidden="true">{{ hint }} átomos</p>
   </div>
 </template>
 

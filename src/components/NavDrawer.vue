@@ -147,6 +147,13 @@ function badgeOf(item) {
   color: var(--text-3);
 }
 
+/* Mismo tratamiento que los íconos del TopBar: el hover es lo que dice que el
+   ícono es un botón y no una decoración. */
+.drawer__close:hover {
+  background: var(--surface-3);
+  color: var(--text-1);
+}
+
 .drawer__close svg {
   width: var(--sp-4);
   height: var(--sp-4);

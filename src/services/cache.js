@@ -78,6 +78,31 @@ export function peek(key) {
 }
 
 /**
+ * Indice de imagenes de estructura ya cacheadas, por clave de Hill.
+ *
+ * A diferencia de `peek()`, NO refresca `lastAccess` ni escribe: una lista de
+ * hasta 100 filas que llamara a `peek()` por fila reescribiria la cache entera
+ * una vez por fila. Aca solo se lee.
+ *
+ * Sirve para pintar la miniatura de un compuesto que el usuario ya visito, sin
+ * pedir nada a la red. Lo que no este cacheado no aparece: la lista cae a su
+ * miniatura local en lugar de disparar 100 peticiones.
+ *
+ * @returns {Map<string, string>} clave de Hill → URL de la imagen
+ */
+export function cachedImages() {
+  const entries = readAll();
+  const index = new Map();
+
+  for (const [key, entry] of Object.entries(entries)) {
+    const url = entry?.data?.imageUrl;
+    if (typeof url === 'string' && url.length > 0) index.set(key, url);
+  }
+
+  return index;
+}
+
+/**
  * Guarda una entrada, expulsando la de `lastAccess` mas antiguo cuando se llega
  * al limite. LRU simple.
  *

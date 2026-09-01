@@ -13,7 +13,7 @@
 
 import { computed, reactive } from 'vue';
 import { KEYS, read, write } from '../services/storage.js';
-import { compoundCount } from '../services/compounds.js';
+import { compoundCount, getCompoundByKey } from '../services/compounds.js';
 import { useToast } from './useToast.js';
 
 /**
@@ -36,17 +36,37 @@ const state = reactive({
 
 const toast = useToast();
 
+/**
+ * Depura las claves que ya no existen en el dataset y persiste (SPEC 12 §8).
+ *
+ * La depuracion se saltea mientras `compoundCount()` es 0: el dataset se carga
+ * por fetch, y purgar antes de que llegue borraria el progreso entero.
+ */
 function persist() {
+  if (compoundCount() > 0) {
+    const known = state.keys.filter((key) => Boolean(getCompoundByKey(key)));
+    if (known.length !== state.keys.length) state.keys = known;
+  }
+
   if (!write(KEYS.DISCOVERED, state.keys)) toast.storageError();
 }
 
 const keySet = computed(() => new Set(state.keys));
 
+/**
+ * Claves presentes en el dataset. El contador cuenta sobre esto y no sobre el
+ * array crudo: si el dataset se achica, `8 / 30` nunca puede mostrar `31 / 30`
+ * (SPEC 12 §8).
+ */
+const knownKeys = computed(() =>
+  compoundCount() === 0 ? [] : state.keys.filter((key) => Boolean(getCompoundByKey(key)))
+);
+
 export function useDiscoveries() {
   return {
-    keys: computed(() => state.keys),
+    keys: knownKeys,
     keySet,
-    count: computed(() => state.keys.length),
+    count: computed(() => knownKeys.value.length),
     /** Denominador del progreso. Sale del dataset: nunca se escribe 30 a mano. */
     total: computed(() => compoundCount()),
 

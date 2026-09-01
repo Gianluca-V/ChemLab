@@ -6,6 +6,8 @@
  * orden del dataset (SPEC 12 §4). La pista de una tarjeta bloqueada cuenta
  * átomos totales, no tipos de elemento — el mismo vocabulario que el
  * laboratorio (SPEC 12 §4, CORRECCIONES §1).
+ *
+ * Sin <h1>: el único de la página lo pone el TopBar (SPEC 17 §9).
  */
 import { computed } from 'vue';
 
@@ -40,8 +42,6 @@ const progressText = computed(() => {
 
 <template>
   <div class="discoveries">
-    <h1>Descubrimientos</h1>
-
     <section class="discoveries__progress" aria-labelledby="progress-heading">
       <h2 id="progress-heading" class="visually-hidden">Progreso</h2>
       <ProgressBar

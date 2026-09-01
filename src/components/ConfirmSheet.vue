@@ -7,6 +7,8 @@
  * filas siguen visibles debajo del scrim, para que el usuario vea el contexto
  * de lo que va a destruir.
  *
+ * Escape y tocar el scrim cancelan (SPEC 10 §8, SPEC 11 §5).
+ *
  * El foco inicial va a "Cancelar", no a la acción destructiva (SPEC 15 §3,
  * SPEC 17 §5). El texto lo arma quien invoca el componente: dice qué se
  * pierde, cuánto y por qué es irreversible — nunca un "¿Estás seguro?" genérico
@@ -42,10 +44,40 @@ watch(
     }
   }
 );
+
+/**
+ * Cancela al tocar el scrim.
+ *
+ * Un click sobre el backdrop tiene como target al propio <dialog>, así que no
+ * alcanza con comparar el target: el padding de la hoja también lo tiene. Se
+ * cruza además contra el rectángulo del diálogo, y solo se cierra si el punto
+ * cayó afuera.
+ *
+ * @param {MouseEvent} event
+ */
+function onScrimClick(event) {
+  const element = dialog.value;
+  if (!element || event.target !== element) return;
+
+  const box = element.getBoundingClientRect();
+  const inside =
+    event.clientX >= box.left &&
+    event.clientX <= box.right &&
+    event.clientY >= box.top &&
+    event.clientY <= box.bottom;
+
+  if (!inside) emit('close');
+}
 </script>
 
 <template>
-  <dialog ref="dialog" class="confirm" aria-labelledby="confirm-title" @close="emit('close')">
+  <dialog
+    ref="dialog"
+    class="confirm"
+    aria-labelledby="confirm-title"
+    @click="onScrimClick"
+    @close="emit('close')"
+  >
     <div class="confirm__handle" aria-hidden="true" />
 
     <h2 id="confirm-title" class="confirm__title">{{ title }}</h2>

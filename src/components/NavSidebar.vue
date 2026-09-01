@@ -77,6 +77,11 @@ function badgeOf(item) {
     text-decoration: none;
   }
 
+  .sidebar__brand:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
   .sidebar__link {
     display: flex;
     align-items: center;

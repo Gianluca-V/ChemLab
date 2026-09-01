@@ -43,8 +43,18 @@ const label = computed(() =>
     : `Añadir ${props.name} a favoritos`
 );
 
-/** @param {{rating: number, note: string}} payload */
+/**
+ * Guarda y ofrece deshacer (SPEC 10 §9).
+ *
+ * El estado previo se copia ANTES de guardar: en alta no hay nada que restaurar
+ * y deshacer elimina el favorito recién creado; en edición se vuelve a la
+ * valoración y la nota anteriores.
+ *
+ * @param {{rating: number, note: string}} payload
+ */
 function save({ rating, note }) {
+  const previous = existing.value ? { ...existing.value } : null;
+
   favorites.save({
     id: props.id,
     type: props.type,
@@ -59,6 +69,13 @@ function save({ rating, note }) {
     type: 'favorite-save',
     title: 'Guardado en favoritos',
     detail: `${props.name} · ${rating} de 5 estrellas`,
+    undo: () => {
+      if (previous) {
+        favorites.save(previous);
+      } else {
+        favorites.remove(props.id, props.type);
+      }
+    },
   });
 }
 

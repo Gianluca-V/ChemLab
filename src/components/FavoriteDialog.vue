@@ -38,6 +38,13 @@ const ratingGroup = ref(null);
 
 const isEditing = computed(() => props.existing !== null);
 
+/*
+  Puntos de código, no unidades UTF-16: "🎉".length es 2 en JavaScript y 1 para
+  quien escribe. Sin esto, dos emoji consumirían cuatro de los 200 y el contador
+  mentiría (SPEC 10 §5).
+*/
+const noteLength = computed(() => [...note.value].length);
+
 watch(
   () => props.open,
   async (isOpen) => {
@@ -58,10 +65,22 @@ watch(
   }
 );
 
+const noteField = ref(null);
+
 function submit() {
   if (rating.value < 1) {
     error.value = 'Tenés que elegir una valoración de 1 a 5 estrellas.';
     ratingGroup.value?.querySelector('[tabindex="0"]')?.focus();
+    return;
+  }
+  /*
+    El maxlength del textarea ya frena la escritura, pero se valida igual en
+    JavaScript: un atributo HTML se saltea desde las herramientas de desarrollo
+    y la descripción §18 pide que la validación sea de JS (SPEC 10 §5).
+  */
+  if (noteLength.value > MAX_NOTE_LENGTH) {
+    error.value = 'La nota no puede superar los 200 caracteres.';
+    noteField.value?.focus();
     return;
   }
   error.value = '';
@@ -90,12 +109,13 @@ function submit() {
         <label for="fav-note" class="fav__label">Nota</label>
         <textarea
           id="fav-note"
+          ref="noteField"
           v-model="note"
           class="fav__note"
           rows="3"
           :maxlength="MAX_NOTE_LENGTH"
         />
-        <NoteCounter :value="note.length" :max="MAX_NOTE_LENGTH" />
+        <NoteCounter :value="noteLength" :max="MAX_NOTE_LENGTH" />
       </div>
 
       <p v-if="error" class="fav__error" role="alert">{{ error }}</p>
@@ -158,6 +178,10 @@ function submit() {
   font-weight: 500;
 }
 
+.fav__note:hover {
+  border-color: var(--border-strong);
+}
+
 .fav__note {
   width: 100%;
   padding: var(--sp-2) var(--sp-3);
@@ -167,6 +191,13 @@ function submit() {
   color: var(--text-1);
   font-size: var(--fs-3);
   resize: vertical;
+  transition: border-color var(--dur) var(--ease);
+}
+
+/* El campo también acusa el puntero: sin eso, el único control del diálogo que
+   no responde al hover es justo donde el usuario va a escribir. */
+.fav__note:hover {
+  border-color: var(--border-strong);
 }
 
 .fav__error {

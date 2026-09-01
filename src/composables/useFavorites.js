@@ -90,9 +90,16 @@ export function useFavorites() {
      * @param {string} [entry.formula]
      * @param {number} entry.rating   Entero 1–5, obligatorio
      * @param {string} [entry.note]   0–200 caracteres, opcional
-     * @returns {object}
+     * @returns {object|null} La entrada guardada, o null si la nota excede el límite
      */
     save({ id, type, name, formula = null, rating, note = '' }) {
+      /*
+        Se RECHAZA, no se trunca (SPEC 10 §5): truncar destruye texto del
+        usuario sin avisar. Se cuentan puntos de código y no unidades UTF-16,
+        porque "🎉".length es 2 en JavaScript y 1 para quien escribe.
+      */
+      if ([...note].length > MAX_NOTE_LENGTH) return null;
+
       const now = new Date().toISOString();
       const at = indexOf(id, type);
       const clean = {
@@ -101,7 +108,7 @@ export function useFavorites() {
         name,
         formula,
         rating: Math.min(5, Math.max(1, Math.trunc(rating))),
-        note: note.slice(0, MAX_NOTE_LENGTH),
+        note,
       };
 
       if (at === -1) {
