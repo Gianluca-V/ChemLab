@@ -10,6 +10,8 @@
  * aria-hidden porque es ilustración, no contenido, y sin animación porque no
  * está cargando nada.
  */
+import { ref } from 'vue';
+
 defineProps({
   icon: { type: String, default: '' },
   title: { type: String, required: true },
@@ -19,13 +21,18 @@ defineProps({
   /** El encabezado recibe el foco cuando la vista se vacía (SPEC 15 §8). */
   focusable: { type: Boolean, default: false },
 });
+
+const heading = ref(null);
+
+/** Lo llama la vista contenedora tras vaciar una lista (SPEC 15 §8). */
+defineExpose({ focus: () => heading.value?.focus() });
 </script>
 
 <template>
   <div class="empty">
     <p v-if="icon" class="empty__icon" aria-hidden="true">{{ icon }}</p>
 
-    <h2 class="empty__title" :tabindex="focusable ? -1 : undefined">{{ title }}</h2>
+    <h2 ref="heading" class="empty__title" :tabindex="focusable ? -1 : undefined">{{ title }}</h2>
     <p v-if="description" class="empty__text">{{ description }}</p>
 
     <div v-if="$slots.action" class="empty__action">
