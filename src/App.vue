@@ -26,6 +26,7 @@ import NavSidebar from './components/NavSidebar.vue';
 import MixturePanel from './components/MixturePanel.vue';
 import FavoriteStar from './components/FavoriteStar.vue';
 import ToastHost from './components/ToastHost.vue';
+import UpdatePrompt from './components/UpdatePrompt.vue';
 
 import { getElement } from './services/elements.js';
 import { getCompoundByFormula } from './services/compounds.js';
@@ -73,6 +74,7 @@ const title = computed(
 
 <template>
   <a class="skip-link" href="#main">Saltar al contenido</a>
+  <UpdatePrompt />
 
   <div class="layout">
     <NavSidebar />

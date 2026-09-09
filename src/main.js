@@ -5,8 +5,6 @@
  * de elemento no tenga estado de carga (SPEC 06 §1): cuando la vista se monta,
  * el dataset ya está en memoria y resolver /element/:symbol es un lookup en un
  * Map. Pintar un skeleton para eso sería simular una latencia que no existe.
- *
- * El registro del Service Worker se agrega acá cuando se implemente SPEC 18.
  */
 
 import { createApp } from 'vue';
@@ -56,3 +54,7 @@ Promise.all([loadElements(), loadCompounds()])
     createApp(App).use(router).mount('#app');
   })
   .catch(renderFatalError);
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}

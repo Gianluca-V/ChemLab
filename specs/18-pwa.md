@@ -3,7 +3,7 @@
 **Estado:** aprobado
 **Depende de:** SPEC 00, SPEC 01, SPEC 09, SPEC 13, SPEC 14
 **Fuentes:** descripción §28–§33, RF13, RF14, RNF4; frame 01
-**Archivos:** `vite.config.js`, `src/sw.js`, `src/main.js`, `public/manifest.webmanifest`, `public/icons/`
+**Archivos:** `vite.config.js`, `src/sw.js`, `src/main.js`, `public/icons/`
 
 ---
 
@@ -18,8 +18,9 @@ VitePWA({
   srcDir: 'src',
   filename: 'sw.js',
   registerType: 'prompt',
+  injectRegister: false,
   injectManifest: {
-    globPatterns: ['**/*.{js,css,html,woff2,json,png,svg,webmanifest}'],
+    globPatterns: ['**/*.{js,css,html,woff2,json}'],
   },
   manifest: { /* §2 */ },
 })
@@ -35,28 +36,31 @@ VitePWA({
 
 ## 2. Web App Manifest
 
-`public/manifest.webmanifest`. Los once campos que exige la descripción §28.1.
+Generado por `vite-plugin-pwa` a partir de la opción `manifest` en `vite.config.js` — no es un archivo estático en `public/`. El plugin escribe `dist/manifest.webmanifest` en cada build e inyecta el `<link rel="manifest">` en `index.html` solo. Los once campos que exige la descripción §28.1:
 
-```json
+```js
+// vite.config.js — VitePWA({ manifest: { ... } })
 {
-  "name": "ChemLab — Laboratorio químico interactivo",
-  "short_name": "ChemLab",
-  "description": "Explorá los 118 elementos de la tabla periódica, combinalos y descubrí compuestos reales.",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "theme_color": "#0f1116",
-  "background_color": "#0c0d11",
-  "orientation": "any",
-  "lang": "es-AR",
-  "dir": "ltr",
-  "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
+  name: 'ChemLab — Laboratorio químico interactivo',
+  short_name: 'ChemLab',
+  description: 'Explorá los 118 elementos de la tabla periódica, combinalos y descubrí compuestos reales.',
+  start_url: './',
+  scope: './',
+  display: 'standalone',
+  theme_color: '#0f1116',
+  background_color: '#0c0d11',
+  orientation: 'any',
+  lang: 'es-AR',
+  dir: 'ltr',
+  icons: [
+    { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+    { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+    { src: 'icons/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+  ],
 }
 ```
+
+> **Por qué generado y no un archivo escrito a mano.** Declarar el manifest en `vite.config.js` evita mantener dos copias de los mismos íconos por separado (el plugin ya conoce `manifest.icons` y los suma al precache del Service Worker sin declararlos de nuevo en `injectManifest.globPatterns`) y evita el `<link rel="manifest">` duplicado que aparece si además se escribe uno a mano en `index.html`.
 
 | Campo | Valor y motivo |
 |---|---|
@@ -76,10 +80,9 @@ VitePWA({
 
 Sin la variante `maskable`, Android encierra el ícono en un cuadrado blanco. Ningún frame del diseño define íconos: se derivan de la marca "C ChemLab" del `TopBar`.
 
-El manifest se enlaza desde `index.html`:
+`vite-plugin-pwa` inyecta el `<link rel="manifest">` en `index.html` en cada build. Lo único escrito a mano en el `<head>` es el `theme-color`:
 
 ```html
-<link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#0f1116">
 ```
 
