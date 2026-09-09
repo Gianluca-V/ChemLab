@@ -62,7 +62,18 @@ function badgeOf(item) {
   <dialog ref="dialog" class="drawer" aria-label="Navegación principal" @close="emit('close')">
     <nav class="drawer__panel">
       <div class="drawer__head">
-        <p class="drawer__brand">ChemLab</p>
+        <!--
+          La marca navega al inicio: "home" no está en NAV_ITEMS, así que este
+          es el único acceso directo desde el menú. El cierre se emite también
+          en el click porque afterEach no dispara si ya estamos en el inicio.
+        -->
+        <RouterLink
+          :to="{ name: 'home' }"
+          class="drawer__brand"
+          @click="emit('close')"
+        >
+          ChemLab
+        </RouterLink>
         <button
           type="button"
           class="drawer__close"
@@ -142,9 +153,20 @@ function badgeOf(item) {
 }
 
 .drawer__brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  margin-inline-start: calc(var(--sp-2) * -1);
+  padding-inline: var(--sp-2);
+  border-radius: var(--r-md);
   color: var(--text-1);
   font-size: var(--fs-5);
   font-weight: 700;
+  text-decoration: none;
+}
+
+.drawer__brand:hover {
+  background: var(--surface-3);
 }
 
 .drawer__close {
