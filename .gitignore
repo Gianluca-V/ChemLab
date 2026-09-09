@@ -6,7 +6,6 @@
 #    public/fonts/*.woff2  fuentes autoalojadas (SPEC 14 §4)
 #    public/icons/*.png    íconos de la PWA (SPEC 18 §2)
 #    src/sw.js             el Service Worker es código fuente
-#    public/manifest.webmanifest
 #  Son entregables del proyecto, no artefactos de build.
 # ─────────────────────────────────────────────────────────────
 
