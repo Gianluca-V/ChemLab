@@ -56,5 +56,5 @@ Promise.all([loadElements(), loadCompounds()])
   .catch(renderFatalError);
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+  navigator.serviceWorker.register(import.meta.env.BASE_URL + 'sw.js');
 }
