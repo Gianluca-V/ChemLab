@@ -118,7 +118,7 @@ Toda funcionalidad es alcanzable sin puntero. No hay gestos exclusivos: no hay s
 | Fila de historial | `Ver el detalle de Oxígeno, elemento` |
 | Tarjeta bloqueada | `Compuesto sin descubrir, 3 átomos` |
 | Paginación | `Ir a la página 7`; la actual con `aria-current="page"` |
-| `<iframe>` del mapa | `title="Mapa de la Catedral de La Plata"` |
+| `<iframe>` del mapa | `title="Mapa de la Universidad Nacional Arturo Jauretche"` |
 
 **Ningún control sin texto queda sin etiqueta.** El documento de diseño acredita 44 `aria-label` sobre 70 botones y 13 enlaces, sin controles sin nombre; se sostiene ese estándar.
 

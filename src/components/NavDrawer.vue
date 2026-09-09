@@ -116,12 +116,21 @@ function badgeOf(item) {
   background: rgba(0, 0, 0, 0.56);
 }
 
+/*
+  El panel ocupa el alto entero contra el borde derecho, así que es el único
+  elemento de la app que toca las tres zonas de recorte a la vez: la muesca
+  arriba, el borde curvo a la derecha en apaisado y el indicador de inicio
+  abajo. Sin los insets, "Tema" queda debajo del indicador y el menú del
+  encabezado debajo de la muesca. En un equipo sin recorte, env() vale 0 y el
+  padding queda en --sp-3.
+*/
 .drawer__panel {
   display: flex;
   flex-direction: column;
   gap: var(--sp-2);
   height: 100%;
-  padding: var(--sp-3);
+  padding: max(var(--sp-3), env(safe-area-inset-top)) max(var(--sp-3), env(safe-area-inset-right))
+    max(var(--sp-3), env(safe-area-inset-bottom)) var(--sp-3);
   overflow-y: auto;
 }
 

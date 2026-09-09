@@ -128,8 +128,19 @@ const title = computed(
 </template>
 
 <style scoped>
+/*
+  index.html declara viewport-fit=cover, así que la página se pinta por DEBAJO
+  de los recortes del equipo. Los insets laterales van acá, en el contenedor
+  que envuelve todo: en apaisado, con la muesca a un costado, la sidebar y la
+  tabla periódica quedaban parcialmente tapadas.
+
+  Un solo lugar cubre los tres breakpoints. Ponerlo en .shell no serviría: en
+  escritorio la columna izquierda es la sidebar, no el contenido.
+*/
 .layout {
   min-height: 100dvh;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .layout__content {

@@ -70,11 +70,21 @@ const { toast, dismiss, undo, pause, resume } = useToast();
   display: flex;
   justify-content: center;
   padding: var(--sp-3);
+  /* El host es fixed al pie: sin el inset, el toast y su "Deshacer" caen sobre
+     el indicador de inicio, que no es zona tocable. */
+  padding-bottom: calc(var(--sp-3) + env(safe-area-inset-bottom));
   pointer-events: none;
 }
 
+/*
+  Envuelve porque en 320 px no entra todo en una línea: ícono, mensaje,
+  "Deshacer" y cierre suman más de lo que hay. Sin `wrap`, el mensaje se
+  comprimía hasta quedar en una palabra por línea. Con `wrap`, las acciones
+  bajan enteras a la segunda fila y el mensaje conserva su ancho.
+*/
 .toast {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--sp-3);
   width: 100%;
@@ -94,8 +104,10 @@ const { toast, dismiss, undo, pause, resume } = useToast();
   color: var(--accent-soft);
 }
 
+/* La base de 12rem es la que dispara el salto de línea: por debajo de eso el
+   mensaje deja de ser legible y conviene que las acciones bajen. */
 .toast__body {
-  flex: 1;
+  flex: 1 1 12rem;
   min-width: 0;
 }
 

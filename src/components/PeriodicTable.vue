@@ -169,7 +169,9 @@ function canAdd(symbol) {
 @media (min-width: 481px) and (max-height: 600px) {
   .table__viewport {
     height: auto;
-    max-height: 60vh;
+    /* dvh: en apaisado la barra de direcciones es justo lo que hay que
+       descontar, y `vh` la ignora. */
+    max-height: 60dvh;
   }
 }
 

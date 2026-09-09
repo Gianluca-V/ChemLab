@@ -111,8 +111,13 @@
     más los 12 px de padding del host arriba y abajo, 94 px en total. Las vistas
     reservan este colchón para que la última accion nunca quede debajo del toast
     (SPEC 06 §2, SPEC 15 §2).
+
+    Se le suma el recorte inferior del equipo —el indicador de inicio— porque
+    el host del toast también lo descuenta: si el colchón no creciera, el toast
+    bajaría al fondo de la pantalla y volvería a taparle la última acción a la
+    vista. En un equipo sin recorte, env() vale 0 y el colchón es el de antes.
   */
-  --toast-clearance: calc(var(--sp-7) + var(--sp-7));
+  --toast-clearance: calc(var(--sp-7) + var(--sp-7) + env(safe-area-inset-bottom));
 
   /* layout (SPEC 16 §3) */
   --sidebar-w: 240px;

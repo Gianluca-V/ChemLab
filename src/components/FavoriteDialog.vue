@@ -139,13 +139,33 @@ function submit() {
 <style scoped>
 .fav {
   width: min(28rem, 92vw);
-  /* En 390 px de alto, un diálogo de 500 px no entra (SPEC 16 §7). */
-  max-height: 90vh;
+  /*
+    En 390 px de alto, un diálogo de 500 px no entra (SPEC 16 §7). dvh y no vh:
+    `vh` mide el viewport con la barra de direcciones retraída, así que con la
+    barra visible el diálogo sobra la pantalla y "Guardar" queda abajo del
+    borde.
+  */
+  max-height: 90dvh;
   padding: 0;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-lg);
   background: var(--surface-2);
   color: var(--text-2);
+}
+
+/*
+  El scroll se declara UNA sola vez, en el formulario, y el alto lo pone el
+  diálogo. Antes los dos llevaban `max-height: 90vh`: el formulario no
+  descontaba el borde del diálogo, así que en un alto justo aparecían dos
+  barras de scroll anidadas por 2 px.
+
+  El selector es `[open]` a propósito: `display: flex` sobre el `dialog` pelado
+  pisa el `display: none` con el que el elemento se oculta mientras está
+  cerrado, y el diálogo quedaría pintado siempre.
+*/
+.fav[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 .fav::backdrop {
@@ -154,9 +174,9 @@ function submit() {
 
 .fav__form {
   display: flex;
+  min-height: 0;
   flex-direction: column;
   gap: var(--sp-4);
-  max-height: 90vh;
   padding: var(--sp-4);
   overflow-y: auto;
 }
@@ -176,10 +196,6 @@ function submit() {
   color: var(--text-hi);
   font-size: var(--fs-2);
   font-weight: 500;
-}
-
-.fav__note:hover {
-  border-color: var(--border-strong);
 }
 
 .fav__note {

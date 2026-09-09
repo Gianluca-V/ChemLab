@@ -73,12 +73,20 @@ Cosas que se hacen mal por defecto. Todas tienen su motivo en la SPEC indicada.
 
 ## Persistencia
 
-Seis claves, todas vía `storage.js`:
+Seis claves en `localStorage`, todas vía `storage.js`:
 
 ```
 chemlab_favorites   chemlab_history   chemlab_discovered
 chemlab_mixture     chemlab_theme     chemlab_api_cache
 ```
+
+Una en `sessionStorage`, también vía `storage.js` (`SESSION_KEYS`, funciones `readSession` / `writeSession` / `removeSession`):
+
+```
+chemlab_contact_messages
+```
+
+Es el formulario de contacto, que **no envía correos**: guarda en la sesión para demostrar el almacén. Cerrar la pestaña lo vacía y no toca los favoritos. SPEC 13 §B.6.
 
 Guión bajo, no dos puntos. Toda mutación de un composable persiste de inmediato.
 

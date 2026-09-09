@@ -197,13 +197,36 @@ watch(resultOpen, syncDialog, { flush: 'post' });
 */
 .result-modal {
   width: min(34rem, 94vw);
-  /* En 390×844 un modal de alto fijo no entra (SPEC 16 §7). */
-  max-height: 88vh;
+  /*
+    En 390×844 un modal de alto fijo no entra (SPEC 16 §7). dvh y no vh: `vh`
+    mide el viewport con la barra de direcciones retraída, así que con la barra
+    a la vista el modal sobraba la pantalla y las acciones del pie —"Seguir
+    mezclando" y la estrella— quedaban abajo del borde.
+  */
+  max-height: 88dvh;
   padding: 0;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-lg);
   background: var(--surface-2);
   color: var(--text-2);
+}
+
+/*
+  Columna flexible: el encabezado fijo y el cuerpo scrolleable salen del
+  layout, no de una cuenta a mano.
+
+  Antes el encabezado era `position: sticky` dentro del diálogo mientras el
+  scroll ocurría en su HERMANO, así que no tenía contenedor de scroll al que
+  pegarse y el sticky no hacía nada; y el cuerpo se limitaba con
+  `calc(88vh - --touch - --sp-6)`, un número atado a mano al alto del
+  encabezado que se desincronizaba en cuanto el título envolvía a dos líneas.
+
+  `[open]` y no `.result-modal` a secas: `display: flex` sobre el `dialog`
+  pelado pisa el `display: none` con el que se oculta cerrado.
+*/
+.result-modal[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 .result-modal::backdrop {
@@ -212,9 +235,7 @@ watch(resultOpen, syncDialog, { flush: 'post' });
 
 /* El encabezado queda fijo: el cierre no se va con el scroll del contenido. */
 .result-modal__head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -249,7 +270,8 @@ watch(resultOpen, syncDialog, { flush: 'post' });
 }
 
 .result-modal__body {
-  max-height: calc(88vh - var(--touch) - var(--sp-6));
+  min-height: 0;
+  flex: 1;
   padding: var(--sp-4);
   overflow-y: auto;
 }

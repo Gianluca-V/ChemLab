@@ -97,6 +97,9 @@ function goBack(fallback) {
   align-items: center;
   gap: var(--sp-2);
   padding: var(--sp-2) var(--sp-3);
+  /* Instalada como PWA no hay barra de navegador que empuje el contenido: la
+     barra arranca pegada al borde y el título queda bajo la muesca. */
+  padding-top: max(var(--sp-2), env(safe-area-inset-top));
   border-bottom: 1px solid var(--border);
   background: var(--surface-1);
 }

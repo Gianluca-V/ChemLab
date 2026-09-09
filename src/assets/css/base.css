@@ -91,6 +91,14 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /*
+    Buena parte del texto de la app no la escribimos nosotros: la nota de un
+    favorito admite 200 caracteres y nada obliga a que traiga espacios. Sin
+    esto, una nota de una sola palabra larga ensancha su tarjeta y arrastra a
+    la grilla entera. Corta solo cuando la palabra no entra; el texto normal no
+    se ve afectado.
+  */
+  overflow-wrap: break-word;
 }
 
 img,

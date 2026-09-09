@@ -97,9 +97,22 @@ function onScrimClick(event) {
 <style scoped>
 .confirm {
   width: min(28rem, 92vw);
-  max-height: 90vh;
+  /*
+    dvh y no vh: en un navegador móvil `vh` mide el viewport GRANDE, el que
+    existe con la barra de direcciones retraída. Con la barra visible, una hoja
+    de 90vh sobra la pantalla y "Eliminar" queda fuera de alcance justo cuando
+    el usuario tiene que decidir. dvh mide lo que se ve ahora.
+  */
+  max-height: 90dvh;
   margin: auto auto 0;
   padding: var(--sp-4);
+  /*
+    La hoja se ancla al borde inferior, que en un teléfono con indicador de
+    inicio no es zona tocable. El inset lo separa de ahí; en un equipo sin
+    recorte, env() vale 0 y el padding queda como estaba.
+  */
+  padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom));
+  overflow-y: auto;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-lg) var(--r-lg) 0 0;
   background: var(--surface-2);
@@ -139,6 +152,7 @@ function onScrimClick(event) {
 @media (min-width: 768px) {
   .confirm {
     margin: auto;
+    padding-bottom: var(--sp-4);
     border-radius: var(--r-lg);
   }
 
