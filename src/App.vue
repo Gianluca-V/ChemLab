@@ -26,6 +26,7 @@ import NavSidebar from './components/NavSidebar.vue';
 import MixturePanel from './components/MixturePanel.vue';
 import FavoriteStar from './components/FavoriteStar.vue';
 import ToastHost from './components/ToastHost.vue';
+import UpdatePrompt from './components/UpdatePrompt.vue';
 
 import { getElement } from './services/elements.js';
 import { getCompoundByFormula } from './services/compounds.js';
@@ -125,6 +126,7 @@ const title = computed(
 
   <NavDrawer :open="navOpen" @close="navOpen = false" />
   <ToastHost />
+  <UpdatePrompt />
 </template>
 
 <style scoped>

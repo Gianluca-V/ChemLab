@@ -1,12 +1,10 @@
 <script setup>
 /**
  * Home — frame 01, 25; RF1; SPEC 13 §A
- *
- * Punto de entrada. InstallPrompt queda fuera (SPEC 18, PWA). El resto de
- * §A —descripción, dos accesos, progreso clickeable— sí se implementa acá.
  */
 import { useDiscoveries } from '../composables/useDiscoveries.js';
 import ProgressBar from '../components/ProgressBar.vue';
+import InstallPrompt from '../components/InstallPrompt.vue';
 
 const discoveries = useDiscoveries();
 </script>
@@ -36,6 +34,8 @@ const discoveries = useDiscoveries();
         label="Compuestos descubiertos"
       />
     </RouterLink>
+
+    <InstallPrompt />
   </div>
 </template>
 
