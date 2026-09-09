@@ -13,11 +13,6 @@ const { updateAvailable, applyUpdate } = usePwaUpdate();
 
 <style scoped>
 .update-prompt {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 70;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

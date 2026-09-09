@@ -74,6 +74,7 @@ const title = computed(
 
 <template>
   <a class="skip-link" href="#main">Saltar al contenido</a>
+  <UpdatePrompt />
 
   <div class="layout">
     <NavSidebar />
@@ -126,7 +127,6 @@ const title = computed(
 
   <NavDrawer :open="navOpen" @close="navOpen = false" />
   <ToastHost />
-  <UpdatePrompt />
 </template>
 
 <style scoped>

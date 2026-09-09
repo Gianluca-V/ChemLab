@@ -24,14 +24,17 @@ if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
     });
   });
 
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloaded) return;
-    reloaded = true;
-    window.location.reload();
-  });
 }
 
 function applyUpdate() {
+  if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
+  }
+
   waitingWorker?.postMessage({ type: 'SKIP_WAITING' });
 }
 
