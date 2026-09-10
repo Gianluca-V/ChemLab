@@ -4,8 +4,9 @@
 
 Trabajo Integrador — Módulo 1 · Aplicaciones Móviles · 2026
 
-> **Estado actual: especificación completa, implementación no iniciada.**
-> Las 20 SPECs de `specs/` están cerradas y aprobadas. El código todavía no existe.
+### 🔗 [gianluca-v.github.io/ChemLab](https://gianluca-v.github.io/ChemLab/)
+
+Aplicación en vivo. Instalable desde el navegador y funcional sin conexión.
 
 ---
 
@@ -25,18 +26,29 @@ No simula reacciones químicas, no predice productos, no calcula termodinámica 
 
 ---
 
-## Estado del proyecto
+## Qué se puede hacer
 
-| Etapa | Estado |
-|---|---|
-| Análisis de requisitos | ✅ completo — SPEC 19 |
-| Diseño visual (28 frames, mobile first) | ✅ completo — `design-import/` |
-| Especificación técnica (20 documentos) | ✅ completo — `specs/` |
-| Datasets (`elements.json`, `compounds.json`) | ⬜ pendiente |
-| Implementación | ⬜ no iniciada |
-| PWA | ⬜ no iniciada |
+- **Laboratorio.** Elegir elementos de la tabla periódica en cantidades, armar una composición y combinar.
+- **Búsqueda y filtros.** Buscar elementos y compuestos, filtrar por categoría, recorrer resultados paginados.
+- **Detalle.** Ficha completa de cada elemento y cada compuesto, con datos de PubChem cuando hay red.
+- **Favoritos.** Marcar elementos y compuestos, con valoración por estrellas y nota propia.
+- **Historial.** Los detalles visitados, en orden.
+- **Descubrimientos.** Los compuestos encontrados, con el progreso sobre el total.
+- **Contacto.** Formulario y mapa de ubicación.
+- **Tema claro y oscuro**, elegido por el usuario y recordado entre sesiones.
+- **Instalable y offline.** Se agrega a la pantalla de inicio y sigue funcionando sin conexión.
 
-**Próximos pasos** en [`specs/README.md`](specs/README.md#pendientes-antes-de-implementar).
+### Destacados técnicos
+
+**Motor de combinación.** Normaliza la selección a una clave canónica en **notación de Hill** —el estándar de Chemical Abstracts y PubChem— y resuelve con un único lookup en un índice `Map`. El orden de selección es irrelevante por construcción: el estado es un mapa símbolo→cantidad, no una lista. Si la clave exacta no existe, reintenta con la composición reducida por su MCD, de modo que H₄O₂ identifica agua sin romper O₂, H₂ ni N₂.
+
+**El resultado de combinar es una ruta, no un `ref`.** El modal es compartible por URL, Atrás lo cierra en vez de sacar al usuario del laboratorio, y el título del documento sigue cambiando. Un modal gobernado por estado local pierde las tres cosas.
+
+**Offline real.** Los 118 elementos, los 81 compuestos, el motor, los favoritos, el historial y los descubrimientos funcionan sin conexión. Solo degrada lo que depende de PubChem, y lo hace avisando.
+
+**Responsive sin JavaScript.** Ni un solo listener de `resize`. Todos los breakpoints son CSS; lo que cambia por contexto lo decide la ruta, no el ancho de la pantalla.
+
+**Accesibilidad.** Todo control es un elemento real —nunca un `<div>` con handler—, 44 px de piso táctil en acciones primarias, foco visible, contraste ≥4.5:1 en ambos temas, y el color nunca como único portador de información.
 
 ---
 
@@ -45,31 +57,30 @@ No simula reacciones químicas, no predice productos, no calcula termodinámica 
 | Capa | Tecnología |
 |---|---|
 | Framework | Vue 3 — Composition API, `<script setup>` |
-| Build | Vite |
+| Build | Vite 6 |
 | Routing | Vue Router 4, modo hash |
 | Estado compartido | Composables propios, sin librería de estado |
 | Estilos | CSS propio con custom properties. Sin librería de UI |
 | Datos externos | PubChem PUG REST vía Fetch API |
-| Persistencia | `localStorage` |
+| Persistencia | `localStorage` · `sessionStorage` |
 | PWA | Web App Manifest + Service Worker propio |
+| Despliegue | GitHub Actions → GitHub Pages |
 
 **Dependencias de producción: `vue` y `vue-router`.** No se usa ninguna librería de UI, de estilos, de estado ni de utilidades.
 
 ### Nota sobre el framework
 
-La consigna admite Vanilla JS y prohíbe frameworks de UI. **El equipo decidió usar Vue 3 + Vite**, de forma deliberada y con conocimiento de esa restricción. La decisión, su motivo y sus consecuencias están documentadas en [SPEC 19 §1.3](specs/19-requisitos-y-aceptacion.md).
+La consigna admite Vanilla JS y prohíbe frameworks de UI. **El equipo decidió usar Vue 3 + Vite**, de forma deliberada y con conocimiento de esa restricción.
 
 Lo que se preservó pese al desvío:
 
-- **La capa de dominio es JavaScript plano.** `chemistry.js`, `storage.js`, `api.js` y `cache.js` no importan Vue, no usan `ref` ni `reactive` y no tocan el DOM. El motor de normalización química funciona y se verifica fuera del framework.
+- **La capa de dominio es JavaScript plano.** Los seis módulos de `src/services/` no importan Vue, no usan `ref` ni `reactive` y no tocan el DOM. El motor de normalización química funciona y se verifica fuera del framework.
 - **El CSS es propio**, construido sobre los tokens del documento de diseño. Sin Tailwind, sin Bootstrap, sin ninguna librería de estilos.
-- **El Service Worker está escrito a mano**: `install`, `activate` y `fetch` son código propio.
+- **El Service Worker está escrito a mano**: `install`, `activate`, `fetch` y `message` son código propio en [`src/sw.js`](src/sw.js). `vite-plugin-pwa` se usa únicamente en modo `injectManifest`, para inyectar la lista de archivos versionados del build. No aporta estrategias de caché ni runtime de Workbox.
 
 ---
 
 ## Cómo ejecutarlo
-
-> Aplicable una vez iniciada la implementación.
 
 **Requisitos:** Node.js 20+ y npm.
 
@@ -83,93 +94,77 @@ npm run build      # build de producción en dist/
 npm run preview    # sirve dist/ localmente — necesario para probar la PWA
 ```
 
-El Service Worker **no se registra en modo desarrollo**. Para probar instalación, caché y funcionamiento offline hay que usar `build` + `preview`.
+El Service Worker **no se registra en modo desarrollo**. Para probar instalación, caché y funcionamiento offline hay que usar `build` + `preview`, o directamente la aplicación publicada.
 
-**Navegadores:** Chrome/Edge 90+, Firefox 98+, Safari 15.4+. Requiere soporte de ES Modules, CSS Grid, `<dialog>`, `oklch()` y `color-mix()`. La evaluación principal es en Google Chrome.
+**Navegadores:** Chrome/Edge 90+, Firefox 98+, Safari 15.4+. Requiere soporte de ES Modules, CSS Grid, `<dialog>`, `oklch()` y `color-mix()`.
 
 ---
 
-## Estructura
+## Arquitectura
 
 ```
-├── CLAUDE.md                  instrucciones para agentes de IA
-├── specs/                     ← especificación técnica (fuente de verdad)
-│   ├── README.md              índice, decisiones, contradicciones resueltas
-│   └── 00…19-*.md             20 documentos
-├── design-import/
-│   ├── CORRECCIONES.md        ← qué del diseño NO se implementa tal cual
-│   └── ChemLab Mobile First.dc.html    28 frames, sin modificar
-├── docs/
-│   └── critica-diseno.md      auditoría previa del diseño (histórica)
-├── public/
-│   ├── data/                  elements.json · compounds.json
-│   ├── fonts/                 Space Grotesk · IBM Plex Mono (autoalojadas)
-│   └── icons/                 192 · 512 · maskable
-└── src/
-    ├── services/              dominio: JS plano, sin Vue
-    ├── composables/           estado compartido, persistido
-    ├── components/            componentes reutilizables
-    ├── views/                 una por ruta
-    └── sw.js                  Service Worker
+views / components  →  composables  →  services  →  (localStorage · fetch · datasets)
 ```
 
----
+Dirección única, sin ciclos. Las reglas que la sostienen:
 
-## Documentación
+- `src/services/` es JavaScript plano: no importa `vue`, no usa `ref` ni `reactive`, no toca el DOM.
+- Ningún servicio importa un composable. Ningún composable importa un componente. Ninguna vista importa otra vista.
+- `storage.js` es el único acceso a `localStorage` y `sessionStorage`. Ningún otro módulo escribe una clave literal.
+- `api.js` es el único módulo que conoce URLs de PubChem.
 
-**Orden de precedencia:**
+```
+src/
+├── services/      dominio: JS plano, sin Vue
+├── composables/   estado compartido, persistido
+├── components/    35 componentes reutilizables
+├── views/         12 vistas, una por ruta
+├── router/        rutas, navegación y registro de historial
+├── assets/css/    variables.css (tokens) · base.css
+└── sw.js          Service Worker
+```
 
-1. **[`specs/`](specs/)** — fuente de verdad. Prevalece sobre todo lo demás.
-2. **[`design-import/CORRECCIONES.md`](design-import/CORRECCIONES.md)** — qué del diseño no se implementa tal cual.
-3. **`design-import/*.dc.html`** — referencia visual. Los 28 frames, los tokens, las dimensiones.
+### Despliegue
 
-⚠️ El documento de diseño **no fue modificado** y conserva copy, marcado y estilos que las SPECs corrigen. Leer `CORRECCIONES.md` antes de implementar cualquier frame.
+Cada push a `main` dispara [`deploy.yml`](.github/workflows/deploy.yml): `npm ci`, `npm run build` y publicación de `dist/` en GitHub Pages.
 
-| Documento | Para qué |
-|---|---|
-| [`specs/README.md`](specs/README.md) | Índice, 20 decisiones, 8 contradicciones resueltas, pendientes |
-| [`specs/19-requisitos-y-aceptacion.md`](specs/19-requisitos-y-aceptacion.md) | RF1–RF14, RNF1–RNF10, criterios de aceptación, preguntas de la defensa |
-| [`CLAUDE.md`](CLAUDE.md) | Convenciones y trampas conocidas, para agentes de IA |
-| [`docs/critica-diseno.md`](docs/critica-diseno.md) | Auditoría del diseño previa a las SPECs. Histórico |
+Dos decisiones hacen que funcione bajo un subdirectorio como `/ChemLab/`:
 
----
+- **`base: './'` en `vite.config.js`.** Todas las URLs del build son relativas, así que el sitio no depende de estar servido en la raíz del dominio.
+- **Router en modo hash.** GitHub Pages no reescribe rutas hacia `index.html`. Con el modo `history`, recargar en `/discoveries` daría 404. Con hash, no hay servidor involucrado.
 
-## Funcionalidades
-
-| ID | Requisito | SPEC |
-|---|---|---|
-| RF1 | Home y navegación desde cualquier punto | [13](specs/13-home-y-contacto.md) |
-| RF2 | Búsqueda con filtros | [04](specs/04-busqueda-y-filtros.md) |
-| RF3 | Resultados paginados | [05](specs/05-resultados-y-paginacion.md) |
-| RF4 | Detalle de elemento y compuesto | [06](specs/06-detalle.md) |
-| RF5 | Favoritos con valoración y nota | [10](specs/10-favoritos.md) |
-| RF6 | Historial de detalles visitados | [11](specs/11-historial.md) |
-| RF7 | Contacto con mapa | [13](specs/13-home-y-contacto.md) |
-| RF8 | Diseño responsivo | [16](specs/16-responsive-y-layout.md) |
-| RF9 | Laboratorio químico | [07](specs/07-laboratorio-y-mezcla.md) |
-| RF10 | Motor de combinación | [08](specs/08-motor-de-combinacion.md) |
-| RF11 | Descubrimientos | [12](specs/12-descubrimientos.md) |
-| RF12 | Caché de información química | [09](specs/09-pubchem-cache-y-estados-asincronos.md) |
-| RF13 | PWA instalable | [18](specs/18-pwa.md) |
-| RF14 | Funcionamiento offline | [18 §8](specs/18-pwa.md) |
-
-### Destacados
-
-**Motor de combinación.** Normaliza la selección a una clave canónica en **notación de Hill** (el estándar de Chemical Abstracts y PubChem) y resuelve con un único lookup en un índice `Map`. El orden de selección es irrelevante por construcción: el estado es un mapa símbolo→cantidad, no una lista. Si la clave exacta no existe, reintenta con la composición reducida por su MCD, de modo que H₄O₂ identifica agua sin romper O₂, H₂ ni N₂. — [SPEC 08](specs/08-motor-de-combinacion.md)
-
-**Offline real.** Los 118 elementos, los 30 compuestos, el motor, los favoritos, el historial y los descubrimientos funcionan sin conexión. Solo degrada lo que depende de PubChem, y lo hace avisando. — [SPEC 18 §8](specs/18-pwa.md)
-
-**Accesibilidad.** Todo control es un elemento real, 44 px de piso táctil, foco visible, contraste ≥4.5:1 en ambos temas, y el color nunca como único portador de información. — [SPEC 17](specs/17-accesibilidad.md)
+Actualizar la aplicación no borra los datos del usuario: el Service Worker administra `Cache Storage`, mientras que favoritos, historial y descubrimientos viven en `localStorage`, que el Service Worker no puede tocar.
 
 ---
 
 ## Datos
 
-- **Elementos:** dataset local con los 118 elementos y 17 campos cada uno. Los valores no disponibles se representan con `null` explícito, nunca inventados.
-- **Compuestos:** 30 entradas propias de ChemLab, con fórmula, nombre, composición y descripción.
+- **Elementos:** dataset local con los 118 elementos y 18 campos cada uno. Los valores no disponibles se representan con `null` explícito, nunca inventados.
+- **Compuestos:** 81 entradas propias de ChemLab, con clave en notación de Hill, fórmula, nombre, composición y descripción.
 - **Enriquecimiento:** [PubChem PUG REST](https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest) — API pública, sin credenciales.
 
-El dato interno y el externo se mantienen separados: la información de PubChem nunca se escribe en el dataset, vive en caché con TTL de 7 días y se identifica como tal en la interfaz. — [SPEC 02 §4](specs/02-contratos-de-datos.md)
+El dato interno y el externo se mantienen separados: la información de PubChem nunca se escribe en el dataset, vive en caché con TTL de 7 días y se identifica como tal en la interfaz.
+
+### Persistencia
+
+Seis claves en `localStorage`, más una en `sessionStorage`, todas a través de `storage.js`:
+
+```
+chemlab_favorites   chemlab_history   chemlab_discovered
+chemlab_mixture     chemlab_theme     chemlab_api_cache
+
+chemlab_contact_messages   ← sessionStorage
+```
+
+El formulario de contacto **no envía correos**: guarda en la sesión para demostrar el almacén. Cerrar la pestaña lo vacía y no toca los favoritos.
+
+---
+
+## Documentación
+
+El proyecto se especificó antes de escribirse. La especificación técnica completa vive en [`specs/`](specs/) —20 documentos— y es la fuente de verdad por encima del código y del diseño. Empezar por [`specs/README.md`](specs/README.md).
+
+El documento de diseño original está en [`design-import/`](design-import/) sin modificar; [`CORRECCIONES.md`](design-import/CORRECCIONES.md) registra qué de ese diseño no se implementó tal cual y por qué.
 
 ---
 
@@ -178,7 +173,7 @@ El dato interno y el externo se mantienen separados: la información de PubChem 
 - Gianluca Vespe
 - Sergio López
 
-Los datos de contacto que muestra la aplicación en su vista Contacto son ficticios, por decisión del equipo. La identificación real se hace acá. — [SPEC 13 §B.1](specs/13-home-y-contacto.md)
+Los datos de contacto que muestra la aplicación en su vista Contacto son ficticios, por decisión del equipo. La identificación real se hace acá.
 
 ---
 
